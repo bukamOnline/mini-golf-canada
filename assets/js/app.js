@@ -95,6 +95,97 @@
     });
   }
 
+  function initGallerySliders(root) {
+    (root || document).querySelectorAll(".js-gallery").forEach(function (gallery) {
+      if (gallery.dataset.galleryReady) return;
+      gallery.dataset.galleryReady = "true";
+
+      var viewport = gallery.querySelector(".gallery-viewport");
+      var slides = Array.from(gallery.querySelectorAll("[data-gallery-slide]"));
+      var dots = Array.from(gallery.querySelectorAll("[data-gallery-dot]"));
+      var previous = gallery.querySelector("[data-gallery-prev]");
+      var next = gallery.querySelector("[data-gallery-next]");
+      var controls = gallery.querySelector(".gallery-controls");
+      var scrollTimer = null;
+
+      if (!viewport || slides.length < 2) {
+        if (controls) controls.hidden = true;
+        return;
+      }
+
+      function currentIndex() {
+        var viewportCenter = viewport.scrollLeft + viewport.clientWidth / 2;
+        var bestIndex = 0;
+        var bestDistance = Infinity;
+        slides.forEach(function (slide, index) {
+          var slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+          var distance = Math.abs(slideCenter - viewportCenter);
+          if (distance < bestDistance) {
+            bestDistance = distance;
+            bestIndex = index;
+          }
+        });
+        return bestIndex;
+      }
+
+      function setActive(index) {
+        var safeIndex = clamp(index, 0, slides.length - 1);
+        dots.forEach(function (dot, dotIndex) {
+          var active = dotIndex === safeIndex;
+          dot.classList.toggle("is-active", active);
+          dot.setAttribute("aria-current", active ? "true" : "false");
+        });
+        if (previous) previous.disabled = safeIndex === 0;
+        if (next) next.disabled = safeIndex === slides.length - 1;
+        gallery.dataset.galleryIndex = String(safeIndex + 1);
+      }
+
+      function goTo(index) {
+        var safeIndex = clamp(index, 0, slides.length - 1);
+        var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        viewport.scrollTo({
+          left: slides[safeIndex].offsetLeft - viewport.offsetLeft,
+          behavior: reduceMotion ? "auto" : "smooth",
+        });
+        setActive(safeIndex);
+        trackEvent("gallery_slide", {photo_index: safeIndex + 1, page_path: location.pathname});
+      }
+
+      if (previous) {
+        previous.addEventListener("click", function () {
+          goTo(currentIndex() - 1);
+        });
+      }
+      if (next) {
+        next.addEventListener("click", function () {
+          goTo(currentIndex() + 1);
+        });
+      }
+      dots.forEach(function (dot, index) {
+        dot.addEventListener("click", function () {
+          goTo(index);
+        });
+      });
+      viewport.addEventListener("scroll", function () {
+        window.clearTimeout(scrollTimer);
+        scrollTimer = window.setTimeout(function () {
+          setActive(currentIndex());
+        }, 80);
+      }, {passive:true});
+      viewport.addEventListener("keydown", function (event) {
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          goTo(currentIndex() + 1);
+        } else if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          goTo(currentIndex() - 1);
+        }
+      });
+
+      setActive(0);
+    });
+  }
+
   function courseCard(item) {
     var article = document.createElement("article");
     article.className = "course-card";
@@ -182,6 +273,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     attachImageFallbacks(document);
+    initGallerySliders(document);
     renderMap((window.MGC_LISTINGS || []).slice(0, 24));
 
     document.querySelectorAll(".js-directory-search").forEach(function (form) {
