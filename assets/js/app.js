@@ -297,6 +297,13 @@
     });
   }
 
+  function locationAccuracyNote(locationPoint) {
+    if (!locationPoint || typeof locationPoint.accuracy !== "number" || !isFinite(locationPoint.accuracy)) return "";
+    if (locationPoint.accuracy <= 1000) return "";
+    var km = Math.max(1, Math.round(locationPoint.accuracy / 1000));
+    return " Your browser reported an approximate location within about " + km + " km, so search by city if the order looks off.";
+  }
+
   function prefersReducedMotion() {
     return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
@@ -343,7 +350,7 @@
       if (usingLocation) {
         var refined = context.tokens.length || context.province || context.filters.length;
         status.textContent = matches.length
-          ? "Showing the " + matches.length + " closest relevant mini golf listing" + (matches.length === 1 ? "" : "s") + (refined ? " for your current search." : " near your current location.")
+          ? "Showing the " + matches.length + " closest relevant mini golf listing" + (matches.length === 1 ? "" : "s") + (refined ? " for your current search." : " near your current location.") + locationAccuracyNote(locationPoint)
           : "No nearby listings matched the current search. Try fewer filters or search by city or province.";
       } else {
         status.textContent = matches.length
@@ -436,11 +443,16 @@
           currentLocation = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
+            accuracy: position.coords.accuracy,
           };
           if (form) form.dataset.locationActive = "true";
           var closest = form ? runSearch(form, {location: currentLocation}) : [];
           scrollToSearchResults();
-          trackEvent("location_search_success", {results_count: closest.length, relevant_only: "true"});
+          trackEvent("location_search_success", {
+            results_count: closest.length,
+            relevant_only: "true",
+            accuracy_m: Math.round(Number(position.coords.accuracy || 0)),
+          });
           button.disabled = false;
           button.textContent = previousLabel;
         }, function (error) {
@@ -448,7 +460,7 @@
           trackEvent("location_search_error", {error_code: error && error.code ? error.code : 0});
           button.disabled = false;
           button.textContent = previousLabel;
-        }, {enableHighAccuracy:false, timeout:8000, maximumAge:300000});
+        }, {enableHighAccuracy:true, timeout:15000, maximumAge:0});
       });
     });
 
