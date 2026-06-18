@@ -303,8 +303,10 @@
 
   function scrollToSearchResults() {
     var section = document.querySelector(".search-results-section");
-    if (!section || typeof section.scrollIntoView !== "function") return;
-    section.scrollIntoView({behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start"});
+    if (!section) return;
+    var desktopOffset = window.matchMedia && window.matchMedia("(min-width: 760px)").matches ? 84 : 0;
+    var targetY = section.getBoundingClientRect().top + window.pageYOffset + desktopOffset;
+    window.scrollTo({top: Math.max(0, targetY), behavior: prefersReducedMotion() ? "auto" : "smooth"});
   }
 
   function updateSearchUrl(form) {
