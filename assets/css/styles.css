@@ -6,7 +6,7 @@
 .filter-options label{display:inline-flex;align-items:center;gap:7px;min-height:34px;padding:6px 10px;border:1px solid #d4e7dc;border-radius:999px;background:#fff;color:#244839;font-size:14px;font-weight:750;cursor:pointer}
 .filter-options input{width:auto;min-height:auto;accent-color:var(--green)}
 .filter-options span{margin:0;color:inherit;font-size:inherit}
-.results-map-shell{margin:18px 0 22px}
+.search-results-section{scroll-margin-top:86px}.results-map-shell{margin:18px 0 22px}
 .results-map-shell h3{margin:0 0 10px;color:var(--green-dark);font-size:22px}
 .results-map{position:relative;min-height:280px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:radial-gradient(circle at 24% 28%,rgba(88,191,226,.28),transparent 22%),radial-gradient(circle at 64% 55%,rgba(11,111,58,.2),transparent 28%),linear-gradient(135deg,#f8fcfa,#eaf7f9 60%,#f2fbf5)}
 .results-map::before{content:"";position:absolute;inset:24px;background:url("../images/mini-golf-canada-map.webp") center/contain no-repeat;opacity:.13;filter:saturate(.8);pointer-events:none}

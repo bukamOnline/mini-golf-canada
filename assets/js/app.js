@@ -54,8 +54,25 @@
     });
   }
 
+  function normalizeSearchText(value) {
+    var text = String(value || "").toLowerCase();
+    return text.normalize ? text.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : text;
+  }
+
+  function searchableText(item) {
+    item = item || {};
+    return normalizeSearchText([
+      item.search || "",
+      item.name || "",
+      item.city || "",
+      item.province || "",
+      item.price || "",
+      (item.tags || []).join(" "),
+    ].join(" "));
+  }
+
   function itemMatchesFilter(item, filter) {
-    var text = String((item.search || "") + " " + (item.tags || []).join(" ")).toLowerCase();
+    var text = searchableText(item);
     if (filter === "price") return !!item.hasPrice;
     if (filter === "rating") return Number(item.rating || 0) >= 4;
     if (filter === "indoor") return text.indexOf("indoor") > -1;
@@ -206,9 +223,53 @@
 
   function searchTokens(query) {
     var stop = {near:1, me:1, in:1, the:1, and:1, canada:1, course:1, courses:1, find:1};
-    return String(query || "").toLowerCase().split(/[^a-z0-9]+/).filter(function (token) {
+    return normalizeSearchText(query).split(/[^a-z0-9]+/).filter(function (token) {
       return token && !stop[token];
     });
+  }
+
+  function itemMatchesQuery(item, tokens) {
+    if (!tokens.length) return true;
+    var text = searchableText(item);
+    return tokens.every(function (token) { return text.indexOf(token) > -1; });
+  }
+
+  function searchScore(item, tokens) {
+    if (!tokens.length) return 0;
+    var text = searchableText(item);
+    var name = normalizeSearchText(item && item.name);
+    var city = normalizeSearchText(item && item.city);
+    var score = 0;
+    tokens.forEach(function (token) {
+      if (name === token || city === token) score += 12;
+      if (name.indexOf(token) === 0) score += 8;
+      if (city.indexOf(token) === 0) score += 6;
+      if (text.indexOf(token) > -1) score += 1;
+    });
+    return score + Math.min(Number((item && item.rating) || 0), 5) / 10;
+  }
+
+  function prefersReducedMotion() {
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function scrollToSearchResults() {
+    var section = document.querySelector(".search-results-section");
+    if (!section || typeof section.scrollIntoView !== "function") return;
+    section.scrollIntoView({behavior: prefersReducedMotion() ? "auto" : "smooth", block: "start"});
+  }
+
+  function updateSearchUrl(form) {
+    if (!location.pathname.includes("/search/") || !history.replaceState) return;
+    var queryInput = form.querySelector("[name=q]");
+    var provinceInput = form.querySelector("[name=province]");
+    var params = new URLSearchParams(location.search);
+    var query = queryInput ? queryInput.value.trim() : "";
+    var province = provinceInput ? provinceInput.value.trim() : "";
+    if (query) params.set("q", query); else params.delete("q");
+    if (province) params.set("province", province); else params.delete("province");
+    var next = params.toString();
+    history.replaceState(null, "", next ? "?" + next : location.pathname);
   }
 
   function runSearch(form, options) {
@@ -217,16 +278,20 @@
     var provinceInput = form.querySelector("[name=province]");
     var results = document.querySelector(".js-search-results");
     var status = document.querySelector(".js-search-status");
-    if (!results) return;
+    if (!results) return [];
 
     var tokens = searchTokens(queryInput && queryInput.value);
     var province = (provinceInput && provinceInput.value || "").trim();
     var filters = activeFilters(form);
     var matches = (window.MGC_LISTINGS || []).filter(function (item) {
-      return (!tokens.length || tokens.every(function (token) { return item.search.indexOf(token) > -1; })) &&
+      return itemMatchesQuery(item, tokens) &&
         (!province || item.province === province) &&
         (!filters.length || filters.every(function (filter) { return itemMatchesFilter(item, filter); }));
-    }).slice(0, 24);
+    });
+    if (tokens.length) {
+      matches.sort(function (a, b) { return searchScore(b, tokens) - searchScore(a, tokens); });
+    }
+    matches = matches.slice(0, 24);
 
     results.innerHTML = "";
     matches.forEach(function (item) { results.appendChild(courseCard(item)); });
@@ -244,6 +309,7 @@
         results_count: matches.length,
       });
     }
+    return matches;
   }
 
   function applyQueryParams(form) {
@@ -281,12 +347,8 @@
       form.addEventListener("submit", function (event) {
         event.preventDefault();
         runSearch(form, {track:true});
-        var input = form.querySelector("[name=q]");
-        if (input && location.pathname.includes("/search/")) {
-          var params = new URLSearchParams(location.search);
-          params.set("q", input.value.trim());
-          history.replaceState(null, "", "?" + params.toString());
-        }
+        updateSearchUrl(form);
+        scrollToSearchResults();
       });
       form.addEventListener("input", function () { runSearch(form); });
       form.addEventListener("change", function (event) {
@@ -334,6 +396,7 @@
           setStatus(status, closest.length
             ? "Showing the closest mini golf listings to your current location."
             : "No listings with coordinates were available. Search by city or province instead.");
+          scrollToSearchResults();
           trackEvent("location_search_success", {results_count: closest.length});
           button.disabled = false;
           button.textContent = previousLabel;
