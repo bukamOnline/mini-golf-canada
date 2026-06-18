@@ -19,6 +19,8 @@
     }
   }
 
+  var currentLocation = null;
+
   function clamp(value, min, max) {
     return Math.min(Math.max(value, min), max);
   }
@@ -206,7 +208,8 @@
   function courseCard(item) {
     var article = document.createElement("article");
     article.className = "course-card";
-    var sideNote = item.distance ? "<span>" + item.distance.toFixed(1) + " km away</span>" : "<span>" + escapeHtml(item.price || "Check prices") + "</span>";
+    var hasDistance = typeof item.distance === "number" && isFinite(item.distance);
+    var sideNote = hasDistance ? "<span>" + item.distance.toFixed(1) + " km away</span>" : "<span>" + escapeHtml(item.price || "Check prices") + "</span>";
     article.innerHTML =
       '<a class="course-image" href="' + escapeHtml(relativeToRoot(item.path)) + '">' +
       '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.name) + ' mini golf in ' + escapeHtml(item.city) + ', ' + escapeHtml(item.province) + '" loading="lazy" decoding="async" width="800" height="500" data-image-fallback="true"></a>' +
@@ -249,6 +252,51 @@
     return score + Math.min(Number((item && item.rating) || 0), 5) / 10;
   }
 
+  function searchContext(form) {
+    var queryInput = form.querySelector("[name=q]");
+    var provinceInput = form.querySelector("[name=province]");
+    return {
+      queryInput: queryInput,
+      provinceInput: provinceInput,
+      tokens: searchTokens(queryInput && queryInput.value),
+      province: (provinceInput && provinceInput.value || "").trim(),
+      filters: activeFilters(form),
+    };
+  }
+
+  function relevantListings(context) {
+    return (window.MGC_LISTINGS || []).filter(function (item) {
+      return itemMatchesQuery(item, context.tokens) &&
+        (!context.province || item.province === context.province) &&
+        (!context.filters.length || context.filters.every(function (filter) { return itemMatchesFilter(item, filter); }));
+    });
+  }
+
+  function hasCoordinates(item) {
+    return typeof item.lat === "number" && typeof item.lng === "number";
+  }
+
+  function withDistance(item, locationPoint) {
+    return Object.assign({}, item, {distance: distanceKm(locationPoint.lat, locationPoint.lng, item.lat, item.lng)});
+  }
+
+  function sortByRelevance(matches, tokens) {
+    if (tokens.length) {
+      matches.sort(function (a, b) { return searchScore(b, tokens) - searchScore(a, tokens); });
+    }
+    return matches;
+  }
+
+  function sortByDistance(matches, tokens, locationPoint) {
+    return matches.filter(hasCoordinates).map(function (item) {
+      return withDistance(item, locationPoint);
+    }).sort(function (a, b) {
+      var distanceDelta = a.distance - b.distance;
+      if (Math.abs(distanceDelta) > 0.05) return distanceDelta;
+      return searchScore(b, tokens) - searchScore(a, tokens);
+    });
+  }
+
   function prefersReducedMotion() {
     return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
@@ -274,39 +322,40 @@
 
   function runSearch(form, options) {
     options = options || {};
-    var queryInput = form.querySelector("[name=q]");
-    var provinceInput = form.querySelector("[name=province]");
+    var context = searchContext(form);
     var results = document.querySelector(".js-search-results");
     var status = document.querySelector(".js-search-status");
     if (!results) return [];
 
-    var tokens = searchTokens(queryInput && queryInput.value);
-    var province = (provinceInput && provinceInput.value || "").trim();
-    var filters = activeFilters(form);
-    var matches = (window.MGC_LISTINGS || []).filter(function (item) {
-      return itemMatchesQuery(item, tokens) &&
-        (!province || item.province === province) &&
-        (!filters.length || filters.every(function (filter) { return itemMatchesFilter(item, filter); }));
-    });
-    if (tokens.length) {
-      matches.sort(function (a, b) { return searchScore(b, tokens) - searchScore(a, tokens); });
-    }
-    matches = matches.slice(0, 24);
+    var locationPoint = options.location || (form.dataset.locationActive === "true" ? currentLocation : null);
+    var usingLocation = !!locationPoint;
+    var matches = relevantListings(context);
+    matches = usingLocation
+      ? sortByDistance(matches, context.tokens, locationPoint).slice(0, 18)
+      : sortByRelevance(matches, context.tokens).slice(0, 24);
 
     results.innerHTML = "";
     matches.forEach(function (item) { results.appendChild(courseCard(item)); });
     renderMap(matches);
     if (status) {
-      status.textContent = matches.length
-        ? "Showing " + matches.length + " matching mini golf listing" + (matches.length === 1 ? "." : "s.")
-        : "No matching courses found. Try a nearby city, province, mini putt, glow golf, indoor, or outdoor.";
+      if (usingLocation) {
+        var refined = context.tokens.length || context.province || context.filters.length;
+        status.textContent = matches.length
+          ? "Showing the " + matches.length + " closest relevant mini golf listing" + (matches.length === 1 ? "" : "s") + (refined ? " for your current search." : " near your current location.")
+          : "No nearby listings matched the current search. Try fewer filters or search by city or province.";
+      } else {
+        status.textContent = matches.length
+          ? "Showing " + matches.length + " matching mini golf listing" + (matches.length === 1 ? "." : "s.")
+          : "No matching courses found. Try a nearby city, province, mini putt, glow golf, indoor, or outdoor.";
+      }
     }
     if (options.track) {
       trackEvent("directory_search", {
-        search_term: queryInput ? queryInput.value.trim() : "",
-        province: province || "all",
-        filters: filters.join(",") || "none",
+        search_term: context.queryInput ? context.queryInput.value.trim() : "",
+        province: context.province || "all",
+        filters: context.filters.join(",") || "none",
         results_count: matches.length,
+        location_sorted: usingLocation ? "true" : "false",
       });
     }
     return matches;
@@ -381,23 +430,15 @@
         button.textContent = "Checking location...";
         setStatus(status, "Checking your location...");
         navigator.geolocation.getCurrentPosition(function (position) {
-          var lat = position.coords.latitude;
-          var lng = position.coords.longitude;
-          var closest = (window.MGC_LISTINGS || []).filter(function (item) {
-            return typeof item.lat === "number" && typeof item.lng === "number";
-          }).map(function (item) {
-            return Object.assign({}, item, {distance: distanceKm(lat, lng, item.lat, item.lng)});
-          }).sort(function (a, b) {
-            return a.distance - b.distance;
-          }).slice(0, 18);
-          results.innerHTML = "";
-          closest.forEach(function (item) { results.appendChild(courseCard(item)); });
-          renderMap(closest);
-          setStatus(status, closest.length
-            ? "Showing the closest mini golf listings to your current location."
-            : "No listings with coordinates were available. Search by city or province instead.");
+          var form = button.closest(".js-directory-search") || document.querySelector(".js-directory-search");
+          currentLocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          if (form) form.dataset.locationActive = "true";
+          var closest = form ? runSearch(form, {location: currentLocation}) : [];
           scrollToSearchResults();
-          trackEvent("location_search_success", {results_count: closest.length});
+          trackEvent("location_search_success", {results_count: closest.length, relevant_only: "true"});
           button.disabled = false;
           button.textContent = previousLabel;
         }, function (error) {
