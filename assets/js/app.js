@@ -31,7 +31,8 @@
     if (!local || local.endsWith("/")) local += "index.html";
     if (!/\.html?$/.test(local)) local += "/index.html";
     var depth = (local.match(/\//g) || []).length;
-    return "../".repeat(depth) + path;
+    var cleanPath = String(path || "").replace(/(^|\/)index\.html$/, "$1");
+    return "../".repeat(depth) + cleanPath;
   }
 
   function fallbackImageSrc() {
@@ -410,8 +411,10 @@
       });
       form.addEventListener("input", function () { runSearch(form); });
       form.addEventListener("change", function (event) {
+        var targetName = event.target && event.target.name;
+        if (targetName === "q") return;
         runSearch(form);
-        if (event.target && event.target.name === "feature") {
+        if (targetName === "feature") {
           trackEvent("directory_filter_change", {filter: event.target.value, checked: event.target.checked});
         }
       });
