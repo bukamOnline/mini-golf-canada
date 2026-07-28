@@ -17,24 +17,47 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=clean-links-search-20260622">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J"></script>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XGPL1E000J');
+    window.gtag = gtag;
+    window.mgcAnalyticsAllowed = false;
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    window.loadMgcAnalytics = function() {
+      if (window.mgcAnalyticsLoaded) return;
+      window.mgcAnalyticsLoaded = true;
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J';
+      document.head.appendChild(script);
+      gtag('js', new Date());
+      gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
+    };
+    try {
+      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
+        window.mgcAnalyticsAllowed = true;
+        gtag('consent', 'update', {analytics_storage: 'granted'});
+        window.loadMgcAnalytics();
+      }
+    } catch (error) {}
   </script>
-  <script defer src="../../assets/js/listings.js?v=clean-links-search-20260622"></script>
-  <script defer src="../../assets/js/app.js?v=clean-links-search-20260622"></script>
-  
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Indoor and Glow Mini Golf in Canada","description":"What to look for when comparing indoor glow golf, black-light mini putt, and entertainment-centre courses.","publisher":{"@id":"https://minigolfcanada.ca/#organization"},"dateModified":"2026-06-22","mainEntityOfPage":"https://minigolfcanada.ca/guides/indoor-glow-mini-golf/"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/guides/indoor-glow-mini-golf/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://minigolfcanada.ca/guides/"},{"@type":"ListItem","position":3,"name":"Indoor and Glow Mini Golf in Canada","item":"https://minigolfcanada.ca/guides/indoor-glow-mini-golf/"}]}]}</script>
+  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://minigolfcanada.ca/guides/indoor-glow-mini-golf/#article","headline":"Indoor and Glow Mini Golf in Canada","description":"What to look for when comparing indoor glow golf, black-light mini putt, and entertainment-centre courses.","author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"publisher":{"@id":"https://minigolfcanada.ca/#organization"},"datePublished":"2026-07-28","dateModified":"2026-07-28","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/guides/indoor-glow-mini-golf/#webpage"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/guides/indoor-glow-mini-golf/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://minigolfcanada.ca/guides/"},{"@type":"ListItem","position":3,"name":"Indoor and Glow Mini Golf in Canada","item":"https://minigolfcanada.ca/guides/indoor-glow-mini-golf/"}]}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="../../" aria-label="Mini Golf Canada home">
+    <a class="brand" href="../../">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 64 64" focusable="false">
           <path class="logo-water" d="M8 44c10 8 33 9 48 0-4 11-15 17-27 16C17 59 9 53 8 44Z"/>
@@ -57,21 +80,47 @@
     <a class="header-action" href="../../about/">About</a>
   </header>
   <main id="main">
-    
+
     <section class="page-hero compact-hero">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../">Guides</a><span aria-hidden="true">/</span><span>Indoor and Glow Mini Golf in Canada</span></nav>
       <h1>Indoor and Glow Mini Golf in Canada</h1>
       <p>What to look for when comparing indoor glow golf, black-light mini putt, and entertainment-centre courses.</p>
+      <div class="editorial-meta"><span>By <a href="../../editorial-policy/">Mini Golf Canada Editorial Team</a></span><span>Updated July 28, 2026</span></div>
     </section>
     <section class="section article-body">
-            <h2>Indoor courses are useful year-round</h2>
-            <p>Indoor mini golf and glow golf are popular for winter, rainy days, date nights, birthdays, and group events. They often appear inside entertainment centres with arcades, laser tag, food, drinks, or party rooms.</p>
-            <h2>Questions to ask before booking</h2>
-            <ul><li>Is the course fully indoors and climate controlled?</li><li>Is the lighting good for younger children?</li><li>How long does a round usually take?</li><li>Are socks, waivers, or advance bookings required?</li><li>Are party rooms or group packages available?</li></ul>
-            <p>Use listing tags and review signals to quickly separate glow golf, indoor mini putt, and outdoor seasonal courses.</p>
+            <p class="article-summary"><strong>Quick answer:</strong> indoor and glow mini golf overlap, but they are not identical. Confirm that the whole course is indoors, then check lighting, sound, booking, accessibility and other activities against the needs of your group.</p>
+            <h2>Indoor does not always mean glow</h2>
+            <p>An indoor course may use ordinary lighting and a traditional theme. A glow course may use black lights, fluorescent paint, music and darker rooms. Some venues combine indoor and outdoor holes, while others place a compact course inside a larger entertainment centre. The most useful listing language describes the setting and experience separately instead of treating every indoor course as glow golf.</p>
+            <h2>Questions to answer before booking</h2>
+            <div class="article-table-wrap"><table class="article-table"><caption>Indoor and glow golf comparison points</caption><thead><tr><th scope="col">Topic</th><th scope="col">Question to ask</th></tr></thead><tbody>
+            <tr><th scope="row">Environment</th><td>Is every hole climate controlled, or does part of the route go outside?</td></tr>
+            <tr><th scope="row">Lighting and sound</th><td>Does the venue use darkness, flashing effects, loud music or animated props?</td></tr>
+            <tr><th scope="row">Round format</th><td>How many holes are included, and is play timed during busy periods?</td></tr>
+            <tr><th scope="row">Access</th><td>Are the course route, entrance and washrooms usable for the people in your group?</td></tr>
+            <tr><th scope="row">Booking</th><td>Are walk-ins accepted, or are time slots required on weekends?</td></tr>
+            <tr><th scope="row">Extras</th><td>Are arcade credits, laser tag, bowling or food bundled with admission?</td></tr>
+            </tbody></table></div>
+            <h2>Plan for different ages and sensory needs</h2>
+            <p>Dark rooms and dramatic effects can be exciting for one player and uncomfortable for another. Families should ask about visibility, music volume, moving props and whether a player can leave the course partway through. For mobility planning, a general accessible-entrance label does not necessarily describe every hole. Contact the venue for the route, slopes, narrow passages, seating and washroom details that matter to the group.</p>
+            <h2>Allow time beyond the round</h2>
+            <p>A round can take longer when the course is busy, a group has young players, or the venue spaces groups at each hole. Entertainment centres can add check-in, waivers, food and arcade time. When an event has a fixed end time, ask the venue for its current estimate rather than relying on a generic mini golf duration.</p>
+            <h2>Read prices as packages</h2>
+            <p>Indoor venues often sell activity bundles. Make sure a displayed amount is for mini golf itself and not a multi-attraction pass. Check taxes, age bands, required socks or equipment, replay pricing and expiry rules. Mini Golf Canada publishes a price only when the source text supports a clear labelled amount; otherwise the listing directs visitors to confirm admission.</p>
+            <h2>Find an appropriate course</h2>
+            <p>Use the <a href="/search/">directory search</a> and select Indoor or Glow. Location sorting will rank the closest listings that still match the active term and filters. Because venue features change, open the dated source links on the course page before making a special trip.</p>
             </section>
-    
+
   </main>
+  <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
+    <div>
+      <strong>Optional analytics</strong>
+      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+    </div>
+    <div class="privacy-actions">
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+    </div>
+  </section>
   <footer class="site-footer">
     <div>
       <a class="brand footer-brand" href="../../"><span class="brand-mark" aria-hidden="true">
@@ -93,8 +142,13 @@
       <a href="../">Mini golf guides</a>
       <a href="../../submit-course/">Submit or correct a course</a>
       <a href="../../editorial-policy/">Editorial policy</a>
+      <a href="../../media-policy/">Media policy</a>
+      <a href="../../advertising-disclosure/">Advertising disclosure</a>
       <a href="../../privacy/">Privacy</a>
+      <a href="../../cookie-policy/">Cookies</a>
+      <a href="../../terms/">Terms</a>
       <a href="../../contact/">Contact</a>
+      <button class="footer-privacy-button" type="button" data-privacy-settings>Privacy choices</button>
     </nav>
   </footer>
 </body>

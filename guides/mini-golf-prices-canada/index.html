@@ -17,24 +17,47 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=clean-links-search-20260622">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J"></script>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XGPL1E000J');
+    window.gtag = gtag;
+    window.mgcAnalyticsAllowed = false;
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    window.loadMgcAnalytics = function() {
+      if (window.mgcAnalyticsLoaded) return;
+      window.mgcAnalyticsLoaded = true;
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J';
+      document.head.appendChild(script);
+      gtag('js', new Date());
+      gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
+    };
+    try {
+      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
+        window.mgcAnalyticsAllowed = true;
+        gtag('consent', 'update', {analytics_storage: 'granted'});
+        window.loadMgcAnalytics();
+      }
+    } catch (error) {}
   </script>
-  <script defer src="../../assets/js/listings.js?v=clean-links-search-20260622"></script>
-  <script defer src="../../assets/js/app.js?v=clean-links-search-20260622"></script>
-  
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Mini Golf Prices in Canada","description":"A planning guide for mini golf admission, family passes, group rates, and add-on entertainment costs.","publisher":{"@id":"https://minigolfcanada.ca/#organization"},"dateModified":"2026-06-22","mainEntityOfPage":"https://minigolfcanada.ca/guides/mini-golf-prices-canada/"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/guides/mini-golf-prices-canada/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://minigolfcanada.ca/guides/"},{"@type":"ListItem","position":3,"name":"Mini Golf Prices in Canada","item":"https://minigolfcanada.ca/guides/mini-golf-prices-canada/"}]}]}</script>
+  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://minigolfcanada.ca/guides/mini-golf-prices-canada/#article","headline":"Mini Golf Prices in Canada","description":"A planning guide for mini golf admission, family passes, group rates, and add-on entertainment costs.","author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"publisher":{"@id":"https://minigolfcanada.ca/#organization"},"datePublished":"2026-07-28","dateModified":"2026-07-28","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/guides/mini-golf-prices-canada/#webpage"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/guides/mini-golf-prices-canada/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://minigolfcanada.ca/guides/"},{"@type":"ListItem","position":3,"name":"Mini Golf Prices in Canada","item":"https://minigolfcanada.ca/guides/mini-golf-prices-canada/"}]}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="../../" aria-label="Mini Golf Canada home">
+    <a class="brand" href="../../">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 64 64" focusable="false">
           <path class="logo-water" d="M8 44c10 8 33 9 48 0-4 11-15 17-27 16C17 59 9 53 8 44Z"/>
@@ -57,21 +80,48 @@
     <a class="header-action" href="../../about/">About</a>
   </header>
   <main id="main">
-    
+
     <section class="page-hero compact-hero">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../">Guides</a><span aria-hidden="true">/</span><span>Mini Golf Prices in Canada</span></nav>
       <h1>Mini Golf Prices in Canada</h1>
       <p>A planning guide for mini golf admission, family passes, group rates, and add-on entertainment costs.</p>
+      <div class="editorial-meta"><span>By <a href="../../editorial-policy/">Mini Golf Canada Editorial Team</a></span><span>Updated July 28, 2026</span></div>
     </section>
     <section class="section article-body">
-            <h2>Prices vary by venue and season</h2>
-            <p>Mini golf prices in Canada often depend on age, day of week, indoor versus outdoor setting, season, and whether the course is bundled with arcade credits or other attractions. Public price pages can change, so the directory treats prices as planning notes and sends visitors to official sources for confirmation.</p>
-            <h2>Common price factors</h2>
-            <ul><li>Adult, child, senior, and family admission.</li><li>Replay discounts or second-round pricing.</li><li>Birthday packages and private event rates.</li><li>Combo passes with go-karts, laser tag, arcade, bowling, or driving range activities.</li><li>Taxes, booking fees, and seasonal specials.</li></ul>
-            <p>When price details were found, they appear on individual course pages with context.</p>
+            <p class="article-summary"><strong>Quick answer:</strong> there is no single Canada-wide mini golf price. Compare the exact ticket type, player ages, taxes, date and included activities. Treat directory amounts as dated references and use the venue's checkout or phone line for the final total.</p>
+            <h2>Why a headline price can be misleading</h2>
+            <p>Mini golf businesses use several pricing models. A stand-alone outdoor course may list one round by age. An entertainment centre may lead with a multi-attraction bundle, while a resort or campground may restrict access to guests. Seasonal promotions and replay discounts add another layer. Two amounts are not comparable until you know what each ticket includes.</p>
+            <h2>Read the price page in this order</h2>
+            <div class="article-table-wrap"><table class="article-table"><caption>Mini golf price checklist</caption><thead><tr><th scope="col">Item</th><th scope="col">What to identify</th></tr></thead><tbody>
+            <tr><th scope="row">Ticket</th><td>One mini golf round, unlimited play, a replay or a bundle</td></tr>
+            <tr><th scope="row">Age band</th><td>The venue's exact child, youth, adult and senior definitions</td></tr>
+            <tr><th scope="row">Date</th><td>Weekday, weekend, holiday, peak-season or time-slot pricing</td></tr>
+            <tr><th scope="row">Fees</th><td>Taxes, online booking charges and mandatory add-ons</td></tr>
+            <tr><th scope="row">Access</th><td>Whether non-players, support people or resort day visitors need tickets</td></tr>
+            <tr><th scope="row">Expiry</th><td>Whether a pass or voucher must be used on a selected date</td></tr>
+            </tbody></table></div>
+            <h2>Calculate the group total</h2>
+            <p>Write down the number of players in each age band, then multiply by the current venue rate. Add taxes and required fees before comparing another course. If a bundle is involved, compare it with the activities the group will realistically use, not the advertised number of inclusions. For a birthday, include non-player rules, food, room time and the deposit.</p>
+            <p>A hypothetical family total should be labelled as an estimate because a venue can change age cutoffs or prices at any time. The final checkout screen or a written group quote is the reliable figure.</p>
+            <h2>Why some listings say to confirm prices</h2>
+            <p>Mini Golf Canada intentionally leaves out an amount when the available text is old, unlabelled, mixed with a hotel or attraction bundle, or unclear about whether it applies to mini golf. Publishing a confident but wrong number would be less useful than directing a visitor to the current source. Where labelled prices are shown, the page states that they are dated reference amounts.</p>
+            <h2>Watch for seasonal differences</h2>
+            <p>Outdoor courses can change rates and hours between the shoulder season and peak summer. Indoor venues may use weekday specials or timed bookings. Coupon pages and old social posts are particularly easy to mistake for current standard admission. Check the date and make sure the offer appears on a venue-controlled channel.</p>
+            <h2>Use price as one part of the decision</h2>
+            <p>A lower ticket can still be the wrong fit if the course is far away, closed for weather or unsuitable for the group. Compare location, setting, number of holes, accessibility, booking and recent official details alongside admission. Start from a <a href="/provinces/">province page</a>, a <a href="/cities/">city page</a> or the <a href="/search/">nearby search</a>, then confirm the selected venue's current total.</p>
             </section>
-    
+
   </main>
+  <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
+    <div>
+      <strong>Optional analytics</strong>
+      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+    </div>
+    <div class="privacy-actions">
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+    </div>
+  </section>
   <footer class="site-footer">
     <div>
       <a class="brand footer-brand" href="../../"><span class="brand-mark" aria-hidden="true">
@@ -93,8 +143,13 @@
       <a href="../">Mini golf guides</a>
       <a href="../../submit-course/">Submit or correct a course</a>
       <a href="../../editorial-policy/">Editorial policy</a>
+      <a href="../../media-policy/">Media policy</a>
+      <a href="../../advertising-disclosure/">Advertising disclosure</a>
       <a href="../../privacy/">Privacy</a>
+      <a href="../../cookie-policy/">Cookies</a>
+      <a href="../../terms/">Terms</a>
       <a href="../../contact/">Contact</a>
+      <button class="footer-privacy-button" type="button" data-privacy-settings>Privacy choices</button>
     </nav>
   </footer>
 </body>

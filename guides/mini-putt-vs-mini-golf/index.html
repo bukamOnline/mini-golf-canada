@@ -17,24 +17,47 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=clean-links-search-20260622">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J"></script>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XGPL1E000J');
+    window.gtag = gtag;
+    window.mgcAnalyticsAllowed = false;
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    window.loadMgcAnalytics = function() {
+      if (window.mgcAnalyticsLoaded) return;
+      window.mgcAnalyticsLoaded = true;
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J';
+      document.head.appendChild(script);
+      gtag('js', new Date());
+      gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
+    };
+    try {
+      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
+        window.mgcAnalyticsAllowed = true;
+        gtag('consent', 'update', {analytics_storage: 'granted'});
+        window.loadMgcAnalytics();
+      }
+    } catch (error) {}
   </script>
-  <script defer src="../../assets/js/listings.js?v=clean-links-search-20260622"></script>
-  <script defer src="../../assets/js/app.js?v=clean-links-search-20260622"></script>
-  
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Mini Putt vs Mini Golf in Canada","description":"Mini putt, mini golf, putt putt, and glow golf often describe the same family-friendly putting activity.","publisher":{"@id":"https://minigolfcanada.ca/#organization"},"dateModified":"2026-06-22","mainEntityOfPage":"https://minigolfcanada.ca/guides/mini-putt-vs-mini-golf/"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/guides/mini-putt-vs-mini-golf/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://minigolfcanada.ca/guides/"},{"@type":"ListItem","position":3,"name":"Mini Putt vs Mini Golf in Canada","item":"https://minigolfcanada.ca/guides/mini-putt-vs-mini-golf/"}]}]}</script>
+  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://minigolfcanada.ca/guides/mini-putt-vs-mini-golf/#article","headline":"Mini Putt vs Mini Golf in Canada","description":"Mini putt, mini golf, putt putt, and glow golf often describe the same family-friendly putting activity.","author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"publisher":{"@id":"https://minigolfcanada.ca/#organization"},"datePublished":"2026-07-28","dateModified":"2026-07-28","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/guides/mini-putt-vs-mini-golf/#webpage"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/guides/mini-putt-vs-mini-golf/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://minigolfcanada.ca/guides/"},{"@type":"ListItem","position":3,"name":"Mini Putt vs Mini Golf in Canada","item":"https://minigolfcanada.ca/guides/mini-putt-vs-mini-golf/"}]}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="../../" aria-label="Mini Golf Canada home">
+    <a class="brand" href="../../">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 64 64" focusable="false">
           <path class="logo-water" d="M8 44c10 8 33 9 48 0-4 11-15 17-27 16C17 59 9 53 8 44Z"/>
@@ -57,21 +80,44 @@
     <a class="header-action" href="../../about/">About</a>
   </header>
   <main id="main">
-    
+
     <section class="page-hero compact-hero">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../">Guides</a><span aria-hidden="true">/</span><span>Mini Putt vs Mini Golf in Canada</span></nav>
       <h1>Mini Putt vs Mini Golf in Canada</h1>
       <p>Mini putt, mini golf, putt putt, and glow golf often describe the same family-friendly putting activity.</p>
+      <div class="editorial-meta"><span>By <a href="../../editorial-policy/">Mini Golf Canada Editorial Team</a></span><span>Updated July 28, 2026</span></div>
     </section>
     <section class="section article-body">
-            <h2>Canadians use both terms</h2>
-            <p>In many Canadian cities, people search for "mini putt" and "mini golf" interchangeably. Some venues use one phrase in their official name, while reviews and local searchers use another. That is why city pages on Mini Golf Canada include both terms where they help visitors find the right course.</p>
-            <h2>Related search terms worth trying</h2>
-            <ul><li>mini golf near me</li><li>mini putt near me</li><li>indoor mini golf</li><li>glow golf</li><li>putt putt</li><li>family activities near me</li></ul>
-            <p>The best listing is not always the closest one. Compare photos, course style, reviews, prices, and extra activities before choosing.</p>
+            <p class="article-summary"><strong>Quick answer:</strong> mini golf and mini putt usually point to the same basic activity in Canadian searches. Venue names vary, so use both terms when searching and then compare the actual course format.</p>
+            <h2>Why the names vary</h2>
+            <p>Operators choose wording based on local habit, branding and the style of the venue. A business may use Mini-Putt in its name while describing the activity as miniature golf on its website. Another may advertise glow golf, adventure golf or putting even though visitors are looking for the same short-course game. The wording alone does not tell you whether the course is indoors, outdoors, themed or suitable for young children.</p>
+            <div class="article-table-wrap"><table class="article-table"><caption>Common terms in Canadian mini golf searches</caption><thead><tr><th scope="col">Term</th><th scope="col">What it usually signals</th><th scope="col">What to verify</th></tr></thead><tbody>
+            <tr><th scope="row">Mini golf</th><td>The broadest directory and activity term.</td><td>Setting, holes, theme and venue type</td></tr>
+            <tr><th scope="row">Mini putt</th><td>A common Canadian name for miniature golf.</td><td>Same details as mini golf</td></tr>
+            <tr><th scope="row">Glow golf</th><td>Black-light, fluorescent or neon visual treatment.</td><td>Whether the full course is indoors</td></tr>
+            <tr><th scope="row">Adventure golf</th><td>Often a more elaborate theme or landscaped route.</td><td>Accessibility, weather exposure and course length</td></tr>
+            <tr><th scope="row">Putting course</th><td>May be closer to a practice green or golf-style layout.</td><td>Whether it is intended as a family attraction</td></tr>
+            </tbody></table></div>
+            <h2>Search by intent after the basic term</h2>
+            <p>Adding a city or practical need produces a better shortlist than repeating synonyms. Useful combinations include indoor mini golf in a city, outdoor mini putt near a destination, glow golf for a date night, or mini golf birthday packages. The directory's search also recognizes venue features such as arcade games, food and accessibility information where those details were available from public sources.</p>
+            <h2>Do not infer the experience from the name</h2>
+            <p>A whimsical name can belong to a simple outdoor course, and a plain business name can hide a highly themed indoor layout. Check source images and the venue description. Look for whether mini golf is the main attraction or an add-on at a bowling centre, campground, driving range, resort or amusement property. This distinction often affects parking, ticket bundles, crowd patterns and how much time a group may spend on site.</p>
+            <h2>How Mini Golf Canada labels listings</h2>
+            <p>The directory keeps official business names in page titles and headings. It uses mini golf and mini putt in navigation where either phrase helps people find the activity, but it does not rename a venue. Course profiles separate the venue category, mini golf format and extra activities so a visitor can understand why a business appears in the directory.</p>
+            <p>Start with the <a href="/provinces/">province directory</a> or <a href="/cities/">city directory</a>, then open the individual venue sources before travelling. If a business has changed its name or no longer offers mini golf, use the correction link on its page.</p>
             </section>
-    
+
   </main>
+  <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
+    <div>
+      <strong>Optional analytics</strong>
+      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+    </div>
+    <div class="privacy-actions">
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+    </div>
+  </section>
   <footer class="site-footer">
     <div>
       <a class="brand footer-brand" href="../../"><span class="brand-mark" aria-hidden="true">
@@ -93,8 +139,13 @@
       <a href="../">Mini golf guides</a>
       <a href="../../submit-course/">Submit or correct a course</a>
       <a href="../../editorial-policy/">Editorial policy</a>
+      <a href="../../media-policy/">Media policy</a>
+      <a href="../../advertising-disclosure/">Advertising disclosure</a>
       <a href="../../privacy/">Privacy</a>
+      <a href="../../cookie-policy/">Cookies</a>
+      <a href="../../terms/">Terms</a>
       <a href="../../contact/">Contact</a>
+      <button class="footer-privacy-button" type="button" data-privacy-settings>Privacy choices</button>
     </nav>
   </footer>
 </body>

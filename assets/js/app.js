@@ -14,9 +14,66 @@
   }
 
   function trackEvent(name, params) {
-    if (typeof window.gtag === "function") {
+    if (window.mgcAnalyticsAllowed && typeof window.gtag === "function") {
       window.gtag("event", name, params || {});
     }
+  }
+
+  var privacyChoiceKey = "mgc-privacy-choice-v1";
+
+  function storedPrivacyChoice() {
+    try {
+      return localStorage.getItem(privacyChoiceKey);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function updateAnalyticsConsent(choice) {
+    window.mgcAnalyticsAllowed = choice === "accepted";
+    if (typeof window.gtag !== "function") return;
+    window.gtag("consent", "update", {
+      analytics_storage: choice === "accepted" ? "granted" : "denied"
+    });
+    if (choice === "accepted" && typeof window.loadMgcAnalytics === "function") {
+      window.loadMgcAnalytics();
+    }
+  }
+
+  function savePrivacyChoice(choice) {
+    try {
+      localStorage.setItem(privacyChoiceKey, choice);
+    } catch (error) {}
+    updateAnalyticsConsent(choice);
+    document.querySelectorAll("[data-privacy-banner]").forEach(function (banner) {
+      banner.hidden = true;
+    });
+  }
+
+  function showPrivacyChoices() {
+    var banner = document.querySelector("[data-privacy-banner]");
+    if (!banner) return;
+    banner.hidden = false;
+    var firstChoice = banner.querySelector("[data-privacy-choice]");
+    if (firstChoice) firstChoice.focus();
+  }
+
+  function initPrivacyControls() {
+    var banner = document.querySelector("[data-privacy-banner]");
+    var choice = storedPrivacyChoice();
+    if (choice === "accepted" || choice === "declined") {
+      updateAnalyticsConsent(choice);
+    } else if (banner) {
+      banner.hidden = false;
+    }
+    document.querySelectorAll("[data-privacy-choice]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        savePrivacyChoice(button.getAttribute("data-privacy-choice"));
+      });
+    });
+    document.querySelectorAll("[data-privacy-settings]").forEach(function (button) {
+      button.addEventListener("click", showPrivacyChoices);
+    });
   }
 
   var currentLocation = null;
@@ -100,9 +157,25 @@
       return;
     }
     var bounds = {minLat: 41, maxLat: 83, minLng: -141, maxLng: -52};
+    var clusters = [];
+    var spacingX = (32 / Math.max(map.clientWidth, 1)) * 100;
+    var spacingY = (32 / Math.max(map.clientHeight, 1)) * 100;
     withCoords.forEach(function (item) {
       var x = clamp(((item.lng - bounds.minLng) / (bounds.maxLng - bounds.minLng)) * 100, 4, 96);
       var y = clamp((1 - ((item.lat - bounds.minLat) / (bounds.maxLat - bounds.minLat))) * 100, 6, 92);
+      var cluster = clusters.find(function (candidate) {
+        return Math.abs(candidate.x - x) < spacingX && Math.abs(candidate.y - y) < spacingY;
+      });
+      if (cluster) {
+        cluster.count += 1;
+        var clusterLabel = cluster.count + " nearby listings; open " + cluster.item.name;
+        cluster.point.classList.add("map-cluster");
+        cluster.point.dataset.count = String(cluster.count);
+        cluster.point.title = clusterLabel;
+        cluster.point.setAttribute("aria-label", clusterLabel);
+        cluster.point.querySelector("span").textContent = clusterLabel;
+        return;
+      }
       var point = document.createElement("a");
       point.className = "map-point";
       point.href = relativeToRoot(item.path);
@@ -112,6 +185,7 @@
       point.setAttribute("aria-label", point.title);
       point.innerHTML = "<span>" + escapeHtml(item.name) + "</span>";
       map.appendChild(point);
+      clusters.push({x:x, y:y, count:1, point:point, item:item});
     });
   }
 
@@ -213,7 +287,7 @@
     var sideNote = hasDistance ? "<span>" + item.distance.toFixed(1) + " km away</span>" : "<span>" + escapeHtml(item.price || "Check prices") + "</span>";
     article.innerHTML =
       '<a class="course-image" href="' + escapeHtml(relativeToRoot(item.path)) + '">' +
-      '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.name) + ' mini golf in ' + escapeHtml(item.city) + ', ' + escapeHtml(item.province) + '" loading="lazy" decoding="async" width="800" height="500" data-image-fallback="true"></a>' +
+      '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.imageAlt || (item.name + " venue image")) + '" loading="lazy" decoding="async" width="800" height="500" data-image-fallback="true"></a>' +
       '<div class="course-body"><div class="course-meta">' +
       (item.rating ? escapeHtml(item.rating.toFixed(1) + " rating") : "No rating yet") +
       (item.reviews ? " · " + escapeHtml(String(item.reviews)) + " reviews" : "") +
@@ -397,6 +471,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    initPrivacyControls();
     attachImageFallbacks(document);
     initGallerySliders(document);
     renderMap((window.MGC_LISTINGS || []).slice(0, 24));

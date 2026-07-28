@@ -17,24 +17,47 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=clean-links-search-20260622">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J"></script>
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XGPL1E000J');
+    window.gtag = gtag;
+    window.mgcAnalyticsAllowed = false;
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    window.loadMgcAnalytics = function() {
+      if (window.mgcAnalyticsLoaded) return;
+      window.mgcAnalyticsLoaded = true;
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J';
+      document.head.appendChild(script);
+      gtag('js', new Date());
+      gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
+    };
+    try {
+      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
+        window.mgcAnalyticsAllowed = true;
+        gtag('consent', 'update', {analytics_storage: 'granted'});
+        window.loadMgcAnalytics();
+      }
+    } catch (error) {}
   </script>
-  <script defer src="../../assets/js/listings.js?v=clean-links-search-20260622"></script>
-  <script defer src="../../assets/js/app.js?v=clean-links-search-20260622"></script>
-  
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"How to Find Mini Golf Near Me in Canada","description":"A practical guide to finding nearby mini golf and mini putt courses in Canadian cities and travel areas.","publisher":{"@id":"https://minigolfcanada.ca/#organization"},"dateModified":"2026-06-22","mainEntityOfPage":"https://minigolfcanada.ca/guides/mini-golf-near-me/"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/guides/mini-golf-near-me/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://minigolfcanada.ca/guides/"},{"@type":"ListItem","position":3,"name":"How to Find Mini Golf Near Me in Canada","item":"https://minigolfcanada.ca/guides/mini-golf-near-me/"}]}]}</script>
+  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://minigolfcanada.ca/guides/mini-golf-near-me/#article","headline":"How to Find Mini Golf Near Me in Canada","description":"A practical guide to finding nearby mini golf and mini putt courses in Canadian cities and travel areas.","author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"publisher":{"@id":"https://minigolfcanada.ca/#organization"},"datePublished":"2026-07-28","dateModified":"2026-07-28","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/guides/mini-golf-near-me/#webpage"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/guides/mini-golf-near-me/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://minigolfcanada.ca/guides/"},{"@type":"ListItem","position":3,"name":"How to Find Mini Golf Near Me in Canada","item":"https://minigolfcanada.ca/guides/mini-golf-near-me/"}]}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="../../" aria-label="Mini Golf Canada home">
+    <a class="brand" href="../../">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 64 64" focusable="false">
           <path class="logo-water" d="M8 44c10 8 33 9 48 0-4 11-15 17-27 16C17 59 9 53 8 44Z"/>
@@ -57,21 +80,46 @@
     <a class="header-action" href="../../about/">About</a>
   </header>
   <main id="main">
-    
+
     <section class="page-hero compact-hero">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../">Guides</a><span aria-hidden="true">/</span><span>How to Find Mini Golf Near Me in Canada</span></nav>
       <h1>How to Find Mini Golf Near Me in Canada</h1>
       <p>A practical guide to finding nearby mini golf and mini putt courses in Canadian cities and travel areas.</p>
+      <div class="editorial-meta"><span>By <a href="../../editorial-policy/">Mini Golf Canada Editorial Team</a></span><span>Updated July 28, 2026</span></div>
     </section>
     <section class="section article-body">
-            <h2>Start with location, then compare the experience</h2>
-            <p>Searches like "mini golf near me" are usually urgent: someone wants a fun activity today, nearby, and with enough detail to avoid a wasted trip. Start by checking the closest city page, then compare photos, current hours, price notes, reviews, and whether the course is indoor, outdoor, glow-in-the-dark, or part of a larger entertainment centre.</p>
-            <h2>What to check before you go</h2>
-            <ul><li>Distance from your current location and parking options.</li><li>Whether the course accepts walk-ins or requires booking.</li><li>Adult, child, family, and group pricing.</li><li>Weather exposure for outdoor courses.</li><li>Birthday party, arcade, food, and accessibility details.</li></ul>
-            <p>Mini Golf Canada keeps province, city, and listing pages crawlable so you can compare local mini golf options without opening a dozen tabs first.</p>
+            <p class="article-summary"><strong>Quick answer:</strong> start with distance, but choose from the closest relevant courses rather than treating the first map result as automatically best. Confirm today's hours, course setting, admission and booking requirements on the venue's own channels before leaving.</p>
+            <h2>Use location as the first filter</h2>
+            <p>A nearby search is most useful when it answers two different questions: which courses are physically close, and which of those courses fit the outing. The <a href="/search/">Mini Golf Canada nearby search</a> sorts geocoded listings by distance after a visitor grants browser location permission. A text search or feature filter still applies, so a search for glow golf should return the closest relevant glow listings instead of every course in the country.</p>
+            <p>Browser location can be approximate, particularly on a desktop computer using a network-based position. If the order looks wrong, search by city or choose a permanent <a href="/cities/">city page</a>. Those pages remain useful when location permission is unavailable and make it easier to compare venues without sharing a position.</p>
+            <h2>Check the details in the right order</h2>
+            <div class="article-table-wrap"><table class="article-table"><caption>A practical same-day mini golf check</caption><thead><tr><th scope="col">Check</th><th scope="col">Why it matters</th><th scope="col">Best source</th></tr></thead><tbody>
+            <tr><th scope="row">Hours</th><td>Seasonal and outdoor courses can change schedules for weather or private events.</td><td>Official site, phone or current map profile</td></tr>
+            <tr><th scope="row">Course setting</th><td>Indoor, outdoor and glow courses suit different weather, ages and sensory preferences.</td><td>Venue description and recent official images</td></tr>
+            <tr><th scope="row">Admission</th><td>Child ages, taxes, bundles and replay rules can change the actual total.</td><td>Current venue ticket page</td></tr>
+            <tr><th scope="row">Booking</th><td>Walk-in policies may differ for weekends, holidays and groups.</td><td>Official booking page or phone</td></tr>
+            <tr><th scope="row">Access</th><td>Parking, steps, course surfaces and washrooms can affect whether a visit works for the group.</td><td>Venue accessibility information</td></tr>
+            </tbody></table></div>
+            <h2>Compare the experience, not only the score</h2>
+            <p>A public rating is a dated signal, not a complete description. One course may earn attention for landscaping and challenge, while another is better for younger children, a rainy afternoon or a birthday package. Look for the number of holes, indoor or outdoor setting, theme, likely round length, food options and other activities. Recent source images can also reveal whether the venue is a dedicated mini golf course or one activity inside a larger entertainment centre.</p>
+            <p>Mini Golf Canada shows dated public rating context but does not copy individual reviews or place third-party ratings in the site's structured data. Open the linked public profile when the newest comments matter to your decision.</p>
+            <h2>Set a sensible travel radius</h2>
+            <p>For an ordinary local outing, begin with the closest few options. Expand to the surrounding city or province when the nearest result does not match the weather, age group or activity style. Travellers should also check whether a listing is attached to a campground, resort or attraction, since admission and access can work differently from a stand-alone course.</p>
+            <h2>Use the listing date</h2>
+            <p>Each course page identifies when its source data was checked and links to the official website or public business profile used for planning. Treat the directory as a researched comparison layer, then use the venue as the final authority for same-day details. A correction link on every listing makes it possible to report a closed course, changed address or outdated schedule.</p>
             </section>
-    
+
   </main>
+  <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
+    <div>
+      <strong>Optional analytics</strong>
+      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+    </div>
+    <div class="privacy-actions">
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+    </div>
+  </section>
   <footer class="site-footer">
     <div>
       <a class="brand footer-brand" href="../../"><span class="brand-mark" aria-hidden="true">
@@ -93,8 +141,13 @@
       <a href="../">Mini golf guides</a>
       <a href="../../submit-course/">Submit or correct a course</a>
       <a href="../../editorial-policy/">Editorial policy</a>
+      <a href="../../media-policy/">Media policy</a>
+      <a href="../../advertising-disclosure/">Advertising disclosure</a>
       <a href="../../privacy/">Privacy</a>
+      <a href="../../cookie-policy/">Cookies</a>
+      <a href="../../terms/">Terms</a>
       <a href="../../contact/">Contact</a>
+      <button class="footer-privacy-button" type="button" data-privacy-settings>Privacy choices</button>
     </nav>
   </footer>
 </body>

@@ -4,37 +4,60 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy Policy | Mini Golf Canada</title>
-  <meta name="description" content="Privacy information for Mini Golf Canada visitors.">
+  <meta name="description" content="How Mini Golf Canada handles analytics, browser location, advertising technology and contact information.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://minigolfcanada.ca/privacy/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Mini Golf Canada">
   <meta property="og:title" content="Privacy Policy | Mini Golf Canada">
-  <meta property="og:description" content="Privacy information for Mini Golf Canada visitors.">
+  <meta property="og:description" content="How Mini Golf Canada handles analytics, browser location, advertising technology and contact information.">
   <meta property="og:url" content="https://minigolfcanada.ca/privacy/">
   <meta property="og:image" content="https://minigolfcanada.ca/assets/images/mini-golf-canada-og-v2.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../site.webmanifest">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=clean-links-search-20260622">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J"></script>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=publisher-ready-20260728">
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XGPL1E000J');
+    window.gtag = gtag;
+    window.mgcAnalyticsAllowed = false;
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    window.loadMgcAnalytics = function() {
+      if (window.mgcAnalyticsLoaded) return;
+      window.mgcAnalyticsLoaded = true;
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J';
+      document.head.appendChild(script);
+      gtag('js', new Date());
+      gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
+    };
+    try {
+      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
+        window.mgcAnalyticsAllowed = true;
+        gtag('consent', 'update', {analytics_storage: 'granted'});
+        window.loadMgcAnalytics();
+      }
+    } catch (error) {}
   </script>
-  <script defer src="../assets/js/listings.js?v=clean-links-search-20260622"></script>
-  <script defer src="../assets/js/app.js?v=clean-links-search-20260622"></script>
-  
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://minigolfcanada.ca/privacy/#webpage","name":"Privacy Policy","url":"https://minigolfcanada.ca/privacy/","description":"Privacy information for Mini Golf Canada visitors.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-06-22"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/privacy/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Privacy Policy","item":"https://minigolfcanada.ca/privacy/"}]}]}</script>
+  <script defer src="../assets/js/listings.js?v=publisher-ready-20260728"></script>
+  <script defer src="../assets/js/app.js?v=publisher-ready-20260728"></script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://minigolfcanada.ca/privacy/#webpage","name":"Privacy Policy","url":"https://minigolfcanada.ca/privacy/","description":"How Mini Golf Canada handles analytics, browser location, advertising technology and contact information.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/privacy/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Privacy Policy","item":"https://minigolfcanada.ca/privacy/"}]}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="../" aria-label="Mini Golf Canada home">
+    <a class="brand" href="../">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 64 64" focusable="false">
           <path class="logo-water" d="M8 44c10 8 33 9 48 0-4 11-15 17-27 16C17 59 9 53 8 44Z"/>
@@ -57,15 +80,45 @@
     <a class="header-action" href="../about/">About</a>
   </header>
   <main id="main">
-    
+
     <section class="page-hero compact-hero">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../">Home</a><span aria-hidden="true">/</span><span>Privacy Policy</span></nav>
       <h1>Privacy Policy</h1>
-      <p>Privacy information for Mini Golf Canada visitors.</p>
+      <p>How Mini Golf Canada handles analytics, browser location, advertising technology and contact information.</p>
     </section>
-    <section class="section article-body"><p>Mini Golf Canada is designed as a static website owned by <a href="https://www.nocturnaldevs.com/">Nocturnal Devs</a>. Basic hosting logs may be collected by the hosting provider. The site uses Google Analytics to understand aggregate visitor activity, such as page views, traffic sources, device/browser details, and general usage patterns. Google may use cookies or similar technologies according to its own policies.</p><p>Location search uses your browser's geolocation permission only when you choose the location button. Your location is used in your browser to sort nearby listings and is not needed to browse the site.</p><p>Privacy questions can be sent to <a href="mailto:nocturnaldevs@gmail.com">nocturnaldevs@gmail.com</a>.</p></section>
-    
+    <section class="section article-body">
+            <p><strong>Effective date:</strong> July 28, 2026</p>
+            <p>This policy describes information handled by Mini Golf Canada, a website owned by <a href="https://www.nocturnaldevs.com/">Nocturnal Devs</a>. Questions or privacy requests can be sent to <a href="mailto:nocturnaldevs@gmail.com">nocturnaldevs@gmail.com</a>.</p>
+            <h2>Information collected automatically</h2>
+            <p>The hosting provider may record standard technical logs such as IP address, requested page, date and time, browser information and error data for security and reliable delivery. Mini Golf Canada uses Google Analytics, subject to the visitor's privacy choice, to understand aggregate activity such as page views, traffic sources, approximate region, device category and interactions with directory features. The Google Analytics script is loaded only after the visitor accepts optional analytics.</p>
+            <h2>Cookies and similar technologies</h2>
+            <p>Analytics and advertising services may use cookies, local storage, pixels or similar identifiers. The site's privacy control stores a local preference in the visitor's browser. Analytics storage is denied by default until the visitor accepts optional analytics. See the <a href="/cookie-policy/">cookie policy</a> for categories and controls.</p>
+            <h2>Advertising</h2>
+            <p>Mini Golf Canada may display advertising supplied by third-party vendors, including Google. When advertising is active, Google and its partners may use cookies or device identifiers to serve and measure ads. Advertising may be personalized based on prior visits where the law and the visitor's consent allow it, or non-personalized/contextual where required.</p>
+            <p>Visitors can manage Google advertising personalization through <a href="https://adssettings.google.com/" rel="nofollow noopener" target="_blank">Google Ads Settings</a>. Additional industry opt-out information is available through <a href="https://optout.aboutads.info/" rel="nofollow noopener" target="_blank">YourAdChoices</a>. Where required, a Google-certified consent management platform will present additional advertising choices before advertising storage is used.</p>
+            <h2>Location search</h2>
+            <p>The Use my location feature runs only after the visitor clicks the button and grants browser permission. The latitude, longitude and accuracy supplied by the browser are used in the page to calculate distance and order relevant listings. Mini Golf Canada does not send that precise position to its own server or store it in the directory. A browser or network provider may handle location according to its own settings and policy.</p>
+            <h2>Information a visitor sends</h2>
+            <p>If someone emails a course submission, correction, advertising request or privacy question, Mini Golf Canada receives the sender's email address and the information included in the message. That information is used to answer the request, verify a change and maintain an appropriate record of the correspondence. Do not send sensitive personal information.</p>
+            <h2>Sharing and retention</h2>
+            <p>Information may be processed by service providers used for hosting, analytics, email, security and advertising. It may also be disclosed when required by law or needed to protect the site and its users. Contact correspondence is retained only as long as reasonably needed for the request, business records, fraud prevention or legal obligations. Aggregate analytics may be retained according to the configured service period.</p>
+            <h2>Children and external links</h2>
+            <p>The directory is for a general audience and is not designed to collect personal information from children. Venue and map links lead to independent websites with their own privacy practices.</p>
+            <h2>Your choices</h2>
+            <p>Use the Privacy choices control in the footer to accept or decline optional analytics. Browser settings can delete stored preferences, block cookies and revoke location permission. Depending on applicable law, a person may request access, correction or deletion of personal information by emailing <a href="mailto:nocturnaldevs@gmail.com">nocturnaldevs@gmail.com</a>; identity may need to be verified before a request is completed.</p>
+            </section>
+
   </main>
+  <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
+    <div>
+      <strong>Optional analytics</strong>
+      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="./">Privacy details</a></p>
+    </div>
+    <div class="privacy-actions">
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+    </div>
+  </section>
   <footer class="site-footer">
     <div>
       <a class="brand footer-brand" href="../"><span class="brand-mark" aria-hidden="true">
@@ -87,8 +140,13 @@
       <a href="../guides/">Mini golf guides</a>
       <a href="../submit-course/">Submit or correct a course</a>
       <a href="../editorial-policy/">Editorial policy</a>
+      <a href="../media-policy/">Media policy</a>
+      <a href="../advertising-disclosure/">Advertising disclosure</a>
       <a href="./">Privacy</a>
+      <a href="../cookie-policy/">Cookies</a>
+      <a href="../terms/">Terms</a>
       <a href="../contact/">Contact</a>
+      <button class="footer-privacy-button" type="button" data-privacy-settings>Privacy choices</button>
     </nav>
   </footer>
 </body>

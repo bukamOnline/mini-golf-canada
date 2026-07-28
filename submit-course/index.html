@@ -17,24 +17,47 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../site.webmanifest">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=clean-links-search-20260622">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J"></script>
+  <link rel="stylesheet" href="../assets/css/styles.css?v=publisher-ready-20260728">
+
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XGPL1E000J');
+    window.gtag = gtag;
+    window.mgcAnalyticsAllowed = false;
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 500
+    });
+    window.loadMgcAnalytics = function() {
+      if (window.mgcAnalyticsLoaded) return;
+      window.mgcAnalyticsLoaded = true;
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XGPL1E000J';
+      document.head.appendChild(script);
+      gtag('js', new Date());
+      gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
+    };
+    try {
+      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
+        window.mgcAnalyticsAllowed = true;
+        gtag('consent', 'update', {analytics_storage: 'granted'});
+        window.loadMgcAnalytics();
+      }
+    } catch (error) {}
   </script>
-  <script defer src="../assets/js/listings.js?v=clean-links-search-20260622"></script>
-  <script defer src="../assets/js/app.js?v=clean-links-search-20260622"></script>
-  
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ContactPage","@id":"https://minigolfcanada.ca/submit-course/#webpage","name":"Submit or Correct a Mini Golf Listing","url":"https://minigolfcanada.ca/submit-course/","description":"Send a new mini golf course, mini putt venue, or listing correction to Mini Golf Canada.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-06-22"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/submit-course/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Submit or Correct a Mini Golf Listing","item":"https://minigolfcanada.ca/submit-course/"}]}]}</script>
+  <script defer src="../assets/js/listings.js?v=publisher-ready-20260728"></script>
+  <script defer src="../assets/js/app.js?v=publisher-ready-20260728"></script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ContactPage","@id":"https://minigolfcanada.ca/submit-course/#webpage","name":"Submit or Correct a Mini Golf Listing","url":"https://minigolfcanada.ca/submit-course/","description":"Send a new mini golf course, mini putt venue, or listing correction to Mini Golf Canada.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/submit-course/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Submit or Correct a Mini Golf Listing","item":"https://minigolfcanada.ca/submit-course/"}]}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="brand" href="../" aria-label="Mini Golf Canada home">
+    <a class="brand" href="../">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 64 64" focusable="false">
           <path class="logo-water" d="M8 44c10 8 33 9 48 0-4 11-15 17-27 16C17 59 9 53 8 44Z"/>
@@ -57,15 +80,40 @@
     <a class="header-action" href="../about/">About</a>
   </header>
   <main id="main">
-    
+
     <section class="page-hero compact-hero">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../">Home</a><span aria-hidden="true">/</span><span>Submit or Correct a Mini Golf Listing</span></nav>
       <h1>Submit or Correct a Mini Golf Listing</h1>
       <p>Send a new mini golf course, mini putt venue, or listing correction to Mini Golf Canada.</p>
     </section>
-    <section class="section article-body"><p>Course owners, visitors, and local operators can send updates for Mini Golf Canada. Submissions are reviewed before publication so the directory stays useful, accurate, and focused on real mini golf and mini putt options.</p><div class="submission-actions"><a class="button" href="mailto:nocturnaldevs@gmail.com?subject=New+mini+golf+course+submission&amp;body=Course+name%3A%0ACity+and+province%3A%0AOfficial+website%3A%0AAddress%3A%0APhone%3A%0APhotos+or+gallery+link%3A%0ANotes+about+indoor%2Foutdoor%2C+glow+golf%2C+parties%2C+food%2C+accessibility%2C+prices%3A%0A">Submit a course</a><a class="button secondary" href="mailto:nocturnaldevs@gmail.com?subject=Mini+Golf+Canada+listing+correction&amp;body=Listing+URL%3A%0ABusiness+name%3A%0ACorrection+needed%3A%0AOfficial+source+for+the+correction%3A%0AYour+name+and+relationship+to+the+business%3A%0A">Correct a listing</a></div><h2>What to include</h2><ul class="submission-checklist"><li>Business name, city, province, and official website.</li><li>Current address, phone number, and booking or pricing page if available.</li><li>Whether the venue is indoor, outdoor, glow golf, party-friendly, accessible, or connected to food, arcade, go-karts, bowling, batting cages, or a driving range.</li><li>Official photos or a public gallery link when available.</li><li>For corrections, include the current Mini Golf Canada listing URL and the official source for the change.</li></ul><p>General questions can also be sent to <a href="mailto:nocturnaldevs@gmail.com">nocturnaldevs@gmail.com</a> or <a href="tel:+14373662920">(437) 366-2920</a>.</p></section>
-    
+    <section class="section article-body">
+            <p>Course owners, visitors and local organizations can suggest a real Canadian mini golf venue or correct an existing profile. Submissions are reviewed before publication and do not guarantee inclusion or a particular description.</p>
+            <div class="submission-actions"><a class="button" href="mailto:nocturnaldevs@gmail.com?subject=New+mini+golf+course+submission&amp;body=Course+name%3A%0ACity+and+province%3A%0AOfficial+website%3A%0AAddress%3A%0APhone%3A%0APhotos+or+gallery+link%3A%0ANotes+about+indoor%2Foutdoor%2C+glow+golf%2C+parties%2C+food%2C+accessibility%2C+prices%3A%0A">Submit a course</a><a class="button secondary" href="mailto:nocturnaldevs@gmail.com?subject=Mini+Golf+Canada+listing+correction&amp;body=Listing+URL%3A%0ABusiness+name%3A%0ACorrection+needed%3A%0AOfficial+source+for+the+correction%3A%0AYour+name+and+relationship+to+the+business%3A%0A">Correct a listing</a></div>
+            <h2>What to include</h2>
+            <ul class="submission-checklist">
+              <li>Business name, city, province and official website.</li>
+              <li>Current address, phone and booking or pricing page if available.</li>
+              <li>Whether the course is indoor, outdoor, glow golf, seasonal or part of a larger venue.</li>
+              <li>Official information about parties, groups, food, parking and accessibility.</li>
+              <li>Venue-controlled images or a public gallery link, together with the right to share them when applicable.</li>
+              <li>For corrections, the current listing URL and an official source for the change.</li>
+            </ul>
+            <h2>Review standards</h2>
+            <p>The directory focuses on venues that currently offer miniature golf to the public in Canada. A submission may be held when identity, location, operating status or source rights cannot be verified. Paid inclusion does not purchase an editorial claim or organic ranking.</p>
+            <p>Questions can also be sent to <a href="mailto:nocturnaldevs@gmail.com">nocturnaldevs@gmail.com</a> or <a href="tel:+14373662920">(437) 366-2920</a>.</p>
+            </section>
+
   </main>
+  <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
+    <div>
+      <strong>Optional analytics</strong>
+      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../privacy/">Privacy details</a></p>
+    </div>
+    <div class="privacy-actions">
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+    </div>
+  </section>
   <footer class="site-footer">
     <div>
       <a class="brand footer-brand" href="../"><span class="brand-mark" aria-hidden="true">
@@ -87,8 +135,13 @@
       <a href="../guides/">Mini golf guides</a>
       <a href="./">Submit or correct a course</a>
       <a href="../editorial-policy/">Editorial policy</a>
+      <a href="../media-policy/">Media policy</a>
+      <a href="../advertising-disclosure/">Advertising disclosure</a>
       <a href="../privacy/">Privacy</a>
+      <a href="../cookie-policy/">Cookies</a>
+      <a href="../terms/">Terms</a>
       <a href="../contact/">Contact</a>
+      <button class="footer-privacy-button" type="button" data-privacy-settings>Privacy choices</button>
     </nav>
   </footer>
 </body>
