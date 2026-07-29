@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://static.wixstatic.com" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/putterama-mini-golf-sauble-beach-on/#business","name":"Putterama Mini Golf","url":"https://minigolfcanada.ca/courses/putterama-mini-golf-sauble-beach-on/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/putterama-mini-golf-sauble-beach-on/#webpage"},"image":["https://static.wixstatic.com/media/fa4124_54c2bff153b84ec3b694a1df89f22d55~mv2.jpeg/v1/fill/w_980,h_643,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_6196.jpeg","https://static.wixstatic.com/media/fa4124_492d2a7451f94590ac60af3f3debd328~mv2.jpg/v1/crop/x_0,y_0,w_730,h_730/fill/w_105,h_105,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/305403961_511016707690859_4474196575632361374_n.jpg","https://static.wixstatic.com/media/11062b_366f7fdbcafc4effaeddb0dba92014c1~mv2.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_366f7fdbcafc4effaeddb0dba92014c1~mv2.png","https://static.wixstatic.com/media/11062b_6e9638ad803e4099a6116eb750b5a584~mv2.png/v1/fill/w_24,h_24,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_6e9638ad803e4099a6116eb750b5a584~mv2.png","https://static.parastorage.com/services/editor-elements-library/dist/thunderbolt/media/sloppyframe.3214ce8e.png"],"description":"Compare Putterama Mini Golf in Sauble Beach, Ontario: a mini golf option, with notes on accessibility features, hours, location and photos.","address":{"@type":"PostalAddress","streetAddress":"203 3rd Ave S","addressLocality":"Sauble Beach","addressRegion":"ON","postalCode":"N0H 2G0","addressCountry":"CA"},"telephone":"+1 519-831-8364","sameAs":["http://putterama.ca/"],"geo":{"@type":"GeoCoordinates","latitude":44.6281356,"longitude":-81.2676925}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/putterama-mini-golf-sauble-beach-on/#webpage","name":"Putterama Mini Golf | Mini Golf in Sauble Beach, Ontario","url":"https://minigolfcanada.ca/courses/putterama-mini-golf-sauble-beach-on/","description":"Compare Putterama Mini Golf in Sauble Beach, Ontario: a mini golf option, with notes on accessibility features, hours, location and photos.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/putterama-mini-golf-sauble-beach-on/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://static.wixstatic.com/media/fa4124_54c2bff153b84ec3b694a1df89f22d55~mv2.jpeg/v1/fill/w_980,h_643,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/IMG_6196.jpeg"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/putterama-mini-golf-sauble-beach-on/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Ontario","item":"https://minigolfcanada.ca/provinces/ontario/"},{"@type":"ListItem","position":3,"name":"Sauble Beach","item":"https://minigolfcanada.ca/cities/ontario/sauble-beach/"},{"@type":"ListItem","position":4,"name":"Putterama Mini Golf","item":"https://minigolfcanada.ca/courses/putterama-mini-golf-sauble-beach-on/"}]}]}</script>
 </head>
@@ -176,12 +185,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

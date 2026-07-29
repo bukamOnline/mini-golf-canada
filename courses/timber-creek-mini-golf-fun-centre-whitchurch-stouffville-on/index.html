@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://static.wixstatic.com" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/timber-creek-mini-golf-fun-centre-whitchurch-stouffville-on/#business","name":"Timber Creek Mini Golf & Fun Centre","url":"https://minigolfcanada.ca/courses/timber-creek-mini-golf-fun-centre-whitchurch-stouffville-on/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/timber-creek-mini-golf-fun-centre-whitchurch-stouffville-on/#webpage"},"image":["https://static.wixstatic.com/media/94abeb_0902f6d5a6ce4857bf9d18b02379c725~mv2.png/v1/fill/w_1921,h_427,al_c,q_90,enc_avif,quality_auto/Asset%204.png","https://static.wixstatic.com/media/94abeb_7c14fa84099e4bb0a026ebfce4ed6772~mv2.jpg/v1/fill/w_1080,h_673,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/94abeb_7c14fa84099e4bb0a026ebfce4ed6772~mv2.jpg","https://static.wixstatic.com/media/94abeb_a5f0bc73e06e4d258ae1ed0eaf85dfaf~mv2.jpg/v1/fill/w_1080,h_673,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/94abeb_a5f0bc73e06e4d258ae1ed0eaf85dfaf~mv2.jpg","https://static.wixstatic.com/media/94abeb_e2aea673901c46c8b636af36755543d6~mv2.jpg/v1/fill/w_1080,h_673,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/94abeb_e2aea673901c46c8b636af36755543d6~mv2.jpg","https://static.wixstatic.com/media/94abeb_09e2336571f849fa85bfc1dbc2eace5d~mv2.png/v1/fill/w_52,h_52,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/94abeb_09e2336571f849fa85bfc1dbc2eace5d~mv2.png","https://static.wixstatic.com/media/11062b_4b88b89fe4694d949be4919c81f194b4~mv2.png/v1/fill/w_65,h_65,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/11062b_4b88b89fe4694d949be4919c81f194b4~mv2.png"],"description":"Timber Creek Mini Golf & Fun Centre in Whitchurch-Stouffville, Ontario: an outdoor mini golf option. Check outdoor and accessibility features, hours...","address":{"@type":"PostalAddress","streetAddress":"12772 Ninth Line","addressLocality":"Whitchurch-Stouffville","addressRegion":"ON","postalCode":"L4A 2Z7","addressCountry":"CA"},"telephone":"+1 905-642-5174","sameAs":["http://www.timbercreekgolf.ca/"],"geo":{"@type":"GeoCoordinates","latitude":43.9819793,"longitude":-79.2600708}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/timber-creek-mini-golf-fun-centre-whitchurch-stouffville-on/#webpage","name":"Timber Creek Mini Golf & Fun Centre | Mini Golf in Whitchurch-Stouffville, Ontario","url":"https://minigolfcanada.ca/courses/timber-creek-mini-golf-fun-centre-whitchurch-stouffville-on/","description":"Timber Creek Mini Golf & Fun Centre in Whitchurch-Stouffville, Ontario: an outdoor mini golf option. Check outdoor and accessibility features, hours...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/timber-creek-mini-golf-fun-centre-whitchurch-stouffville-on/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://static.wixstatic.com/media/94abeb_0902f6d5a6ce4857bf9d18b02379c725~mv2.png/v1/fill/w_1921,h_427,al_c,q_90,enc_avif,quality_auto/Asset%204.png"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/timber-creek-mini-golf-fun-centre-whitchurch-stouffville-on/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Ontario","item":"https://minigolfcanada.ca/provinces/ontario/"},{"@type":"ListItem","position":3,"name":"Whitchurch-Stouffville","item":"https://minigolfcanada.ca/cities/ontario/whitchurch-stouffville/"},{"@type":"ListItem","position":4,"name":"Timber Creek Mini Golf & Fun Centre","item":"https://minigolfcanada.ca/courses/timber-creek-mini-golf-fun-centre-whitchurch-stouffville-on/"}]}]}</script>
 </head>
@@ -176,12 +185,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../../site.webmanifest">
-  <link rel="stylesheet" href="../../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../../assets/js/app.js?v=required-region-consent-20260728"></script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"CollectionPage","@id":"https://minigolfcanada.ca/cities/alberta/lloydminster/#webpage","name":"Mini Golf Near Me in Lloydminster, Alberta","url":"https://minigolfcanada.ca/cities/alberta/lloydminster/","description":"Find 1 mini golf and mini putt option in Lloydminster, Alberta. Compare photos, course formats, hours, prices, directions and official links.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28"},{"@type":"ItemList","name":"Mini golf in Lloydminster, Alberta","url":"https://minigolfcanada.ca/cities/alberta/lloydminster/","numberOfItems":1,"itemListElement":[{"@type":"ListItem","position":1,"url":"https://minigolfcanada.ca/courses/the-putting-zone-lloydminster-ab/","name":"The Putting Zone"}]},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/cities/alberta/lloydminster/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Cities","item":"https://minigolfcanada.ca/cities/"},{"@type":"ListItem","position":3,"name":"Lloydminster, Alberta","item":"https://minigolfcanada.ca/cities/alberta/lloydminster/"}]},{"@type":"FAQPage","@id":"https://minigolfcanada.ca/cities/alberta/lloydminster/#faq","mainEntity":[{"@type":"Question","name":"Where can I find mini golf near me in Lloydminster?","acceptedAnswer":{"@type":"Answer","text":"Use this city page to compare mini golf and mini putt listings near Lloydminster, then open each course page for photos, ratings, prices, features, and official contact links."}},{"@type":"Question","name":"What should I check before visiting a Lloydminster mini putt course?","acceptedAnswer":{"@type":"Answer","text":"Check current hours, whether booking is required, price details, indoor or outdoor play, party packages, accessibility, food options, and recent photos."}}]}]}</script>
 </head>
@@ -227,12 +236,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

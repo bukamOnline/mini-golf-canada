@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://cdn.prod.website-files.com" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/riverside-golf-centre-calgary-ab/#business","name":"Riverside Golf Centre","url":"https://minigolfcanada.ca/courses/riverside-golf-centre-calgary-ab/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/riverside-golf-centre-calgary-ab/#webpage"},"image":["https://cdn.prod.website-files.com/671d509cb3eaddfdfb405d3e/675f50c41278834ffb47cdd5_Resize%20image%20project-p-500.png","https://cdn.prod.website-files.com/671d509cb3eaddfdfb405d3e/675f5498f508e0c28f02b24b_Resize%20image%20project%20(1)-p-500.png","https://cdn.prod.website-files.com/671d509cb3eaddfdfb405d3e/675f54970b8541d8015365b5_file%20(4)-p-500.jpg","https://cdn.prod.website-files.com/671d509cb3eaddfdfb405d3e/675f5808d118cc5e427e694c_Resize%20image%20project%20(2)-p-500.png","https://cdn.prod.website-files.com/671d509cb3eaddfdfb405d3e/68e6b15da60d1b0cfa7f4a87_pebble_beach-p-500.jpg","https://cdn.prod.website-files.com/671d509cb3eaddfdfb405d3e/69e6836e482363133b1e201d_ARF%2030%20years-p-500.jpg"],"description":"Planning details for Riverside Golf Centre in Calgary, Alberta: indoor and accessibility features, location, hours, photos and links to current venue...","address":{"@type":"PostalAddress","streetAddress":"110 Point McKay Crescent NW","addressLocality":"Calgary","addressRegion":"AB","postalCode":"T3B 4W1","addressCountry":"CA"},"telephone":"+1 403-287-4653","sameAs":["http://www.rgcgolf.ca/"],"geo":{"@type":"GeoCoordinates","latitude":51.0624461,"longitude":-114.1475321}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/riverside-golf-centre-calgary-ab/#webpage","name":"Riverside Golf Centre | Mini Golf in Calgary, Alberta","url":"https://minigolfcanada.ca/courses/riverside-golf-centre-calgary-ab/","description":"Planning details for Riverside Golf Centre in Calgary, Alberta: indoor and accessibility features, location, hours, photos and links to current venue...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/riverside-golf-centre-calgary-ab/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://cdn.prod.website-files.com/671d509cb3eaddfdfb405d3e/675f50c41278834ffb47cdd5_Resize%20image%20project-p-500.png"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/riverside-golf-centre-calgary-ab/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Alberta","item":"https://minigolfcanada.ca/provinces/alberta/"},{"@type":"ListItem","position":3,"name":"Calgary","item":"https://minigolfcanada.ca/cities/alberta/calgary/"},{"@type":"ListItem","position":4,"name":"Riverside Golf Centre","item":"https://minigolfcanada.ca/courses/riverside-golf-centre-calgary-ab/"}]}]}</script>
 </head>
@@ -210,12 +219,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

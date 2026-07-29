@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://primary.jwwb.nl" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/mini-putt-l-authentique-inc-saint-constant-qc/#business","name":"Mini-putt L'authentique inc","url":"https://minigolfcanada.ca/courses/mini-putt-l-authentique-inc-saint-constant-qc/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/mini-putt-l-authentique-inc-saint-constant-qc/#webpage"},"image":["https://primary.jwwb.nl/public/z/g/r/temp-xnrsbknjexpjfdwwpxgz/grande-pile-totem-putters-et-balles-high.jpg?enable-io=true&crop=0.8333%3A1%2Coffset-y100&width=1920","https://primary.jwwb.nl/public/z/g/r/temp-xnrsbknjexpjfdwwpxgz/t-shirt-jaune-et-noir-standard.jpg","https://primary.jwwb.nl/public/z/g/r/temp-xnrsbknjexpjfdwwpxgz/vue-a-rienne-gp-modifi-e-standard.jpg?enable-io=true&fit=bounds&width=1920&height=1920","https://primary.jwwb.nl/public/z/g/r/temp-xnrsbknjexpjfdwwpxgz/grande-pile-vue-ensemble-standard.jpg?enable-io=true&fit=bounds&width=1920&height=1920","https://primary.jwwb.nl/public/z/g/r/temp-xnrsbknjexpjfdwwpxgz/vue-d-ensemble-standard-lp7rcc.jpg","https://primary.jwwb.nl/public/z/g/r/temp-xnrsbknjexpjfdwwpxgz/vue-d-ensemble-2-standard-j7kqd5.jpg"],"description":"Mini-putt L'authentique inc in Saint-Constant, Quebec: a mini golf option. Check course details, hours, photos, directions and official venue links.","address":{"@type":"PostalAddress","streetAddress":"220 Rue Villeneuve","addressLocality":"Saint-Constant","addressRegion":"QC","postalCode":"J5A 2L9","addressCountry":"CA"},"sameAs":["https://miniputtlauthentique.ca/"],"geo":{"@type":"GeoCoordinates","latitude":45.379827,"longitude":-73.5919154}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/mini-putt-l-authentique-inc-saint-constant-qc/#webpage","name":"Mini-putt L'authentique inc | Mini Golf in Saint-Constant, Quebec","url":"https://minigolfcanada.ca/courses/mini-putt-l-authentique-inc-saint-constant-qc/","description":"Mini-putt L'authentique inc in Saint-Constant, Quebec: a mini golf option. Check course details, hours, photos, directions and official venue links.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/mini-putt-l-authentique-inc-saint-constant-qc/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://primary.jwwb.nl/public/z/g/r/temp-xnrsbknjexpjfdwwpxgz/grande-pile-totem-putters-et-balles-high.jpg?enable-io=true&crop=0.8333%3A1%2Coffset-y100&width=1920"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/mini-putt-l-authentique-inc-saint-constant-qc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Quebec","item":"https://minigolfcanada.ca/provinces/quebec/"},{"@type":"ListItem","position":3,"name":"Saint-Constant","item":"https://minigolfcanada.ca/cities/quebec/saint-constant/"},{"@type":"ListItem","position":4,"name":"Mini-putt L'authentique inc","item":"https://minigolfcanada.ca/courses/mini-putt-l-authentique-inc-saint-constant-qc/"}]}]}</script>
 </head>
@@ -210,12 +219,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

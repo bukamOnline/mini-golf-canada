@@ -20,6 +20,12 @@
   }
 
   var privacyChoiceKey = "mgc-privacy-choice-v1";
+  var privacyRegionKey = "mgc-consent-region-v1";
+  var consentRequiredCountries = [
+    "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR",
+    "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL",
+    "PT", "RO", "SK", "SI", "ES", "SE", "GB", "UK", "CH"
+  ];
 
   function storedPrivacyChoice() {
     try {
@@ -30,14 +36,11 @@
   }
 
   function updateAnalyticsConsent(choice) {
-    window.mgcAnalyticsAllowed = choice === "accepted";
+    window.mgcAnalyticsAllowed = choice !== "declined";
     if (typeof window.gtag !== "function") return;
     window.gtag("consent", "update", {
       analytics_storage: choice === "accepted" ? "granted" : "denied"
     });
-    if (choice === "accepted" && typeof window.loadMgcAnalytics === "function") {
-      window.loadMgcAnalytics();
-    }
   }
 
   function savePrivacyChoice(choice) {
@@ -58,13 +61,63 @@
     if (firstChoice) firstChoice.focus();
   }
 
+  function storedPrivacyRegion() {
+    try {
+      return sessionStorage.getItem(privacyRegionKey);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function savePrivacyRegion(value) {
+    try {
+      sessionStorage.setItem(privacyRegionKey, value);
+    } catch (error) {}
+  }
+
+  function regionRequiresConsent(data) {
+    var country = String(data && data.country_code || "").toUpperCase();
+    var region = String(data && data.region || "").toLowerCase();
+    return consentRequiredCountries.indexOf(country) !== -1 ||
+      (country === "CA" && region === "quebec");
+  }
+
+  function initRegionalPrivacyPrompt() {
+    var cachedRegion = storedPrivacyRegion();
+    if (cachedRegion === "required") {
+      showPrivacyChoices();
+      return;
+    }
+    if (cachedRegion === "standard" || typeof window.fetch !== "function") return;
+
+    var controller = typeof AbortController === "function" ? new AbortController() : null;
+    var timeout = window.setTimeout(function () {
+      if (controller) controller.abort();
+    }, 3000);
+    window.fetch("https://get.geojs.io/v1/ip/geo.json", {
+      cache: "no-store",
+      credentials: "omit",
+      referrerPolicy: "no-referrer",
+      signal: controller ? controller.signal : undefined
+    }).then(function (response) {
+      if (!response.ok) throw new Error("Region lookup failed");
+      return response.json();
+    }).then(function (data) {
+      window.clearTimeout(timeout);
+      var result = regionRequiresConsent(data) ? "required" : "standard";
+      savePrivacyRegion(result);
+      if (result === "required" && !storedPrivacyChoice()) showPrivacyChoices();
+    }).catch(function () {
+      window.clearTimeout(timeout);
+    });
+  }
+
   function initPrivacyControls() {
-    var banner = document.querySelector("[data-privacy-banner]");
     var choice = storedPrivacyChoice();
     if (choice === "accepted" || choice === "declined") {
       updateAnalyticsConsent(choice);
-    } else if (banner) {
-      banner.hidden = false;
+    } else {
+      initRegionalPrivacyPrompt();
     }
     document.querySelectorAll("[data-privacy-choice]").forEach(function (button) {
       button.addEventListener("click", function () {

@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://www.tremblant.ca" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/minigolf-le-petit-geant-mont-tremblant-qc/#business","name":"Minigolf Le Petit Géant","url":"https://minigolfcanada.ca/courses/minigolf-le-petit-geant-mont-tremblant-qc/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/minigolf-le-petit-geant-mont-tremblant-qc/#webpage"},"image":["https://www.tremblant.ca/-/media/tremblant/things-to-do/activities/le-petit-geant-minigolf.jpg?rev=-1?h=1350&w=2400&hash=6BC660607C9BC920D98D425191CC76A2","https://www.tremblant.ca/-/media/tremblant/things-to-do/activities/le-petit-geant-minigolf2.jpg?w=480&rev=-1&hash=4A3198ED3562F1B8AA54604C48C359F0","https://www.tremblant.ca/-/media/tremblant/things-to-do/golfing/le-diable-golf-course.jpg?w=480&rev=d65479f67218401e86c92ee11daf93e0&hash=45DF55F30D566BE3B3ADCBC62BA5E695","https://www.tremblant.ca/-/media/tremblant/plan-your-trip/tickets-and-passes/nordik-card-pro.jpg?rev=-1?h=1350&w=2400&hash=5476086A56FADD6BC2644CE592D94740","https://www.tremblant.ca/-/media/tremblant/mountain-and-village/opening-hours/opening-hours-summer20-l.jpg?rev=62bd99733f74424fba62a81be921af4e?h=1350&w=2400&hash=177599367F4C5E6FFBED359B73B1AE0E","https://www.tremblant.ca/-/media/tremblant/things-to-do/family-place-summer.jpg?w=480&rev=-1&hash=EA7563DFC50366392A2C3D20AA469118"],"description":"Minigolf Le Petit Géant in Mont-Tremblant, Quebec: a mini golf option. Check course details, hours, photos, directions and official venue links.","address":{"@type":"PostalAddress","streetAddress":"140 Chem. au Pied de la Montagne","addressLocality":"Mont-Tremblant","addressRegion":"QC","postalCode":"J8E 1E2","addressCountry":"CA"},"telephone":"+1 819-681-3000","sameAs":["https://www.tremblant.ca/quoi-faire/activites/minigolf-petit-geant"],"geo":{"@type":"GeoCoordinates","latitude":46.2123804,"longitude":-74.5851922}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/minigolf-le-petit-geant-mont-tremblant-qc/#webpage","name":"Minigolf Le Petit Géant | Mini Golf in Mont-Tremblant, Quebec","url":"https://minigolfcanada.ca/courses/minigolf-le-petit-geant-mont-tremblant-qc/","description":"Minigolf Le Petit Géant in Mont-Tremblant, Quebec: a mini golf option. Check course details, hours, photos, directions and official venue links.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/minigolf-le-petit-geant-mont-tremblant-qc/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://www.tremblant.ca/-/media/tremblant/things-to-do/activities/le-petit-geant-minigolf.jpg?rev=-1?h=1350&w=2400&hash=6BC660607C9BC920D98D425191CC76A2"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/minigolf-le-petit-geant-mont-tremblant-qc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Quebec","item":"https://minigolfcanada.ca/provinces/quebec/"},{"@type":"ListItem","position":3,"name":"Mont-Tremblant","item":"https://minigolfcanada.ca/cities/quebec/mont-tremblant/"},{"@type":"ListItem","position":4,"name":"Minigolf Le Petit Géant","item":"https://minigolfcanada.ca/courses/minigolf-le-petit-geant-mont-tremblant-qc/"}]}]}</script>
 </head>
@@ -176,12 +185,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

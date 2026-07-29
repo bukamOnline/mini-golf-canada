@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://www.fudds.ca" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/putt-n-bounce-mini-golf-saskatoon-sk/#business","name":"Putt 'N Bounce Mini Golf","url":"https://minigolfcanada.ca/courses/putt-n-bounce-mini-golf-saskatoon-sk/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/putt-n-bounce-mini-golf-saskatoon-sk/#webpage"},"image":["https://www.fudds.ca/uploads/1/4/4/6/144663435/resized-20210723-125118-1.jpeg","https://www.fudds.ca/uploads/1/4/4/6/144663435/published/untitled-design-3.png?1680724376","https://www.fudds.ca/uploads/1/4/4/6/144663435/fudds-ffc.png","https://www.fudds.ca/uploads/1/4/4/6/144663435/resized-20210723-123920.jpeg","https://www.fudds.ca/uploads/1/4/4/6/144663435/resized-20210723-124059.jpeg","https://www.fudds.ca/uploads/1/4/4/6/144663435/resized-20210723-124209.jpeg"],"description":"Planning details for Putt 'N Bounce Mini Golf in Saskatoon, Saskatchewan: outdoor and birthday parties, location, hours, photos and links to current venue...","address":{"@type":"PostalAddress","streetAddress":"1206 Arlington Ave","addressLocality":"Saskatoon","addressRegion":"SK","postalCode":"S7H 5M1","addressCountry":"CA"},"telephone":"+1 306-477-0808","sameAs":["http://www.fudds.ca/putt-n-bounce/"],"geo":{"@type":"GeoCoordinates","latitude":52.1140654,"longitude":-106.6116158},"priceRange":"Published prices available"},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/putt-n-bounce-mini-golf-saskatoon-sk/#webpage","name":"Putt 'N Bounce Mini Golf | Mini Golf in Saskatoon, Saskatchewan","url":"https://minigolfcanada.ca/courses/putt-n-bounce-mini-golf-saskatoon-sk/","description":"Planning details for Putt 'N Bounce Mini Golf in Saskatoon, Saskatchewan: outdoor and birthday parties, location, hours, photos and links to current...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/putt-n-bounce-mini-golf-saskatoon-sk/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://www.fudds.ca/uploads/1/4/4/6/144663435/resized-20210723-125118-1.jpeg"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/putt-n-bounce-mini-golf-saskatoon-sk/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Saskatchewan","item":"https://minigolfcanada.ca/provinces/saskatchewan/"},{"@type":"ListItem","position":3,"name":"Saskatoon","item":"https://minigolfcanada.ca/cities/saskatchewan/saskatoon/"},{"@type":"ListItem","position":4,"name":"Putt 'N Bounce Mini Golf","item":"https://minigolfcanada.ca/courses/putt-n-bounce-mini-golf-saskatoon-sk/"}]}]}</script>
 </head>
@@ -210,12 +219,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

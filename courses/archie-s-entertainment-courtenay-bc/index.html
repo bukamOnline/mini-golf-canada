@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://cdn.prod.website-files.com" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/archie-s-entertainment-courtenay-bc/#business","name":"Archie's Entertainment","url":"https://minigolfcanada.ca/courses/archie-s-entertainment-courtenay-bc/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/archie-s-entertainment-courtenay-bc/#webpage"},"image":["https://cdn.prod.website-files.com/6968224f389ba3b08b99673c/696bed250ed703e771225a68_Abstract%20Profile%20Photo%20Instagram%20Post-p-500.png","https://cdn.prod.website-files.com/6968224f389ba3b08b99673c/696eead9514d4660046d3f23_ChatGPT%20Image%20Jan%2019%2C%202026%2C%2006_37_40%20PM-p-500.png","https://cdn.prod.website-files.com/6968224f389ba3b08b99673c/697e24bb39088348e0558a9c_21-p-500.png","https://cdn.prod.website-files.com/6968224f389ba3b08b99673c/697e24bbf4741b43d74d74a7_22-p-500.png"],"description":"Compare Archie's Entertainment in Courtenay, British Columbia: a glow mini golf option, with notes on glow golf and arcade, hours, location and photos.","address":{"@type":"PostalAddress","streetAddress":"2967 Kilpatrick Ave","addressLocality":"Courtenay","addressRegion":"BC","postalCode":"V9N 8P1","addressCountry":"CA"},"telephone":"+1 250-871-8000","sameAs":["http://www.archiescomox.com/"],"geo":{"@type":"GeoCoordinates","latitude":49.669686,"longitude":-124.9818161}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/archie-s-entertainment-courtenay-bc/#webpage","name":"Archie's Entertainment | Mini Golf in Courtenay, British Columbia","url":"https://minigolfcanada.ca/courses/archie-s-entertainment-courtenay-bc/","description":"Compare Archie's Entertainment in Courtenay, British Columbia: a glow mini golf option, with notes on glow golf and arcade, hours, location and photos.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/archie-s-entertainment-courtenay-bc/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://cdn.prod.website-files.com/6968224f389ba3b08b99673c/696bed250ed703e771225a68_Abstract%20Profile%20Photo%20Instagram%20Post-p-500.png"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/archie-s-entertainment-courtenay-bc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"British Columbia","item":"https://minigolfcanada.ca/provinces/british-columbia/"},{"@type":"ListItem","position":3,"name":"Courtenay","item":"https://minigolfcanada.ca/cities/british-columbia/courtenay/"},{"@type":"ListItem","position":4,"name":"Archie's Entertainment","item":"https://minigolfcanada.ca/courses/archie-s-entertainment-courtenay-bc/"}]}]}</script>
 </head>
@@ -210,12 +219,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://static.wixstatic.com" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/putting-horse-ranch-spruce-grove-ab/#business","name":"Putting Horse Ranch","url":"https://minigolfcanada.ca/courses/putting-horse-ranch-spruce-grove-ab/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/putting-horse-ranch-spruce-grove-ab/#webpage"},"image":["https://static.wixstatic.com/media/82cd6f_6cf4e981610243909fd9346bc11b8bd0%7Emv2.png/v1/fit/w_2500,h_1330,al_c/82cd6f_6cf4e981610243909fd9346bc11b8bd0%7Emv2.png","https://static.wixstatic.com/media/2bfb05_aca49cbacfab42099b65fac5e8130022~mv2.jpg/v1/fill/w_180,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/SaintandScream_EMC_02.jpg","https://static.wixstatic.com/media/2bfb05_c35c4be4e1024c398bb5dee02cfd8214~mv2.jpg/v1/fill/w_180,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/JH%20Promo%20Shot%20(1).jpg","https://static.wixstatic.com/media/2bfb05_0e8e1c8252354ba6a0160a788c70032d~mv2.jpg/v1/fill/w_932,h_347,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Wagon%20ride%20to%20Amphitheatre%20One%20Way%20%245%20pp.jpg","https://static.wixstatic.com/media/82cd6f_869dc57d7c53470e984b897e28a0ee3d~mv2.png/v1/fill/w_512,h_81,al_c,lg_1,q_85,enc_avif,quality_auto/holder-head7.png","https://static.wixstatic.com/media/2bfb05_07dcc7baba704bbb82608a6cea32e798~mv2.jpg/v1/fill/w_1080,h_1150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2bfb05_07dcc7baba704bbb82608a6cea32e798~mv2.jpg"],"description":"Compare Putting Horse Ranch in Spruce Grove, Alberta: an outdoor mini golf option, with notes on outdoor and accessibility features, hours, location and...","address":{"@type":"PostalAddress","streetAddress":"53312 Range Rd 272","addressLocality":"Spruce Grove","addressRegion":"AB","postalCode":"T7X 3N3","addressCountry":"CA"},"telephone":"+1 780-962-5232","sameAs":["http://www.puttinghorseranch.com/"],"geo":{"@type":"GeoCoordinates","latitude":53.5878276,"longitude":-113.8857155}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/putting-horse-ranch-spruce-grove-ab/#webpage","name":"Putting Horse Ranch | Mini Golf in Spruce Grove, Alberta","url":"https://minigolfcanada.ca/courses/putting-horse-ranch-spruce-grove-ab/","description":"Compare Putting Horse Ranch in Spruce Grove, Alberta: an outdoor mini golf option, with notes on outdoor and accessibility features, hours, location and...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/putting-horse-ranch-spruce-grove-ab/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://static.wixstatic.com/media/2bfb05_aca49cbacfab42099b65fac5e8130022~mv2.jpg/v1/fill/w_180,h_180,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/SaintandScream_EMC_02.jpg"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/putting-horse-ranch-spruce-grove-ab/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Alberta","item":"https://minigolfcanada.ca/provinces/alberta/"},{"@type":"ListItem","position":3,"name":"Spruce Grove","item":"https://minigolfcanada.ca/cities/alberta/spruce-grove/"},{"@type":"ListItem","position":4,"name":"Putting Horse Ranch","item":"https://minigolfcanada.ca/courses/putting-horse-ranch-spruce-grove-ab/"}]}]}</script>
 </head>
@@ -210,12 +219,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://static.wixstatic.com" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/casse-croute-miniputt-riviere-du-loup-qc/#business","name":"Casse Croute Miniputt","url":"https://minigolfcanada.ca/courses/casse-croute-miniputt-riviere-du-loup-qc/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/casse-croute-miniputt-riviere-du-loup-qc/#webpage"},"image":["https://static.wixstatic.com/media/4f857b2e8a316c4e1ed16717a3d4ec8c.png/v1/fill/w_38,h_38,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/4f857b2e8a316c4e1ed16717a3d4ec8c.png","https://static.parastorage.com/services/editor-elements-library/dist/thunderbolt/media/ironpatern.bb7ea6a2.png","https://static.wixstatic.com/media/8ca1d4b1209f4712a582d259e1d041c4.png/v1/fill/w_232,h_200,al_c,q_85,enc_auto/8ca1d4b1209f4712a582d259e1d041c4.png","https://static.wixstatic.com/media/a205b1_ddeddcdd83914fda9922d347b1e92693~mv2.jpeg/v1/fill/w_979,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/MenuMiniPuttTV-D%C3%A9cembre2025-5.jpeg","https://static.wixstatic.com/media/a205b1_24c0a751d2b54e4eacd1fd4865e7a8fd~mv2.jpeg/v1/fill/w_979,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/MenuMiniPuttTV-D%C3%A9cembre2025-6.jpeg","https://static.wixstatic.com/media/a205b1_0ab125c50c09458d93db8525a14768ae~mv2.jpeg/v1/fill/w_979,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/MenuMiniPuttTV-D%C3%A9cembre2025-7%20(1).jpeg"],"description":"Compare Casse Croute Miniputt in Rivière-du-Loup, Quebec: an outdoor mini golf option, with notes on outdoor and birthday parties, hours, location and photos.","address":{"@type":"PostalAddress","streetAddress":"60 Rue Fraser","addressLocality":"Rivière-du-Loup","addressRegion":"QC","postalCode":"G5R 1C2","addressCountry":"CA"},"telephone":"+1 418-862-8448","sameAs":["https://www.miniputtrdl.com/"],"geo":{"@type":"GeoCoordinates","latitude":47.8398895,"longitude":-69.5401714}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/casse-croute-miniputt-riviere-du-loup-qc/#webpage","name":"Casse Croute Miniputt | Mini Golf in Rivière-du-Loup, Quebec","url":"https://minigolfcanada.ca/courses/casse-croute-miniputt-riviere-du-loup-qc/","description":"Compare Casse Croute Miniputt in Rivière-du-Loup, Quebec: an outdoor mini golf option, with notes on outdoor and birthday parties, hours, location and...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/casse-croute-miniputt-riviere-du-loup-qc/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://static.wixstatic.com/media/a205b1_ddeddcdd83914fda9922d347b1e92693~mv2.jpeg/v1/fill/w_979,h_551,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/MenuMiniPuttTV-D%C3%A9cembre2025-5.jpeg"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/casse-croute-miniputt-riviere-du-loup-qc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Quebec","item":"https://minigolfcanada.ca/provinces/quebec/"},{"@type":"ListItem","position":3,"name":"Rivière-du-Loup","item":"https://minigolfcanada.ca/cities/quebec/riviere-du-loup/"},{"@type":"ListItem","position":4,"name":"Casse Croute Miniputt","item":"https://minigolfcanada.ca/courses/casse-croute-miniputt-riviere-du-loup-qc/"}]}]}</script>
 </head>
@@ -176,12 +185,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

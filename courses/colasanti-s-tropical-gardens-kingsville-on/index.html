@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://static.wixstatic.com" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/colasanti-s-tropical-gardens-kingsville-on/#business","name":"Colasanti's Tropical Gardens","url":"https://minigolfcanada.ca/courses/colasanti-s-tropical-gardens-kingsville-on/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/colasanti-s-tropical-gardens-kingsville-on/#webpage"},"image":["https://static.wixstatic.com/media/a41272_b498ad1b72de4d2887ac19a425d1fbc8~mv2.jpg/v1/crop/x_0,y_211,w_1000,h_1078/fill/w_192,h_207,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Boston%20Fern%206%20inch%20-%20Colasanti's%20Tropical%20Gardens.jpg","https://static.wixstatic.com/media/1c5fb3_30870d24cfd64d3a8c0d9222312a28e7%7Emv2.jpg/v1/fit/w_2500,h_1330,al_c/1c5fb3_30870d24cfd64d3a8c0d9222312a28e7%7Emv2.jpg","https://static.wixstatic.com/media/a41272_08d0d5d2315c41698b35fd04d8731180~mv2.jpg/v1/fill/w_1080,h_489,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a41272_08d0d5d2315c41698b35fd04d8731180~mv2.jpg","https://static.wixstatic.com/media/a41272_bc5c6bd0fced4d79bb39eef7dfe8d63c~mv2.jpg/v1/fill/w_356,h_360,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a41272_bc5c6bd0fced4d79bb39eef7dfe8d63c~mv2.jpg","https://static.wixstatic.com/media/a41272_be7459dbb61349458c7d6ebc3753096d~mv2.jpg/v1/fill/w_352,h_360,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a41272_be7459dbb61349458c7d6ebc3753096d~mv2.jpg","https://static.wixstatic.com/media/a41272_e3c0cc6e24744e9396a15a14daa1a76d~mv2.jpg/v1/fill/w_352,h_360,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a41272_e3c0cc6e24744e9396a15a14daa1a76d~mv2.jpg"],"description":"Compare Colasanti's Tropical Gardens in Kingsville, Ontario: an 18-hole indoor and outdoor mini golf layout with garden and tropical theming, with notes...","address":{"@type":"PostalAddress","streetAddress":"1550 Road 3 E","addressLocality":"Kingsville","addressRegion":"ON","postalCode":"N9Y 2E5","addressCountry":"CA"},"telephone":"+1 519-326-3287","sameAs":["http://www.colasanti.com/"],"geo":{"@type":"GeoCoordinates","latitude":42.0631,"longitude":-82.6760475}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/colasanti-s-tropical-gardens-kingsville-on/#webpage","name":"Colasanti's Tropical Gardens | Mini Golf in Kingsville, Ontario","url":"https://minigolfcanada.ca/courses/colasanti-s-tropical-gardens-kingsville-on/","description":"Compare Colasanti's Tropical Gardens in Kingsville, Ontario: an 18-hole indoor and outdoor mini golf layout with garden and tropical theming, with notes...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/colasanti-s-tropical-gardens-kingsville-on/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://static.wixstatic.com/media/a41272_b498ad1b72de4d2887ac19a425d1fbc8~mv2.jpg/v1/crop/x_0,y_211,w_1000,h_1078/fill/w_192,h_207,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Boston%20Fern%206%20inch%20-%20Colasanti's%20Tropical%20Gardens.jpg"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/colasanti-s-tropical-gardens-kingsville-on/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Ontario","item":"https://minigolfcanada.ca/provinces/ontario/"},{"@type":"ListItem","position":3,"name":"Kingsville","item":"https://minigolfcanada.ca/cities/ontario/kingsville/"},{"@type":"ListItem","position":4,"name":"Colasanti's Tropical Gardens","item":"https://minigolfcanada.ca/courses/colasanti-s-tropical-gardens-kingsville-on/"}]}]}</script>
 </head>
@@ -210,12 +219,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

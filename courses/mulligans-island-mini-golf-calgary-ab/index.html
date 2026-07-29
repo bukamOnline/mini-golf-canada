@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://www.calawaypark.com" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/mulligans-island-mini-golf-calgary-ab/#business","name":"Mulligans Island Mini Golf","url":"https://minigolfcanada.ca/courses/mulligans-island-mini-golf-calgary-ab/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/mulligans-island-mini-golf-calgary-ab/#webpage"},"image":["https://www.calawaypark.com/wp-content/uploads/2023/08/Riptide-Racer-5-2048x1536.jpg","https://www.calawaypark.com/wp-content/uploads/2023/07/New-Vortex-Photo-2048x1365.jpg","https://www.calawaypark.com/wp-content/uploads/2026/02/Calaway-Park-Family-1-229-2048x1365.jpg","https://www.calawaypark.com/wp-content/uploads/2025/06/partnership-390x66.png","https://www.calawaypark.com/wp-content/uploads/2019/10/pic_rides_atz-48x31.jpg","https://www.calawaypark.com/wp-content/uploads/2019/10/pic_rides_aero-1-48x31.jpg"],"description":"Compare Mulligans Island Mini Golf in Calgary, Alberta: a mini golf option, with notes on accessibility features, hours, location and photos.","address":{"@type":"PostalAddress","streetAddress":"245033 Range Rd 33","addressLocality":"Calgary","addressRegion":"AB","postalCode":"T3Z 2E9","addressCountry":"CA"},"telephone":"+1 403-240-3822","sameAs":["http://www.calawaypark.com/inside-the-park/rides/"],"geo":{"@type":"GeoCoordinates","latitude":51.0861068,"longitude":-114.3571242}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/mulligans-island-mini-golf-calgary-ab/#webpage","name":"Mulligans Island Mini Golf | Mini Golf in Calgary, Alberta","url":"https://minigolfcanada.ca/courses/mulligans-island-mini-golf-calgary-ab/","description":"Compare Mulligans Island Mini Golf in Calgary, Alberta: a mini golf option, with notes on accessibility features, hours, location and photos.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/mulligans-island-mini-golf-calgary-ab/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://www.calawaypark.com/wp-content/uploads/2023/07/New-Vortex-Photo-2048x1365.jpg"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/mulligans-island-mini-golf-calgary-ab/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Alberta","item":"https://minigolfcanada.ca/provinces/alberta/"},{"@type":"ListItem","position":3,"name":"Calgary","item":"https://minigolfcanada.ca/cities/alberta/calgary/"},{"@type":"ListItem","position":4,"name":"Mulligans Island Mini Golf","item":"https://minigolfcanada.ca/courses/mulligans-island-mini-golf-calgary-ab/"}]}]}</script>
 </head>
@@ -210,12 +219,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://miniputtvalleyfield.ca" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/mini-putt-valleyfield-salaberry-de-valleyfield-qc/#business","name":"Mini-Putt Valleyfield","url":"https://minigolfcanada.ca/courses/mini-putt-valleyfield-salaberry-de-valleyfield-qc/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/mini-putt-valleyfield-salaberry-de-valleyfield-qc/#webpage"},"image":["https://miniputtvalleyfield.ca/wp-content/uploads/2022/05/image-putter-balle-mini_putt-valleyfield-2048x1366.jpg","https://miniputtvalleyfield.ca/wp-content/uploads/2022/05/image-fond-gazon-mini_putt-valleyfield.jpg","https://miniputtvalleyfield.ca/wp-content/uploads/2022/05/photo-terrain-action-mini_putt-valleyfield.jpg","https://miniputtvalleyfield.ca/wp-content/uploads/2022/05/photo-terrain-trou-1-mini_putt-valleyfield.jpg","https://miniputtvalleyfield.ca/wp-content/uploads/2022/05/photo-terrain-trou-2-mini_putt-valleyfield.jpg","https://miniputtvalleyfield.ca/wp-content/uploads/2022/05/photo-terrain-action-2-mini_putt-valleyfield.jpg"],"description":"Mini-Putt Valleyfield in Salaberry-de-Valleyfield, Quebec: an 18-hole mini golf layout. Check food on-site, hours, photos, directions and official venue...","address":{"@type":"PostalAddress","streetAddress":"550 Chem. Larocque","addressLocality":"Salaberry-de-Valleyfield","addressRegion":"QC","postalCode":"J6T 4C5","addressCountry":"CA"},"telephone":"+1 450-373-6321","sameAs":["https://miniputtvalleyfield.ca/"],"geo":{"@type":"GeoCoordinates","latitude":45.2368226,"longitude":-74.1217895}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/mini-putt-valleyfield-salaberry-de-valleyfield-qc/#webpage","name":"Mini-Putt Valleyfield | Mini Golf in Salaberry-de-Valleyfield, Quebec","url":"https://minigolfcanada.ca/courses/mini-putt-valleyfield-salaberry-de-valleyfield-qc/","description":"Mini-Putt Valleyfield in Salaberry-de-Valleyfield, Quebec: an 18-hole mini golf layout. Check food on-site, hours, photos, directions and official venue...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/mini-putt-valleyfield-salaberry-de-valleyfield-qc/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://miniputtvalleyfield.ca/wp-content/uploads/2022/05/image-putter-balle-mini_putt-valleyfield-2048x1366.jpg"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/mini-putt-valleyfield-salaberry-de-valleyfield-qc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Quebec","item":"https://minigolfcanada.ca/provinces/quebec/"},{"@type":"ListItem","position":3,"name":"Salaberry-de-Valleyfield","item":"https://minigolfcanada.ca/cities/quebec/salaberry-de-valleyfield/"},{"@type":"ListItem","position":4,"name":"Mini-Putt Valleyfield","item":"https://minigolfcanada.ca/courses/mini-putt-valleyfield-salaberry-de-valleyfield-qc/"}]}]}</script>
 </head>
@@ -210,12 +219,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

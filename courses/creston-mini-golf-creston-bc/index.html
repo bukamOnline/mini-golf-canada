@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://static.wixstatic.com" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/creston-mini-golf-creston-bc/#business","name":"Creston Mini Golf","url":"https://minigolfcanada.ca/courses/creston-mini-golf-creston-bc/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/creston-mini-golf-creston-bc/#webpage"},"image":["https://static.wixstatic.com/media/345268_4ce29698ad9e4a5fa32b7a7948c9cb8c%7Emv2.jpeg/v1/fit/w_2500,h_1330,al_c/345268_4ce29698ad9e4a5fa32b7a7948c9cb8c%7Emv2.jpeg","https://static.wixstatic.com/media/fe9bab_1eb5c19919774d6b985a31baa253fe2a~mv2.jpeg/v1/fill/w_460,h_560,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Untitled.jpeg","https://static.wixstatic.com/media/ed5f5285585449bfa0cb6406504308df.jpg/v1/fill/w_490,h_440,fp_0.50_0.50,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ed5f5285585449bfa0cb6406504308df.jpg","https://static.wixstatic.com/media/345268_4ce29698ad9e4a5fa32b7a7948c9cb8c~mv2.jpeg/v1/fill/w_70,h_59,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Untitled.jpeg","https://static.wixstatic.com/media/d3ee8f_53dfd24b6fc741c1bb871a75935b73e6~mv2.png/v1/fill/w_20,h_20,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/d3ee8f_53dfd24b6fc741c1bb871a75935b73e6~mv2.png","https://static.wixstatic.com/media/fe9bab_eaf21a11ce7b4776a9d0ab243697ffb9~mv2.jpg/v1/fill/w_123,h_92,al_c,q_80,usm_0.66_1.00_0.01,blur_2,enc_avif,quality_auto/fe9bab_eaf21a11ce7b4776a9d0ab243697ffb9~mv2.jpg"],"description":"Planning details for Creston Mini Golf in Creston, British Columbia: outdoor and food on-site, location, hours, photos and links to current venue information.","address":{"@type":"PostalAddress","streetAddress":"1531 Northwest Blvd","addressLocality":"Creston","addressRegion":"BC","postalCode":"V0B 1G6","addressCountry":"CA"},"telephone":"+1 250-254-8320","sameAs":["https://crestonminigolf.wixsite.com/minigolf"],"geo":{"@type":"GeoCoordinates","latitude":49.115291,"longitude":-116.524872}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/creston-mini-golf-creston-bc/#webpage","name":"Creston Mini Golf | Mini Golf in Creston, British Columbia","url":"https://minigolfcanada.ca/courses/creston-mini-golf-creston-bc/","description":"Planning details for Creston Mini Golf in Creston, British Columbia: outdoor and food on-site, location, hours, photos and links to current venue...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/creston-mini-golf-creston-bc/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://static.wixstatic.com/media/345268_4ce29698ad9e4a5fa32b7a7948c9cb8c%7Emv2.jpeg/v1/fit/w_2500,h_1330,al_c/345268_4ce29698ad9e4a5fa32b7a7948c9cb8c%7Emv2.jpeg"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/creston-mini-golf-creston-bc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"British Columbia","item":"https://minigolfcanada.ca/provinces/british-columbia/"},{"@type":"ListItem","position":3,"name":"Creston","item":"https://minigolfcanada.ca/cities/british-columbia/creston/"},{"@type":"ListItem","position":4,"name":"Creston Mini Golf","item":"https://minigolfcanada.ca/courses/creston-mini-golf-creston-bc/"}]}]}</script>
 </head>
@@ -210,12 +219,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">

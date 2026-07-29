@@ -17,19 +17,26 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=publisher-ready-20260728">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=required-region-consent-20260728">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = false;
+    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"],
       wait_for_update: 500
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
       if (window.mgcAnalyticsLoaded) return;
@@ -42,17 +49,19 @@
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
     try {
-      if (localStorage.getItem('mgc-privacy-choice-v1') === 'accepted') {
-        window.mgcAnalyticsAllowed = true;
-        gtag('consent', 'update', {analytics_storage: 'granted'});
-        window.loadMgcAnalytics();
+      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
+      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
+      if (savedAnalyticsChoice === 'declined') {
+        window.mgcAnalyticsAllowed = false;
+        gtag('consent', 'update', {analytics_storage: 'denied'});
       }
     } catch (error) {}
+    window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=publisher-ready-20260728"></script>
-  <script defer src="../../assets/js/app.js?v=publisher-ready-20260728"></script>
+  <script defer src="../../assets/js/listings.js?v=required-region-consent-20260728"></script>
+  <script defer src="../../assets/js/app.js?v=required-region-consent-20260728"></script>
   <link rel="preconnect" href="https://storage.ghost.io" crossorigin>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/mini-putt-lac-delage-lac-delage-qc/#business","name":"Mini-Putt Lac-Delage","url":"https://minigolfcanada.ca/courses/mini-putt-lac-delage-lac-delage-qc/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/mini-putt-lac-delage-lac-delage-qc/#webpage"},"image":["https://storage.ghost.io/c/e2/6b/e26b7c4e-66f6-442c-afef-473dbcea79ca/content/images/size/w1200/2026/04/Screenshot-2026-04-09-at-6.40.12---PM-1.png","https://storage.ghost.io/c/e2/6b/e26b7c4e-66f6-442c-afef-473dbcea79ca/content/images/2026/04/ChatGPT-Image-Apr-21--2026-at-07_26_12-PM.png","https://storage.ghost.io/c/e2/6b/e26b7c4e-66f6-442c-afef-473dbcea79ca/content/images/2026/04/Screenshot-2026-04-06-at-7.40.43---PM.png","https://www.lacdelage.com/content/images/size/w1000/2026/04/Manoir-1.jpg","https://www.lacdelage.com/content/images/2026/04/Manoir_aile-B.jpg","https://storage.ghost.io/c/e2/6b/e26b7c4e-66f6-442c-afef-473dbcea79ca/content/images/size/w1000/2026/04/Manoir-1.jpg"],"description":"Mini-Putt Lac-Delage in Lac-Delage, Quebec: a mini golf option. Check accessibility features, hours, photos, directions and official venue links.","address":{"@type":"PostalAddress","streetAddress":"115 Place du Manoir","addressLocality":"Lac-Delage","addressRegion":"QC","postalCode":"G3C 5C4","addressCountry":"CA"},"telephone":"+1 418-848-2551","sameAs":["https://lacdelage.com/l-hotel/activites"],"geo":{"@type":"GeoCoordinates","latitude":46.9696573,"longitude":-71.402876}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/mini-putt-lac-delage-lac-delage-qc/#webpage","name":"Mini-Putt Lac-Delage | Mini Golf in Lac-Delage, Quebec","url":"https://minigolfcanada.ca/courses/mini-putt-lac-delage-lac-delage-qc/","description":"Mini-Putt Lac-Delage in Lac-Delage, Quebec: a mini golf option. Check accessibility features, hours, photos, directions and official venue links.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28","about":{"@id":"https://minigolfcanada.ca/courses/mini-putt-lac-delage-lac-delage-qc/#business"},"author":{"@id":"https://minigolfcanada.ca/editorial-policy/#editorial-team"},"primaryImageOfPage":"https://storage.ghost.io/c/e2/6b/e26b7c4e-66f6-442c-afef-473dbcea79ca/content/images/size/w1200/2026/04/Screenshot-2026-04-09-at-6.40.12---PM-1.png"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/mini-putt-lac-delage-lac-delage-qc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Quebec","item":"https://minigolfcanada.ca/provinces/quebec/"},{"@type":"ListItem","position":3,"name":"Lac-Delage","item":"https://minigolfcanada.ca/cities/quebec/lac-delage/"},{"@type":"ListItem","position":4,"name":"Mini-Putt Lac-Delage","item":"https://minigolfcanada.ca/courses/mini-putt-lac-delage-lac-delage-qc/"}]}]}</script>
 </head>
@@ -210,12 +219,12 @@
   </main>
   <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
     <div>
-      <strong>Optional analytics</strong>
-      <p>Mini Golf Canada uses optional analytics to understand which pages help visitors. You can accept or decline; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
+      <strong>Analytics preferences</strong>
+      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../../privacy/">Privacy details</a></p>
     </div>
     <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Accept analytics</button>
+      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
+      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
     </div>
   </section>
   <footer class="site-footer">
