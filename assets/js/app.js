@@ -21,10 +21,10 @@
 
   var privacyChoiceKey = "mgc-privacy-choice-v1";
   var privacyRegionKey = "mgc-consent-region-v1";
-  var consentRequiredCountries = [
+  var consentPromptCountries = [
     "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR",
     "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL",
-    "PT", "RO", "SK", "SI", "ES", "SE", "GB", "UK", "CH"
+    "PT", "RO", "SK", "SI", "ES", "SE", "GB", "UK", "CH", "US"
   ];
 
   function storedPrivacyChoice() {
@@ -75,10 +75,10 @@
     } catch (error) {}
   }
 
-  function regionRequiresConsent(data) {
+  function regionUsesConsentPrompt(data) {
     var country = String(data && data.country_code || "").toUpperCase();
     var region = String(data && data.region || "").toLowerCase();
-    return consentRequiredCountries.indexOf(country) !== -1 ||
+    return consentPromptCountries.indexOf(country) !== -1 ||
       (country === "CA" && region === "quebec");
   }
 
@@ -104,7 +104,7 @@
       return response.json();
     }).then(function (data) {
       window.clearTimeout(timeout);
-      var result = regionRequiresConsent(data) ? "required" : "standard";
+      var result = regionUsesConsentPrompt(data) ? "required" : "standard";
       savePrivacyRegion(result);
       if (result === "required" && !storedPrivacyChoice()) showPrivacyChoices();
     }).catch(function () {
