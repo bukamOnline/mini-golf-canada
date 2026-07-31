@@ -17,20 +17,18 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="assets/css/styles.css?v=regional-consent-us-20260728">
+  <link rel="stylesheet" href="assets/css/styles.css?v=always-on-analytics-20260731">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
-      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "US", "CA-QC"],
-      wait_for_update: 500
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"]
     });
     gtag('consent', 'default', {
       analytics_storage: 'granted',
@@ -48,20 +46,12 @@
       gtag('js', new Date());
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
-    try {
-      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
-      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
-      if (savedAnalyticsChoice === 'declined') {
-        window.mgcAnalyticsAllowed = false;
-        gtag('consent', 'update', {analytics_storage: 'denied'});
-      }
-    } catch (error) {}
     window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="assets/js/listings.js?v=regional-consent-us-20260728"></script>
-  <script defer src="assets/js/app.js?v=regional-consent-us-20260728"></script>
+  <script defer src="assets/js/listings.js?v=always-on-analytics-20260731"></script>
+  <script defer src="assets/js/app.js?v=always-on-analytics-20260731"></script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://minigolfcanada.ca/#organization","name":"Mini Golf Canada","url":"https://minigolfcanada.ca/","logo":"https://minigolfcanada.ca/assets/images/mini-golf-canada-logo.svg","parentOrganization":{"@id":"https://www.nocturnaldevs.com/#organization"},"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"nocturnaldevs@gmail.com","telephone":"+14373662920","url":"https://www.nocturnaldevs.com/","areaServed":"CA","availableLanguage":"English"}},{"@type":"Organization","@id":"https://www.nocturnaldevs.com/#organization","name":"Nocturnal Devs","url":"https://www.nocturnaldevs.com/","email":"nocturnaldevs@gmail.com","telephone":"+14373662920","address":{"@type":"PostalAddress","streetAddress":"419 Markham Rd","addressLocality":"Toronto","addressRegion":"ON","postalCode":"M1J 3E1","addressCountry":"CA"}},{"@type":"WebSite","@id":"https://minigolfcanada.ca/#website","name":"Mini Golf Canada","url":"https://minigolfcanada.ca/","publisher":{"@id":"https://minigolfcanada.ca/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://minigolfcanada.ca/search/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"FAQPage","@id":"https://minigolfcanada.ca/#faq","mainEntity":[{"@type":"Question","name":"How do I find mini golf near me in Canada?","acceptedAnswer":{"@type":"Answer","text":"Search by city, province, course name, mini putt, glow golf, indoor mini golf, outdoor mini golf, or use the location feature to compare nearby courses."}},{"@type":"Question","name":"Does Mini Golf Canada include mini putt near me?","acceptedAnswer":{"@type":"Answer","text":"Yes. Mini Golf Canada uses both mini golf and mini putt because Canadians commonly use both names for miniature putting courses."}},{"@type":"Question","name":"Are mini golf prices listed?","acceptedAnswer":{"@type":"Answer","text":"When public price details were found, they are summarized on the listing. Prices can change, so visitors should confirm with the official venue before visiting."}}]}]}</script>
 </head>
@@ -330,16 +320,6 @@
     </section>
 
   </main>
-  <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
-    <div>
-      <strong>Analytics preferences</strong>
-      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="privacy/">Privacy details</a></p>
-    </div>
-    <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
-    </div>
-  </section>
   <footer class="site-footer">
     <div>
       <a class="brand footer-brand" href="./"><span class="brand-mark" aria-hidden="true">
@@ -367,7 +347,6 @@
       <a href="cookie-policy/">Cookies</a>
       <a href="terms/">Terms</a>
       <a href="contact/">Contact</a>
-      <button class="footer-privacy-button" type="button" data-privacy-settings>Privacy choices</button>
     </nav>
   </footer>
 </body>

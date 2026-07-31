@@ -14,119 +14,9 @@
   }
 
   function trackEvent(name, params) {
-    if (window.mgcAnalyticsAllowed && typeof window.gtag === "function") {
+    if (typeof window.gtag === "function") {
       window.gtag("event", name, params || {});
     }
-  }
-
-  var privacyChoiceKey = "mgc-privacy-choice-v1";
-  var privacyRegionKey = "mgc-consent-region-v1";
-  var consentPromptCountries = [
-    "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR",
-    "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL",
-    "PT", "RO", "SK", "SI", "ES", "SE", "GB", "UK", "CH", "US"
-  ];
-
-  function storedPrivacyChoice() {
-    try {
-      return localStorage.getItem(privacyChoiceKey);
-    } catch (error) {
-      return null;
-    }
-  }
-
-  function updateAnalyticsConsent(choice) {
-    window.mgcAnalyticsAllowed = choice !== "declined";
-    if (typeof window.gtag !== "function") return;
-    window.gtag("consent", "update", {
-      analytics_storage: choice === "accepted" ? "granted" : "denied"
-    });
-  }
-
-  function savePrivacyChoice(choice) {
-    try {
-      localStorage.setItem(privacyChoiceKey, choice);
-    } catch (error) {}
-    updateAnalyticsConsent(choice);
-    document.querySelectorAll("[data-privacy-banner]").forEach(function (banner) {
-      banner.hidden = true;
-    });
-  }
-
-  function showPrivacyChoices() {
-    var banner = document.querySelector("[data-privacy-banner]");
-    if (!banner) return;
-    banner.hidden = false;
-    var firstChoice = banner.querySelector("[data-privacy-choice]");
-    if (firstChoice) firstChoice.focus();
-  }
-
-  function storedPrivacyRegion() {
-    try {
-      return sessionStorage.getItem(privacyRegionKey);
-    } catch (error) {
-      return null;
-    }
-  }
-
-  function savePrivacyRegion(value) {
-    try {
-      sessionStorage.setItem(privacyRegionKey, value);
-    } catch (error) {}
-  }
-
-  function regionUsesConsentPrompt(data) {
-    var country = String(data && data.country_code || "").toUpperCase();
-    var region = String(data && data.region || "").toLowerCase();
-    return consentPromptCountries.indexOf(country) !== -1 ||
-      (country === "CA" && region === "quebec");
-  }
-
-  function initRegionalPrivacyPrompt() {
-    var cachedRegion = storedPrivacyRegion();
-    if (cachedRegion === "required") {
-      showPrivacyChoices();
-      return;
-    }
-    if (cachedRegion === "standard" || typeof window.fetch !== "function") return;
-
-    var controller = typeof AbortController === "function" ? new AbortController() : null;
-    var timeout = window.setTimeout(function () {
-      if (controller) controller.abort();
-    }, 3000);
-    window.fetch("https://get.geojs.io/v1/ip/geo.json", {
-      cache: "no-store",
-      credentials: "omit",
-      referrerPolicy: "no-referrer",
-      signal: controller ? controller.signal : undefined
-    }).then(function (response) {
-      if (!response.ok) throw new Error("Region lookup failed");
-      return response.json();
-    }).then(function (data) {
-      window.clearTimeout(timeout);
-      var result = regionUsesConsentPrompt(data) ? "required" : "standard";
-      savePrivacyRegion(result);
-      if (result === "required" && !storedPrivacyChoice()) showPrivacyChoices();
-    }).catch(function () {
-      window.clearTimeout(timeout);
-    });
-  }
-
-  function initPrivacyControls() {
-    var choice = storedPrivacyChoice();
-    if (choice === "accepted" || choice === "declined") {
-      updateAnalyticsConsent(choice);
-    } else {
-      initRegionalPrivacyPrompt();
-    }
-    document.querySelectorAll("[data-privacy-choice]").forEach(function (button) {
-      button.addEventListener("click", function () {
-        savePrivacyChoice(button.getAttribute("data-privacy-choice"));
-      });
-    });
-    document.querySelectorAll("[data-privacy-settings]").forEach(function (button) {
-      button.addEventListener("click", showPrivacyChoices);
-    });
   }
 
   var currentLocation = null;
@@ -524,7 +414,6 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    initPrivacyControls();
     attachImageFallbacks(document);
     initGallerySliders(document);
     renderMap((window.MGC_LISTINGS || []).slice(0, 24));

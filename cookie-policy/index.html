@@ -17,20 +17,18 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../site.webmanifest">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=regional-consent-us-20260728">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=always-on-analytics-20260731">
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     window.gtag = gtag;
-    window.mgcAnalyticsAllowed = true;
     gtag('consent', 'default', {
       analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied',
-      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "US", "CA-QC"],
-      wait_for_update: 500
+      region: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GB", "CH", "CA-QC"]
     });
     gtag('consent', 'default', {
       analytics_storage: 'granted',
@@ -48,22 +46,14 @@
       gtag('js', new Date());
       gtag('config', 'G-XGPL1E000J', {anonymize_ip: true});
     };
-    try {
-      var savedAnalyticsChoice = localStorage.getItem('mgc-privacy-choice-v1');
-      if (savedAnalyticsChoice === 'accepted') gtag('consent', 'update', {analytics_storage: 'granted'});
-      if (savedAnalyticsChoice === 'declined') {
-        window.mgcAnalyticsAllowed = false;
-        gtag('consent', 'update', {analytics_storage: 'denied'});
-      }
-    } catch (error) {}
     window.loadMgcAnalytics();
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../assets/js/listings.js?v=regional-consent-us-20260728"></script>
-  <script defer src="../assets/js/app.js?v=regional-consent-us-20260728"></script>
+  <script defer src="../assets/js/listings.js?v=always-on-analytics-20260731"></script>
+  <script defer src="../assets/js/app.js?v=always-on-analytics-20260731"></script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://minigolfcanada.ca/cookie-policy/#webpage","name":"Cookie Policy","url":"https://minigolfcanada.ca/cookie-policy/","description":"Cookie categories, browser storage and privacy controls used by Mini Golf Canada.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-28"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/cookie-policy/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Cookie Policy","item":"https://minigolfcanada.ca/cookie-policy/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://minigolfcanada.ca/cookie-policy/#webpage","name":"Cookie Policy","url":"https://minigolfcanada.ca/cookie-policy/","description":"Cookie categories, browser storage and privacy controls used by Mini Golf Canada.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-07-31"},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/cookie-policy/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Cookie Policy","item":"https://minigolfcanada.ca/cookie-policy/"}]}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -98,31 +88,20 @@
       <p>Cookie categories, browser storage and privacy controls used by Mini Golf Canada.</p>
     </section>
     <section class="section article-body">
-            <p><strong>Effective date:</strong> July 28, 2026</p>
+            <p><strong>Effective date:</strong> July 31, 2026</p>
             <p>This policy supplements the <a href="/privacy/">privacy policy</a>. Cookies are small browser files, and similar technologies include local storage, tags and device identifiers.</p>
             <h2>Necessary storage</h2>
-            <p>The site may use browser storage for security, reliable operation and remembering an explicit privacy choice. A temporary session value records only whether the visitor is in a configured consent region. These values do not identify a person.</p>
+            <p>The site may use browser storage needed for security, reliable operation and ordinary browser features. It does not store a first-party analytics preference or perform a separate browser-based region lookup.</p>
             <h2>Analytics</h2>
-            <p>Google Analytics helps measure page use and directory interactions. The Google tag runs in advanced, region-aware Consent Mode. Standard analytics measurement operates outside the European Economic Area, United Kingdom, Switzerland, United States and Quebec unless the visitor declines analytics cookies. In those consent regions, analytics storage is denied by default, a consent prompt is shown, and Google may receive cookieless measurement signals before a choice. Declining analytics does not prevent access to listings, search or location sorting.</p>
-            <p>The regional prompt uses a coarse GeoJS country and region lookup. Mini Golf Canada does not retain the returned IP address, coordinates or other response fields and stores only a temporary consent-region-or-standard result for the current browser session.</p>
+            <p>Google Analytics helps measure page use and directory interactions. Its tag runs on every page in advanced, region-aware Consent Mode. Analytics storage is enabled by default outside the European Economic Area, United Kingdom, Switzerland and Quebec. In those regions, analytics storage remains denied and Google receives cookieless measurement signals instead. There is no site-level analytics preference or consent prompt.</p>
             <h2>Advertising storage</h2>
             <p>If advertising is activated, advertising vendors may request storage for ad delivery, frequency control, fraud prevention, reporting and personalization. In regions where consent is required, advertising storage and personalization remain denied until the appropriate consent choice is provided through a certified consent platform.</p>
             <h2>Manage choices</h2>
-            <p>Select Privacy choices in the footer to change the site's analytics preference. Browser controls can also delete local storage and cookies or block them by site. Clearing browser data resets an explicit preference to the regional default; the automatic prompt is limited to configured consent regions.</p>
+            <p>Browser controls and content-blocking tools can delete or block cookies by site. The <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">Google Analytics Opt-out Browser Add-on</a> can prevent Google Analytics measurement in supported browsers. Mini Golf Canada does not provide a separate analytics toggle.</p>
             <p>Questions can be sent to <a href="mailto:nocturnaldevs@gmail.com">nocturnaldevs@gmail.com</a>.</p>
             </section>
 
   </main>
-  <section class="privacy-banner" data-privacy-banner hidden aria-label="Privacy choices" aria-live="polite">
-    <div>
-      <strong>Analytics preferences</strong>
-      <p>Mini Golf Canada uses region-aware analytics to understand which pages help visitors. You can allow or decline analytics cookies; directory features work either way. <a href="../privacy/">Privacy details</a></p>
-    </div>
-    <div class="privacy-actions">
-      <button class="button secondary" type="button" data-privacy-choice="declined">Decline analytics cookies</button>
-      <button class="button" type="button" data-privacy-choice="accepted">Allow analytics cookies</button>
-    </div>
-  </section>
   <footer class="site-footer">
     <div>
       <a class="brand footer-brand" href="../"><span class="brand-mark" aria-hidden="true">
@@ -150,7 +129,6 @@
       <a href="./">Cookies</a>
       <a href="../terms/">Terms</a>
       <a href="../contact/">Contact</a>
-      <button class="footer-privacy-button" type="button" data-privacy-settings>Privacy choices</button>
     </nav>
   </footer>
 </body>
