@@ -413,9 +413,154 @@
     return "Location could not be checked. Search by city or province instead.";
   }
 
+  function formatDuration(minutes) {
+    minutes = Math.max(0, Math.round(minutes));
+    var hours = Math.floor(minutes / 60);
+    var rest = minutes % 60;
+    if (!hours) return rest + " min";
+    return hours + " hr" + (hours === 1 ? "" : "s") + (rest ? " " + rest + " min" : "");
+  }
+
+  function formatCad(value) {
+    return new Intl.NumberFormat("en-CA", {style:"currency", currency:"CAD"}).format(Number(value || 0));
+  }
+
+  function initCourseComparison() {
+    var root = document.querySelector(".js-course-comparison");
+    if (!root) return;
+    var listings = (window.MGC_LISTINGS || []).slice().sort(function (a, b) {
+      return (a.name + a.city).localeCompare(b.name + b.city);
+    });
+    var selects = Array.from(root.querySelectorAll("[data-compare-course]"));
+    selects.forEach(function (select) {
+      listings.forEach(function (item) {
+        var option = document.createElement("option");
+        option.value = item.id;
+        option.textContent = item.name + " - " + item.city + ", " + item.province;
+        select.appendChild(option);
+      });
+    });
+
+    function render() {
+      var chosen = selects.map(function (select) {
+        return listings.find(function (item) { return item.id === select.value; });
+      }).filter(Boolean);
+      var result = root.querySelector("[data-compare-result]");
+      if (chosen.length < 2) {
+        result.innerHTML = "<p>Choose at least two courses to build a comparison.</p>";
+        return;
+      }
+      var rows = [
+        ["Location", function (item) { return item.city + ", " + item.province; }],
+        ["Format", function (item) { return item.format || "Not established"; }],
+        ["Source level", function (item) { return item.sourceLevel; }],
+        ["Weekly hours", function (item) { return item.hoursKnown ? "Schedule recorded" : "Confirm with venue"; }],
+        ["Price", function (item) { return item.hasPrice ? item.price : "Confirm with venue"; }],
+        ["Public rating snapshot", function (item) { return item.rating ? item.rating.toFixed(1) + "/5" + (item.reviews ? " (" + item.reviews + ")" : "") : "Not recorded"; }],
+        ["Known signals", function (item) { return (item.tags || []).join(", ") || "No detailed signals"; }],
+      ];
+      var header = chosen.map(function (item) {
+        return '<th scope="col"><a href="' + escapeHtml(relativeToRoot(item.path)) + '">' + escapeHtml(item.name) + "</a></th>";
+      }).join("");
+      var body = rows.map(function (row) {
+        return '<tr><th scope="row">' + escapeHtml(row[0]) + "</th>" + chosen.map(function (item) {
+          return "<td>" + escapeHtml(row[1](item)) + "</td>";
+        }).join("") + "</tr>";
+      }).join("");
+      result.innerHTML = '<div class="article-table-wrap"><table class="article-table comparison-table"><thead><tr><th scope="col">Compare</th>' + header + "</tr></thead><tbody>" + body + "</tbody></table></div>";
+    }
+    selects.forEach(function (select) { select.addEventListener("change", render); });
+    root.querySelector("[data-compare-clear]").addEventListener("click", function () {
+      selects.forEach(function (select) { select.value = ""; });
+      render();
+    });
+  }
+
+  function initRoundTimeTool() {
+    var form = document.querySelector(".js-round-time-tool");
+    if (!form) return;
+    function calculate() {
+      var holes = Number(form.elements.holes.value || 18);
+      var players = clamp(Number(form.elements.players.value || 1), 1, 8);
+      var pace = Number(form.elements.pace.value || 1);
+      var buffer = Number(form.elements.buffer.value || 0);
+      var groupFactor = 0.68 + players * 0.09;
+      var play = holes * 3.05 * groupFactor * pace;
+      var low = play * 0.82 + buffer;
+      var high = play * 1.25 + buffer;
+      form.querySelector("[data-time-result]").innerHTML = '<strong>' + formatDuration(low) + " to " + formatDuration(high) + '</strong><span>including a ' + buffer + "-minute arrival buffer</span>";
+    }
+    form.addEventListener("input", calculate);
+    form.addEventListener("change", calculate);
+    calculate();
+  }
+
+  function initPartyBudgetTool() {
+    var form = document.querySelector(".js-party-budget-tool");
+    if (!form) return;
+    function calculate() {
+      var players = clamp(Number(form.elements.players.value || 0), 0, 200);
+      var tickets = players * Math.max(0, Number(form.elements.ticket.value || 0));
+      var food = players * Math.max(0, Number(form.elements.food.value || 0));
+      var fixed = Math.max(0, Number(form.elements.fixed.value || 0));
+      var subtotal = tickets + food + fixed;
+      var tax = subtotal * clamp(Number(form.elements.tax.value || 0), 0, 30) / 100;
+      var beforeBuffer = subtotal + tax;
+      var contingency = beforeBuffer * clamp(Number(form.elements.buffer.value || 0), 0, 50) / 100;
+      var total = beforeBuffer + contingency;
+      form.querySelector("[data-budget-result]").innerHTML = '<strong>' + formatCad(total) + '</strong><span>Tickets ' + formatCad(tickets) + " + food " + formatCad(food) + " + fixed fees " + formatCad(fixed) + " + estimated tax " + formatCad(tax) + " + contingency " + formatCad(contingency) + "</span>";
+    }
+    form.addEventListener("input", calculate);
+    calculate();
+  }
+
+  function initScorecardTool() {
+    var root = document.querySelector(".js-scorecard-tool");
+    if (!root) return;
+    var result = root.querySelector("[data-scorecard-result]");
+    function players() {
+      return root.querySelector("[name=players]").value.split(/\n+/).map(function (name) { return name.trim(); }).filter(Boolean).slice(0, 8);
+    }
+    function updateTotals() {
+      result.querySelectorAll("[data-player-total]").forEach(function (cell) {
+        var index = cell.getAttribute("data-player-total");
+        var total = Array.from(result.querySelectorAll('[data-player="' + index + '"]')).reduce(function (sum, input) {
+          return sum + (Number(input.value) || 0);
+        }, 0);
+        cell.textContent = total || "0";
+      });
+    }
+    function build() {
+      var names = players();
+      var holes = Number(root.querySelector("[name=holes]").value || 18);
+      var limit = clamp(Number(root.querySelector("[name=limit]").value || 6), 2, 12);
+      if (!names.length) {
+        result.innerHTML = "<p>Add at least one player name.</p>";
+        return;
+      }
+      var header = names.map(function (name) { return '<th scope="col">' + escapeHtml(name) + "</th>"; }).join("");
+      var rows = "";
+      for (var hole = 1; hole <= holes; hole += 1) {
+        rows += '<tr><th scope="row">' + hole + "</th>" + names.map(function (_, index) {
+          return '<td><input type="number" aria-label="Hole ' + hole + " score for " + escapeHtml(names[index]) + '" min="1" max="' + limit + '" data-player="' + index + '"></td>';
+        }).join("") + "</tr>";
+      }
+      var totals = names.map(function (_, index) { return '<td data-player-total="' + index + '">0</td>'; }).join("");
+      result.innerHTML = '<div class="article-table-wrap"><table class="article-table scorecard-table"><caption>Mini golf scorecard</caption><thead><tr><th scope="col">Hole</th>' + header + "</tr></thead><tbody>" + rows + '</tbody><tfoot><tr><th scope="row">Total</th>' + totals + "</tr></tfoot></table></div>";
+    }
+    root.querySelector("[data-scorecard-build]").addEventListener("click", build);
+    root.querySelector("[data-scorecard-print]").addEventListener("click", function () { window.print(); });
+    result.addEventListener("input", updateTotals);
+    build();
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     attachImageFallbacks(document);
     initGallerySliders(document);
+    initCourseComparison();
+    initRoundTimeTool();
+    initPartyBudgetTool();
+    initScorecardTool();
     renderMap((window.MGC_LISTINGS || []).slice(0, 24));
 
     document.querySelectorAll(".js-directory-search").forEach(function (form) {

@@ -1,7 +1,11 @@
 {
-  "pages": 633,
-  "listings": 358,
+  "pages": 649,
+  "indexable_pages": 496,
+  "listings": 300,
+  "source_records": 358,
+  "noindex_course_records": 58,
   "provinces": 11,
   "city_pages": 244,
+  "directory_city_pages": 212,
   "output": "/Users/omarbernard/Desktop/Mini Golf Directory/site"
 }
