@@ -229,8 +229,8 @@
     var hasDistance = typeof item.distance === "number" && isFinite(item.distance);
     var sideNote = hasDistance ? "<span>" + item.distance.toFixed(1) + " km away</span>" : "<span>" + escapeHtml(item.price || "Check prices") + "</span>";
     article.innerHTML =
-      '<a class="course-image" href="' + escapeHtml(relativeToRoot(item.path)) + '">' +
-      '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.imageAlt || (item.name + " venue image")) + '" loading="lazy" decoding="async" width="800" height="500" data-image-fallback="true"></a>' +
+      (item.image ? '<a class="course-image" href="' + escapeHtml(relativeToRoot(item.path)) + '">' +
+      '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.imageAlt || (item.name + " venue image")) + '" loading="lazy" decoding="async" width="800" height="500" data-image-fallback="true"></a>' : '') +
       '<div class="course-body"><div class="course-meta">' +
       (item.rating ? escapeHtml(item.rating.toFixed(1) + " rating") : "No rating yet") +
       (item.reviews ? " · " + escapeHtml(String(item.reviews)) + " reviews" : "") +
