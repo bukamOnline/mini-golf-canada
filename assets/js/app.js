@@ -75,17 +75,9 @@
   }
 
   function itemMatchesFilter(item, filter) {
-    var text = searchableText(item);
     if (filter === "price") return !!item.hasPrice;
     if (filter === "rating") return Number(item.rating || 0) >= 4;
-    if (filter === "indoor") return text.indexOf("indoor") > -1;
-    if (filter === "outdoor") return text.indexOf("outdoor") > -1;
-    if (filter === "glow") return text.indexOf("glow") > -1;
-    if (filter === "birthday") return text.indexOf("birthday") > -1 || text.indexOf("party") > -1;
-    if (filter === "arcade") return text.indexOf("arcade") > -1;
-    if (filter === "food") return text.indexOf("food") > -1 || text.indexOf("drinks") > -1;
-    if (filter === "accessible") return text.indexOf("accessible") > -1 || text.indexOf("wheelchair") > -1;
-    return true;
+    return (item.features || []).indexOf(filter) !== -1;
   }
 
   function renderMap(items) {
@@ -232,8 +224,9 @@
       (item.image ? '<a class="course-image" href="' + escapeHtml(relativeToRoot(item.path)) + '">' +
       '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.imageAlt || (item.name + " venue image")) + '" loading="lazy" decoding="async" width="800" height="500" data-image-fallback="true"></a>' : '') +
       '<div class="course-body"><div class="course-meta">' +
-      (item.rating ? escapeHtml(item.rating.toFixed(1) + " rating") : "No rating yet") +
-      (item.reviews ? " · " + escapeHtml(String(item.reviews)) + " reviews" : "") +
+      (item.rating ? escapeHtml("Public rating snapshot: " + item.rating.toFixed(1) + "/5") : "No rating yet") +
+      (item.reviews ? " · " + escapeHtml(String(item.reviews)) + " ratings" : "") +
+      " · " + escapeHtml(item.ratingCaptured || "Date not recorded") +
       '</div><h3><a href="' + escapeHtml(relativeToRoot(item.path)) + '">' + escapeHtml(item.name) + '</a></h3>' +
       '<p class="course-location">' + escapeHtml(item.city) + ", " + escapeHtml(item.province) + '</p>' +
       '<div class="tag-row">' + (item.tags || []).slice(0, 4).map(function (tag) { return '<span class="tag">' + escapeHtml(tag) + '</span>'; }).join("") + '</div>' +
@@ -645,3 +638,42 @@
     });
   });
 })();
+/* Progressive enhancement: every course and source is present without JavaScript. */
+document.querySelectorAll('[data-directory-tool]').forEach(function (root) {
+  var entries = Array.from(root.querySelectorAll('[data-directory-entry]'));
+  var form = root.querySelector('form');
+  var status = root.querySelector('[data-directory-status]');
+  var selectedOnly = root.querySelector('[name=selected-only]');
+  function normalize(value) { return value.toLocaleLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+  function update() {
+    var query = normalize((form.querySelector('[name=course-query]').value || '').trim());
+    var setting = form.querySelector('[name=course-setting]').value;
+    var cityControl = form.querySelector('[name=course-city]');
+    var city = cityControl ? cityControl.value : '';
+    var visible = 0;
+    entries.forEach(function (entry) {
+      var pick = entry.querySelector('[name=shortlist]');
+      var show = (!query || normalize(entry.dataset.search).indexOf(query) !== -1) &&
+        (!setting || entry.dataset.settings.split(' ').indexOf(setting) !== -1) &&
+        (!city || entry.dataset.city === city) &&
+        (!selectedOnly || !selectedOnly.checked || (pick && pick.checked));
+      entry.hidden = !show;
+      if (show) visible++;
+    });
+    status.textContent = visible + ' of ' + entries.length + ' researched options shown.' +
+      (visible ? '' : ' No match in this directory selection. Clear filters or use the wider course search.');
+  }
+  form.addEventListener('input', update);
+  form.addEventListener('change', update);
+  root.addEventListener('change', function (event) {
+    if (event.target.name === 'shortlist') update();
+  });
+  form.addEventListener('reset', function () {
+    root.querySelectorAll('[name=shortlist]').forEach(function (pick) { pick.checked = false; });
+    setTimeout(update, 0);
+  });
+  form.addEventListener('submit', function (event) { event.preventDefault(); update(); });
+  root.querySelector('[data-directory-controls]').hidden = false;
+  root.classList.add("directory-enhanced");
+  update();
+});
