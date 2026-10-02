@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="assets/css/styles.css?v=directory-decisions-20260930">
+  <link rel="stylesheet" href="assets/css/styles.css?v=search-pagination-20261002">
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -51,7 +51,7 @@
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
   <script defer src="assets/js/listings.js?v=directory-decisions-20260930"></script>
-  <script defer src="assets/js/app.js?v=directory-decisions-20260930"></script>
+  <script defer src="assets/js/app.js?v=search-pagination-20261002"></script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://minigolfcanada.ca/#organization","name":"Mini Golf Canada","url":"https://minigolfcanada.ca/","logo":"https://minigolfcanada.ca/assets/images/mini-golf-canada-logo.svg","parentOrganization":{"@id":"https://www.nocturnaldevs.com/#organization"},"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"nocturnaldevs@gmail.com","telephone":"+14373662920","url":"https://www.nocturnaldevs.com/","areaServed":"CA","availableLanguage":"English"}},{"@type":"Organization","@id":"https://www.nocturnaldevs.com/#organization","name":"Nocturnal Devs","url":"https://www.nocturnaldevs.com/","email":"nocturnaldevs@gmail.com","telephone":"+14373662920","address":{"@type":"PostalAddress","streetAddress":"419 Markham Rd","addressLocality":"Toronto","addressRegion":"ON","postalCode":"M1J 3E1","addressCountry":"CA"}},{"@type":"WebSite","@id":"https://minigolfcanada.ca/#website","name":"Mini Golf Canada","url":"https://minigolfcanada.ca/","publisher":{"@id":"https://minigolfcanada.ca/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://minigolfcanada.ca/search/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"FAQPage","@id":"https://minigolfcanada.ca/#faq","mainEntity":[{"@type":"Question","name":"How do I find mini golf near me in Canada?","acceptedAnswer":{"@type":"Answer","text":"Search by city, province, course name, mini putt, glow golf, indoor mini golf, outdoor mini golf, or use the location feature to compare nearby courses."}},{"@type":"Question","name":"Does Mini Golf Canada include mini putt near me?","acceptedAnswer":{"@type":"Answer","text":"Yes. Mini Golf Canada uses both mini golf and mini putt because Canadians commonly use both names for miniature putting courses."}},{"@type":"Question","name":"How are course details checked?","acceptedAnswer":{"@type":"Answer","text":"Profiles link to venue, municipal, tourism or structured public business sources and show the source-check date. Same-day details still come from the operator."}}]}]}</script>
 </head>
@@ -127,7 +127,7 @@
       </div>
       <div class="js-search-status status-note" role="status" aria-live="polite">Enter a city or use your location to compare nearby courses.</div>
       <div class="results-map-shell"><h3>Map View</h3><div class="results-map js-results-map" aria-label="Map view of current mini golf results"></div></div>
-      <div class="directory-grid js-search-results">
+      <div class="directory-grid js-search-results" id="search-results">
     <article class="course-card">
 
       <div class="course-body">
@@ -263,6 +263,10 @@
       </div>
     </article>
     </div>
+      <div class="search-pagination js-search-pagination" hidden>
+        <p class="js-search-count"></p>
+        <button class="js-search-more" type="button" aria-controls="search-results">Show more</button>
+      </div>
     </section>
     <section class="section split-band province-band">
       <div class="section-copy">

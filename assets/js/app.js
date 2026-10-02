@@ -351,24 +351,60 @@
     var usingLocation = !!locationPoint;
     var matches = relevantListings(context);
     matches = usingLocation
-      ? sortByDistance(matches, context.tokens, locationPoint).slice(0, 18)
-      : sortByRelevance(matches, context.tokens).slice(0, 24);
+      ? sortByDistance(matches, context.tokens, locationPoint)
+      : sortByRelevance(matches, context.tokens);
 
+    var pageSize = usingLocation ? 18 : 24;
+    var shown = 0;
+    var pagination = document.querySelector(".js-search-pagination");
+    // Also support pages cached before the pagination markup was added.
+    if (!pagination) {
+      pagination = document.createElement("div");
+      pagination.className = "search-pagination js-search-pagination";
+      pagination.innerHTML = '<p class="js-search-count"></p><button class="js-search-more" type="button">Show more</button>';
+      results.insertAdjacentElement("afterend", pagination);
+    }
+    var count = pagination.querySelector(".js-search-count");
+    var more = pagination.querySelector(".js-search-more");
+    if (!results.id) results.id = "search-results";
+    more.setAttribute("aria-controls", results.id);
     results.innerHTML = "";
-    matches.forEach(function (item) { results.appendChild(courseCard(item)); });
-    renderMap(matches);
-    if (status) {
+
+    function showNextPage(moveFocus) {
+      var previousShown = shown;
+      shown = Math.min(shown + pageSize, matches.length);
+      var firstNewCard = null;
+      matches.slice(previousShown, shown).forEach(function (item) {
+        var card = courseCard(item);
+        if (!firstNewCard) firstNewCard = card;
+        results.appendChild(card);
+      });
+      renderMap(matches.slice(0, shown));
+      var summary;
       if (usingLocation) {
         var refined = context.tokens.length || context.province || context.filters.length;
-        status.textContent = matches.length
-          ? "Showing the " + matches.length + " closest relevant mini golf listing" + (matches.length === 1 ? "" : "s") + (refined ? " for your current search." : " near your current location.") + locationAccuracyNote(locationPoint)
+        summary = matches.length
+          ? "Showing " + shown + " of " + matches.length + " relevant mini golf listing" + (matches.length === 1 ? "" : "s") + (refined ? " for your current search" : " near your current location") + ", closest first." + locationAccuracyNote(locationPoint)
           : "No nearby listings matched the current search. Try fewer filters or search by city or province.";
       } else {
-        status.textContent = matches.length
-          ? "Showing " + matches.length + " matching mini golf listing" + (matches.length === 1 ? "." : "s.")
+        summary = matches.length
+          ? "Showing " + shown + " of " + matches.length + " matching mini golf listing" + (matches.length === 1 ? "." : "s.")
           : "No matching courses found. Try a nearby city, province, mini putt, glow golf, indoor, or outdoor.";
       }
+      if (shown && shown === matches.length) summary += " All matches are shown.";
+      if (status) status.textContent = summary;
+      count.textContent = matches.length ? "Showing " + shown + " of " + matches.length + " matches." + (shown === matches.length ? " All matches are shown." : "") : "";
+      pagination.hidden = !matches.length;
+      more.hidden = shown === matches.length;
+      more.setAttribute("aria-label", "Show more (" + Math.min(pageSize, matches.length - shown) + " mini golf listings)");
+      if (moveFocus && firstNewCard) {
+        var link = firstNewCard.querySelector("h3 a");
+        if (link) link.focus({preventScroll:true});
+      }
     }
+
+    more.onclick = function () { showNextPage(true); };
+    showNextPage(false);
     if (options.track) {
       trackEvent("directory_search", {
         search_term: context.queryInput ? context.queryInput.value.trim() : "",

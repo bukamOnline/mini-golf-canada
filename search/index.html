@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../site.webmanifest">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=directory-decisions-20260930">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=search-pagination-20261002">
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -51,7 +51,7 @@
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
   <script defer src="../assets/js/listings.js?v=directory-decisions-20260930"></script>
-  <script defer src="../assets/js/app.js?v=directory-decisions-20260930"></script>
+  <script defer src="../assets/js/app.js?v=search-pagination-20261002"></script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"SearchResultsPage","name":"Mini golf near me search","url":"https://minigolfcanada.ca/search/","description":"Search Canadian mini golf and mini putt courses by city, province, nearby location, indoor golf, glow golf, prices, and party options."},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/search/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Search","item":"https://minigolfcanada.ca/search/"}]}]}</script>
 </head>
@@ -117,7 +117,7 @@
       </div>
       <div class="js-search-status status-note" role="status" aria-live="polite">Search for a city, province, mini putt, indoor mini golf, glow golf, party option, or use your location.</div>
       <div class="results-map-shell"><h3>Map View</h3><div class="results-map js-results-map" aria-label="Map view of current mini golf results"></div></div>
-      <div class="directory-grid js-search-results">
+      <div class="directory-grid js-search-results" id="search-results">
     <article class="course-card">
 
       <div class="course-body">
@@ -298,6 +298,10 @@
       </div>
     </article>
     </div>
+      <div class="search-pagination js-search-pagination" hidden>
+        <p class="js-search-count"></p>
+        <button class="js-search-more" type="button" aria-controls="search-results">Show more</button>
+      </div>
     </section>
     <section class="section editorial-copy">
       <h2>How to compare mini golf near me results</h2>

@@ -62,3 +62,7 @@
   .mobile-stack td[data-label]::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;color:#52675b;margin-bottom:3px}
 }
 @media print{.site-header,.site-footer,.page-hero,.tool-heading,.scorecard-setup,.tool-actions,.tool-notes{display:none!important}.tool-workspace,.section{padding:0!important;background:#fff}.tool-panel{max-width:none;padding:0;border:0;box-shadow:none}.scorecard-wrap{margin:0}.scorecard-table input{border:0}}
+
+.search-pagination{margin-top:24px;text-align:center}
+.search-pagination p{margin:0 0 12px;color:var(--muted);font-size:14px}
+.search-pagination[hidden],.js-search-more[hidden]{display:none!important}
