@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=directory-decisions-20260930">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=visitor-decisions-20261021">
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,6 +37,7 @@
       ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
+      if (['localhost', '127.0.0.1'].indexOf(window.location.hostname) !== -1) return;
       if (window.mgcAnalyticsLoaded) return;
       window.mgcAnalyticsLoaded = true;
       var script = document.createElement('script');
@@ -50,10 +51,10 @@
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=directory-decisions-20260930"></script>
-  <script defer src="../../assets/js/app.js?v=directory-decisions-20260930"></script>
+  <script defer src="../../assets/js/listings.js?v=visitor-decisions-20261021"></script>
+  <script defer src="../../assets/js/app.js?v=visitor-decisions-20261021"></script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/#business","name":"Miniature Golf Fabreville","url":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/#webpage"},"description":"Plan a visit to Miniature Golf Fabreville in Laval, Quebec. Compare accessibility features and food on-site, location, hours, photos and current venue...","address":{"@type":"PostalAddress","streetAddress":"3315 Bd Sainte-Rose","addressLocality":"Laval","addressRegion":"QC","postalCode":"H7P 4L7","addressCountry":"CA"},"telephone":"+1 450-625-4752","sameAs":["https://www.facebook.com/golfminiaturefabrevilleinc"],"geo":{"@type":"GeoCoordinates","latitude":45.5987523,"longitude":-73.8084036}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/#webpage","name":"Miniature Golf Fabreville | Mini Golf in Laval, Quebec","url":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/","description":"Plan a visit to Miniature Golf Fabreville in Laval, Quebec. Compare accessibility features and food on-site, location, hours, photos and current venue...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-09-30","about":{"@id":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Quebec","item":"https://minigolfcanada.ca/provinces/quebec/"},{"@type":"ListItem","position":3,"name":"Laval","item":"https://minigolfcanada.ca/cities/quebec/laval/"},{"@type":"ListItem","position":4,"name":"Miniature Golf Fabreville","item":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/#business","name":"Miniature Golf Fabreville","url":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/#webpage"},"description":"Plan a visit to Miniature Golf Fabreville in Laval, Quebec. Compare accessibility features and food on-site, location, hours, photos and current venue...","address":{"@type":"PostalAddress","streetAddress":"3315 Bd Sainte-Rose","addressLocality":"Laval","addressRegion":"QC","postalCode":"H7P 4L7","addressCountry":"CA"},"telephone":"+1 450-625-4752","sameAs":["https://www.facebook.com/golfminiaturefabrevilleinc"],"geo":{"@type":"GeoCoordinates","latitude":45.5987523,"longitude":-73.8084036}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/#webpage","name":"Miniature Golf Fabreville | Mini Golf in Laval, Quebec","url":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/","description":"Plan a visit to Miniature Golf Fabreville in Laval, Quebec. Compare accessibility features and food on-site, location, hours, photos and current venue...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-10-21","about":{"@id":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Quebec","item":"https://minigolfcanada.ca/provinces/quebec/"},{"@type":"ListItem","position":3,"name":"Laval","item":"https://minigolfcanada.ca/cities/quebec/laval/"},{"@type":"ListItem","position":4,"name":"Miniature Golf Fabreville","item":"https://minigolfcanada.ca/courses/miniature-golf-fabreville-laval-qc/"}]}]}</script>
 </head>
 <body class="single-post">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -91,7 +92,8 @@
           <p class="lead">Laval, Quebec: a mini golf option.</p>
           <div class="editorial-meta"><span>By <a href="../../research-desk/">Mini Golf Canada Research Desk</a></span><span>Latest course-source review: September 7, 2026</span><span>Source-based guide, not a first-hand review</span></div>
 
-          <div class="course-facts" data-nosnippet><span>4.6/5 public profile snapshot</span><span>627 ratings at source check</span></div>
+
+
           <div class="tag-row"><span class="tag">Family-friendly</span><span class="tag">Food on-site</span><span class="tag">Accessibility features</span><span class="tag">Free parking</span></div>
           <div class="button-row"><a class="button secondary" href="https://www.facebook.com/golfminiaturefabrevilleinc" rel="nofollow noopener" target="_blank">Official website</a><a class="button secondary" href="tel:+14506254752">Call</a><a class="button secondary" href="https://www.google.com/maps/place/Miniature+Golf+Fabreville/@45.5987523,-73.80840359999999,14z/data=!4m8!1m2!2m1!1sMiniature+Golf+Fabreville!3m4!1s0x4cc9268f7ecd9aad:0x40842f418429cdfc!8m2!3d45.5987523!4d-73.80840359999999" rel="nofollow noopener" target="_blank">Open map</a></div>
         </div>
@@ -119,7 +121,7 @@
           <dt>Location</dt><dd>3315 Bd Sainte-Rose, Laval, QC H7P 4L7</dd>
           <dt>Course format</dt><dd>a mini golf option</dd>
           <dt>Venue type</dt><dd>golf facility that includes mini golf</dd>
-          <dt>Business status</dt><dd>Operational at last profile check</dd>
+          <dt>Business status</dt><dd>Earlier business profile: Operational at last profile check; captured June 16, 2026</dd>
           <dt>Phone</dt><dd>+1 450-625-4752</dd>
           <dt>Admission</dt><dd>Confirm current Fabreville tariff</dd>
           <dt>Course-source review</dt><dd>September 7, 2026</dd>

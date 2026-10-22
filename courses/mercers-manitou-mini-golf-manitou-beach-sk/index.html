@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=directory-decisions-20260930">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=visitor-decisions-20261021">
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,6 +37,7 @@
       ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
+      if (['localhost', '127.0.0.1'].indexOf(window.location.hostname) !== -1) return;
       if (window.mgcAnalyticsLoaded) return;
       window.mgcAnalyticsLoaded = true;
       var script = document.createElement('script');
@@ -50,10 +51,10 @@
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=directory-decisions-20260930"></script>
-  <script defer src="../../assets/js/app.js?v=directory-decisions-20260930"></script>
+  <script defer src="../../assets/js/listings.js?v=visitor-decisions-20261021"></script>
+  <script defer src="../../assets/js/app.js?v=visitor-decisions-20261021"></script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/#business","name":"Mercers manitou mini golf","url":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/#webpage"},"description":"Mercers manitou mini golf in Manitou Beach, Saskatchewan: a mini golf option. Check course details, hours, photos, directions and official venue links.","address":{"@type":"PostalAddress","streetAddress":"209 Shawondasse Dr","addressLocality":"Manitou Beach","addressRegion":"SK","postalCode":"S0K 4T1","addressCountry":"CA"},"telephone":"+1 306-249-6594","sameAs":["https://www.manitoubeach.ca/Community.php"],"geo":{"@type":"GeoCoordinates","latitude":51.7186172,"longitude":-105.4516767}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/#webpage","name":"Mercers manitou mini golf | Mini Golf in Manitou Beach, Saskatchewan","url":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/","description":"Mercers manitou mini golf in Manitou Beach, Saskatchewan: a mini golf option. Check course details, hours, photos, directions and official venue links.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-09-30","about":{"@id":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Saskatchewan","item":"https://minigolfcanada.ca/provinces/saskatchewan/"},{"@type":"ListItem","position":3,"name":"Manitou Beach","item":"https://minigolfcanada.ca/cities/saskatchewan/manitou-beach/"},{"@type":"ListItem","position":4,"name":"Mercers manitou mini golf","item":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/#business","name":"Mercers manitou mini golf","url":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/#webpage"},"description":"Mercers manitou mini golf in Manitou Beach, Saskatchewan: a mini golf option. Check course details, hours, photos, directions and official venue links.","address":{"@type":"PostalAddress","streetAddress":"209 Shawondasse Dr","addressLocality":"Manitou Beach","addressRegion":"SK","postalCode":"S0K 4T1","addressCountry":"CA"},"telephone":"+1 306-249-6594","sameAs":["https://www.manitoubeach.ca/Community.php"],"geo":{"@type":"GeoCoordinates","latitude":51.7186172,"longitude":-105.4516767}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/#webpage","name":"Mercers manitou mini golf | Mini Golf in Manitou Beach, Saskatchewan","url":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/","description":"Mercers manitou mini golf in Manitou Beach, Saskatchewan: a mini golf option. Check course details, hours, photos, directions and official venue links.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-10-21","about":{"@id":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Saskatchewan","item":"https://minigolfcanada.ca/provinces/saskatchewan/"},{"@type":"ListItem","position":3,"name":"Manitou Beach","item":"https://minigolfcanada.ca/cities/saskatchewan/manitou-beach/"},{"@type":"ListItem","position":4,"name":"Mercers manitou mini golf","item":"https://minigolfcanada.ca/courses/mercers-manitou-mini-golf-manitou-beach-sk/"}]}]}</script>
 </head>
 <body class="single-post">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -84,14 +85,15 @@
   <main id="main">
 
     <section class="course-hero">
-      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../../provinces/saskatchewan/">Saskatchewan</a><span aria-hidden="true">/</span><a href="../../cities/saskatchewan/manitou-beach/">Manitou Beach</a><span aria-hidden="true">/</span><span>Mercers manitou mini golf</span></nav>
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../../provinces/saskatchewan/">Saskatchewan</a><span aria-hidden="true">/</span><a href="./">Manitou Beach</a><span aria-hidden="true">/</span><span>Mercers manitou mini golf</span></nav>
       <div class="course-hero-grid course-hero-text">
         <div>
           <h1>Mercers manitou mini golf</h1>
           <p class="lead">Manitou Beach, Saskatchewan: a mini golf option.</p>
           <div class="editorial-meta"><span>By <a href="../../research-desk/">Mini Golf Canada Research Desk</a></span><span>Latest course-source review: September 7, 2026</span><span>Source-based guide, not a first-hand review</span></div>
 
-          <div class="course-facts" data-nosnippet><span>5.0/5 public profile snapshot</span><span>1 ratings at source check</span></div>
+
+
           <div class="tag-row"><span class="tag">5 Google rating</span><span class="tag">1 Google reviews</span><span class="tag">published hours</span></div>
           <div class="button-row"><a class="button secondary" href="https://www.manitoubeach.ca/Community.php" rel="nofollow noopener" target="_blank">Official website</a><a class="button secondary" href="tel:+13062496594">Call</a><a class="button secondary" href="https://www.google.com/maps/place/Mercers+manitou+mini+golf/@51.7186172,-105.4516767,14z/data=!4m8!1m2!2m1!1sMercers+manitou+mini+golf!3m4!1s0x53034d00558c8691:0x2fb787e4ddf0a46e!8m2!3d51.7186172!4d-105.4516767" rel="nofollow noopener" target="_blank">Open map</a></div>
         </div>
@@ -119,7 +121,7 @@
           <dt>Location</dt><dd>209 Shawondasse Dr, Manitou Beach, SK S0K 4T1</dd>
           <dt>Course format</dt><dd>a mini golf option</dd>
           <dt>Venue type</dt><dd>golf facility that includes mini golf</dd>
-          <dt>Business status</dt><dd>Operational at last profile check</dd>
+          <dt>Business status</dt><dd>Earlier business profile: Operational at last profile check; captured June 16, 2026</dd>
           <dt>Phone</dt><dd>+1 306-249-6594</dd>
           <dt>Admission</dt><dd>Call Mercers, not the conventional golf club</dd>
           <dt>Course-source review</dt><dd>September 7, 2026</dd>

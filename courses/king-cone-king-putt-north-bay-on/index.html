@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=directory-decisions-20260930">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=visitor-decisions-20261021">
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,6 +37,7 @@
       ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
+      if (['localhost', '127.0.0.1'].indexOf(window.location.hostname) !== -1) return;
       if (window.mgcAnalyticsLoaded) return;
       window.mgcAnalyticsLoaded = true;
       var script = document.createElement('script');
@@ -50,10 +51,10 @@
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=directory-decisions-20260930"></script>
-  <script defer src="../../assets/js/app.js?v=directory-decisions-20260930"></script>
+  <script defer src="../../assets/js/listings.js?v=visitor-decisions-20261021"></script>
+  <script defer src="../../assets/js/app.js?v=visitor-decisions-20261021"></script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/#business","name":"King Cone & King Putt","url":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/#webpage"},"description":"Plan a visit to King Cone & King Putt in North Bay, Ontario. Compare course details, location, hours, photos and current venue information.","address":{"@type":"PostalAddress","streetAddress":"6 Lakeshore Dr","addressLocality":"North Bay","addressRegion":"ON","postalCode":"P1A 2A2","addressCountry":"CA"},"telephone":"+1 705-474-1333","geo":{"@type":"GeoCoordinates","latitude":46.2964203,"longitude":-79.4551615}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/#webpage","name":"King Cone & King Putt | Mini Golf in North Bay, Ontario","url":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/","description":"Plan a visit to King Cone & King Putt in North Bay, Ontario. Compare course details, location, hours, photos and current venue information.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-09-30","about":{"@id":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Ontario","item":"https://minigolfcanada.ca/provinces/ontario/"},{"@type":"ListItem","position":3,"name":"North Bay","item":"https://minigolfcanada.ca/cities/ontario/north-bay/"},{"@type":"ListItem","position":4,"name":"King Cone & King Putt","item":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/#business","name":"King Cone & King Putt","url":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/#webpage"},"description":"Plan a visit to King Cone & King Putt in North Bay, Ontario. Compare course details, location, hours, photos and current venue information.","address":{"@type":"PostalAddress","streetAddress":"6 Lakeshore Dr","addressLocality":"North Bay","addressRegion":"ON","postalCode":"P1A 2A2","addressCountry":"CA"},"telephone":"+1 705-474-1333","geo":{"@type":"GeoCoordinates","latitude":46.2964203,"longitude":-79.4551615}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/#webpage","name":"King Cone & King Putt | Mini Golf in North Bay, Ontario","url":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/","description":"Plan a visit to King Cone & King Putt in North Bay, Ontario. Compare course details, location, hours, photos and current venue information.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-10-21","about":{"@id":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Ontario","item":"https://minigolfcanada.ca/provinces/ontario/"},{"@type":"ListItem","position":3,"name":"North Bay","item":"https://minigolfcanada.ca/cities/ontario/north-bay/"},{"@type":"ListItem","position":4,"name":"King Cone & King Putt","item":"https://minigolfcanada.ca/courses/king-cone-king-putt-north-bay-on/"}]}]}</script>
 </head>
 <body class="single-post">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -91,7 +92,8 @@
           <p class="lead">North Bay, Ontario: a mini golf option.</p>
           <div class="editorial-meta"><span>By <a href="../../research-desk/">Mini Golf Canada Research Desk</a></span><span>Latest course-source review: September 7, 2026</span><span>Source-based guide, not a first-hand review</span></div>
 
-          <div class="course-facts" data-nosnippet><span>4.5/5 public profile snapshot</span><span>132 ratings at source check</span></div>
+          <div class="verification-notice"><strong>Before you travel</strong><p>The regional tourism guide dated March 11, 2026 describes operation from mid-May to mid-October. It does not establish late-October or winter opening.</p><p class="source-caveat">Status checked 2026-10-21.</p></div>
+
           <div class="tag-row"><span class="tag">Family-friendly</span></div>
           <div class="button-row"><a class="button secondary" href="tel:+17054741333">Call</a><a class="button secondary" href="https://www.google.com/maps/place/King+Cone+%26+King+Putt/@46.2964203,-79.4551615,14z/data=!4m8!1m2!2m1!1sKing+Cone+%26+King+Putt!3m4!1s0x4d29aa61044c0001:0x599b82fc0a4be007!8m2!3d46.2964203!4d-79.4551615" rel="nofollow noopener" target="_blank">Open map</a></div>
         </div>
@@ -119,7 +121,7 @@
           <dt>Location</dt><dd>6 Lakeshore Dr, North Bay, ON P1A 2A2</dd>
           <dt>Course format</dt><dd>a mini golf option</dd>
           <dt>Venue type</dt><dd>golf facility that includes mini golf</dd>
-          <dt>Business status</dt><dd>Operational at last profile check</dd>
+          <dt>Business status</dt><dd>Earlier business profile: Operational at last profile check; captured June 16, 2026</dd>
           <dt>Phone</dt><dd>+1 705-474-1333</dd>
           <dt>Admission</dt><dd>Confirm regular King Putt admission</dd>
           <dt>Course-source review</dt><dd>September 7, 2026</dd>

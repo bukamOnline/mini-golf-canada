@@ -224,11 +224,10 @@
       (item.image ? '<a class="course-image" href="' + escapeHtml(relativeToRoot(item.path)) + '">' +
       '<img src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.imageAlt || (item.name + " venue image")) + '" loading="lazy" decoding="async" width="800" height="500" data-image-fallback="true"></a>' : '') +
       '<div class="course-body"><div class="course-meta">' +
-      (item.rating ? escapeHtml("Public rating snapshot: " + item.rating.toFixed(1) + "/5") : "No rating yet") +
-      (item.reviews ? " · " + escapeHtml(String(item.reviews)) + " ratings" : "") +
-      " · " + escapeHtml(item.ratingCaptured || "Date not recorded") +
+      escapeHtml("Course details checked " + (item.checked || "date not recorded")) +
       '</div><h3><a href="' + escapeHtml(relativeToRoot(item.path)) + '">' + escapeHtml(item.name) + '</a></h3>' +
       '<p class="course-location">' + escapeHtml(item.city) + ", " + escapeHtml(item.province) + '</p>' +
+      (item.availability ? '<p class="status-note"><strong>Visit status:</strong> ' + escapeHtml(item.availability) + '</p>' : '') +
       '<div class="tag-row">' + (item.tags || []).slice(0, 4).map(function (tag) { return '<span class="tag">' + escapeHtml(tag) + '</span>'; }).join("") + '</div>' +
       '<div class="course-actions"><a class="text-link" href="' + escapeHtml(relativeToRoot(item.path)) + '">View course</a>' + sideNote + '</div></div>';
     attachImageFallbacks(article);
@@ -473,7 +472,7 @@
     function render() {
       var chosen = selects.map(function (select) {
         return listings.find(function (item) { return item.id === select.value; });
-      }).filter(Boolean);
+      }).filter(Boolean).filter(function (item, index, all) { return all.findIndex(function (other) { return other.id === item.id; }) === index; });
       var result = root.querySelector("[data-compare-result]");
       if (chosen.length < 2) {
         result.innerHTML = "<p>Choose at least two courses to build a comparison.</p>";
@@ -482,11 +481,12 @@
       var rows = [
         ["Location", function (item) { return item.city + ", " + item.province; }],
         ["Format", function (item) { return item.format || "Not established"; }],
-        ["Source level", function (item) { return item.sourceLevel; }],
-        ["Weekly hours", function (item) { return item.hoursKnown ? "Schedule recorded" : "Confirm with venue"; }],
-        ["Price", function (item) { return item.hasPrice ? item.price : "Confirm with venue"; }],
-        ["Public rating snapshot", function (item) { return item.rating ? item.rating.toFixed(1) + "/5" + (item.reviews ? " (" + item.reviews + ")" : "") : "Not recorded"; }],
-        ["Known signals", function (item) { return (item.tags || []).join(", ") || "No detailed signals"; }],
+        ["Visit status", function (item) { return item.availability || "Check your date with the operator"; }],
+        ["Course evidence checked", function (item) { return item.checked || "Date not recorded"; }],
+        ["Admission", function (item) { return item.price || "Confirm with venue"; }],
+        ["Rate evidence checked", function (item) { return item.hasPrice ? item.priceChecked : "No numeric tariff verified"; }],
+        ["Tax and ticket conditions", function (item) { return item.taxNote || "Not established; confirm with venue"; }],
+        ["Our planning take", function (item) { return item.planningTake || "See profile"; }],
       ];
       var header = chosen.map(function (item) {
         return '<th scope="col"><a href="' + escapeHtml(relativeToRoot(item.path)) + '">' + escapeHtml(item.name) + "</a></th>";
@@ -496,9 +496,20 @@
           return "<td>" + escapeHtml(row[1](item)) + "</td>";
         }).join("") + "</tr>";
       }).join("");
-      result.innerHTML = '<div class="article-table-wrap"><table class="article-table comparison-table"><thead><tr><th scope="col">Compare</th>' + header + "</tr></thead><tbody>" + body + "</tbody></table></div>";
+      var facts = '<tr><th scope="row">Visit findings and direct sources</th>' + chosen.map(function (item) {
+        return '<td><ul>' + (item.visitDetails || []).map(function (detail) {
+          return '<li><strong>' + escapeHtml(detail.label) + ':</strong> ' + escapeHtml(detail.text) +
+            ' <a href="' + escapeHtml(detail.source) + '">Source</a></li>';
+        }).join('') + '</ul></td>';
+      }).join('') + '</tr>';
+      result.innerHTML = '<div class="article-table-wrap" tabindex="0" role="region" aria-label="Course comparison; scroll horizontally to see all courses"><table class="article-table comparison-table"><thead><tr><th scope="col">Compare</th>' + header + "</tr></thead><tbody>" + body + facts + "</tbody></table></div>";
     }
-    selects.forEach(function (select) { select.addEventListener("change", render); });
+    var preselected = new URLSearchParams(window.location.search).getAll('course');
+    selects.forEach(function (select, index) {
+      if (preselected[index] && listings.some(function (item) { return item.id === preselected[index]; })) select.value = preselected[index];
+      select.addEventListener("change", render);
+    });
+    render();
     root.querySelector("[data-compare-clear]").addEventListener("click", function () {
       selects.forEach(function (select) { select.value = ""; });
       render();
@@ -696,6 +707,13 @@ document.querySelectorAll('[data-directory-tool]').forEach(function (root) {
       entry.hidden = !show;
       if (show) visible++;
     });
+    var compare = root.querySelector('[data-open-comparison]');
+    if (compare) {
+      var selected = entries.filter(function (entry) { var pick = entry.querySelector('[name=shortlist]'); return pick && pick.checked; });
+      compare.hidden = selected.length < 2 || selected.length > 4;
+      compare.href = '/tools/course-comparison/?' + selected.map(function (entry) { return 'course=' + encodeURIComponent(entry.dataset.courseId); }).join('&');
+      root.querySelector('[data-comparison-hint]').textContent = selected.length > 4 ? ' Select no more than four courses.' : ' Select two to four courses to compare their full visit findings.';
+    }
     status.textContent = visible + ' of ' + entries.length + ' researched options shown.' +
       (visible ? '' : ' No match in this directory selection. Clear filters or use the wider course search.');
   }
@@ -712,4 +730,25 @@ document.querySelectorAll('[data-directory-tool]').forEach(function (root) {
   root.querySelector('[data-directory-controls]').hidden = false;
   root.classList.add("directory-enhanced");
   update();
+});
+
+/* Integer cents avoid floating-point drift; quantities are ticket/package units. */
+document.querySelectorAll('[data-ticket-calculator]').forEach(function (root) {
+  var form = root.querySelector('form');
+  var output = root.querySelector('[data-ticket-total]');
+  form.hidden = false;
+  function calculate() {
+    var cents = 0, count = 0, invalid = false;
+    root.querySelectorAll('[data-ticket-cents]').forEach(function (input) {
+      var quantity = Number(input.value);
+      if (input.value === '' || !Number.isInteger(quantity) || quantity < 0 || quantity > 100) invalid = true;
+      else { count += quantity; cents += quantity * Number(input.dataset.ticketCents); }
+    });
+    output.textContent = invalid ? 'Enter a whole quantity from 0 to 100 for every ticket category.' :
+      count ? new Intl.NumberFormat('en-CA', {style:'currency', currency:'CAD'}).format(cents / 100) +
+        ' — sum of selected ticket prices. See tax and eligibility notes below.' : 'Select ticket quantities to calculate.';
+  }
+  form.addEventListener('input', calculate);
+  form.addEventListener('submit', function (event) { event.preventDefault(); calculate(); });
+  form.addEventListener('reset', function () { setTimeout(calculate, 0); });
 });

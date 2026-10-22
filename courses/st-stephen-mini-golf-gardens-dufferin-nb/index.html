@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=directory-decisions-20260930">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=visitor-decisions-20261021">
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,6 +37,7 @@
       ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
+      if (['localhost', '127.0.0.1'].indexOf(window.location.hostname) !== -1) return;
       if (window.mgcAnalyticsLoaded) return;
       window.mgcAnalyticsLoaded = true;
       var script = document.createElement('script');
@@ -50,10 +51,10 @@
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=directory-decisions-20260930"></script>
-  <script defer src="../../assets/js/app.js?v=directory-decisions-20260930"></script>
+  <script defer src="../../assets/js/listings.js?v=visitor-decisions-20261021"></script>
+  <script defer src="../../assets/js/app.js?v=visitor-decisions-20261021"></script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/#business","name":"St. Stephen Mini Golf Gardens","url":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/#webpage"},"description":"St. Stephen Mini Golf Gardens in Dufferin, New Brunswick: an outdoor mini golf option with garden theming. Check outdoor and accessibility features...","address":{"@type":"PostalAddress","streetAddress":"15 Eddie Ln","addressLocality":"Dufferin","addressRegion":"NB","postalCode":"E3L 0E3","addressCountry":"CA"},"telephone":"+1 519-560-7333","sameAs":["https://www.ssminigolfgardens.com/"],"geo":{"@type":"GeoCoordinates","latitude":45.2124665,"longitude":-67.2487166}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/#webpage","name":"St. Stephen Mini Golf Gardens | Mini Golf in Dufferin, New Brunswick","url":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/","description":"St. Stephen Mini Golf Gardens in Dufferin, New Brunswick: an outdoor mini golf option with garden theming. Check outdoor and accessibility features...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-09-30","about":{"@id":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"New Brunswick","item":"https://minigolfcanada.ca/provinces/new-brunswick/"},{"@type":"ListItem","position":3,"name":"Dufferin","item":"https://minigolfcanada.ca/cities/new-brunswick/dufferin/"},{"@type":"ListItem","position":4,"name":"St. Stephen Mini Golf Gardens","item":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/#business","name":"St. Stephen Mini Golf Gardens","url":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/#webpage"},"description":"St. Stephen Mini Golf Gardens in Dufferin, New Brunswick: an outdoor mini golf option with garden theming. Check outdoor and accessibility features...","address":{"@type":"PostalAddress","streetAddress":"15 Eddie Ln","addressLocality":"Dufferin","addressRegion":"NB","postalCode":"E3L 0E3","addressCountry":"CA"},"telephone":"+1 519-560-7333","sameAs":["https://www.ssminigolfgardens.com/"],"geo":{"@type":"GeoCoordinates","latitude":45.2124665,"longitude":-67.2487166}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/#webpage","name":"St. Stephen Mini Golf Gardens | Mini Golf in Dufferin, New Brunswick","url":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/","description":"St. Stephen Mini Golf Gardens in Dufferin, New Brunswick: an outdoor mini golf option with garden theming. Check outdoor and accessibility features...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-10-21","about":{"@id":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"New Brunswick","item":"https://minigolfcanada.ca/provinces/new-brunswick/"},{"@type":"ListItem","position":3,"name":"Dufferin","item":"https://minigolfcanada.ca/cities/new-brunswick/dufferin/"},{"@type":"ListItem","position":4,"name":"St. Stephen Mini Golf Gardens","item":"https://minigolfcanada.ca/courses/st-stephen-mini-golf-gardens-dufferin-nb/"}]}]}</script>
 </head>
 <body class="single-post">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -84,14 +85,15 @@
   <main id="main">
 
     <section class="course-hero">
-      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../../provinces/new-brunswick/">New Brunswick</a><span aria-hidden="true">/</span><a href="../../cities/new-brunswick/dufferin/">Dufferin</a><span aria-hidden="true">/</span><span>St. Stephen Mini Golf Gardens</span></nav>
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../../provinces/new-brunswick/">New Brunswick</a><span aria-hidden="true">/</span><a href="./">Dufferin</a><span aria-hidden="true">/</span><span>St. Stephen Mini Golf Gardens</span></nav>
       <div class="course-hero-grid course-hero-text">
         <div>
           <h1>St. Stephen Mini Golf Gardens</h1>
           <p class="lead">Historical venue record in Dufferin, New Brunswick. Current mini-golf operation needs confirmation.</p>
           <div class="editorial-meta"><span>By <a href="../../research-desk/">Mini Golf Canada Research Desk</a></span><span>Course verification attempted: September 7, 2026</span><span>Source-based guide, not a first-hand review</span></div>
           <div class="verification-notice" role="note"><strong>Mini golf not currently verified</strong><p>The operator page mixes coming-soon language with daily opening hours. A confirmed current opening and admission need direct clarification.</p></div>
-          <div class="course-facts" data-nosnippet><span>4.5/5 public profile snapshot</span><span>11 ratings at source check</span></div>
+          <div class="verification-notice"><strong>Before you travel</strong><p>The operator page says Now Open at the top but still says coming soon in the course description. Confirm operation directly before travelling.</p><p class="source-caveat">Status checked 2026-10-21.</p></div>
+
           <div class="tag-row"><span class="tag">Outdoor</span><span class="tag">Family-friendly</span><span class="tag">Group outings</span><span class="tag">Accessibility features</span></div>
           <div class="button-row"><a class="button secondary" href="https://www.ssminigolfgardens.com/" rel="nofollow noopener" target="_blank">Official website</a><a class="button secondary" href="tel:+15195607333">Call</a><a class="button secondary" href="https://www.google.com/maps/place/St.+Stephen+Mini+Golf+Gardens/@45.2124665,-67.2487166,14z/data=!4m8!1m2!2m1!1sSt.+Stephen+Mini+Golf+Gardens!3m4!1s0x4ca5fdae32194987:0x64a992fd80ca557!8m2!3d45.2124665!4d-67.2487166" rel="nofollow noopener" target="_blank">Open map</a></div>
         </div>
@@ -119,7 +121,7 @@
           <dt>Location</dt><dd>15 Eddie Ln, Dufferin, NB E3L 0E3</dd>
           <dt>Course format</dt><dd>an outdoor mini golf option with garden theming</dd>
           <dt>Venue type</dt><dd>multi-activity entertainment venue with mini golf</dd>
-          <dt>Business status</dt><dd>Operational at last profile check</dd>
+          <dt>Business status</dt><dd>Earlier business profile: Operational at last profile check; captured June 16, 2026</dd>
           <dt>Phone</dt><dd>+1 519-560-7333</dd>
           <dt>Admission</dt><dd>Confirm opening and admission</dd>
           <dt>Course-source review</dt><dd>September 7, 2026</dd>

@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="assets/css/styles.css?v=search-pagination-20261002">
+  <link rel="stylesheet" href="assets/css/styles.css?v=visitor-decisions-20261021">
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,6 +37,7 @@
       ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
+      if (['localhost', '127.0.0.1'].indexOf(window.location.hostname) !== -1) return;
       if (window.mgcAnalyticsLoaded) return;
       window.mgcAnalyticsLoaded = true;
       var script = document.createElement('script');
@@ -50,8 +51,8 @@
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="assets/js/listings.js?v=directory-decisions-20260930"></script>
-  <script defer src="assets/js/app.js?v=search-pagination-20261002"></script>
+  <script defer src="assets/js/listings.js?v=visitor-decisions-20261021"></script>
+  <script defer src="assets/js/app.js?v=visitor-decisions-20261021"></script>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://minigolfcanada.ca/#organization","name":"Mini Golf Canada","url":"https://minigolfcanada.ca/","logo":"https://minigolfcanada.ca/assets/images/mini-golf-canada-logo.svg","parentOrganization":{"@id":"https://www.nocturnaldevs.com/#organization"},"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"nocturnaldevs@gmail.com","telephone":"+14373662920","url":"https://www.nocturnaldevs.com/","areaServed":"CA","availableLanguage":"English"}},{"@type":"Organization","@id":"https://www.nocturnaldevs.com/#organization","name":"Nocturnal Devs","url":"https://www.nocturnaldevs.com/","email":"nocturnaldevs@gmail.com","telephone":"+14373662920","address":{"@type":"PostalAddress","streetAddress":"419 Markham Rd","addressLocality":"Toronto","addressRegion":"ON","postalCode":"M1J 3E1","addressCountry":"CA"}},{"@type":"WebSite","@id":"https://minigolfcanada.ca/#website","name":"Mini Golf Canada","url":"https://minigolfcanada.ca/","publisher":{"@id":"https://minigolfcanada.ca/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://minigolfcanada.ca/search/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"FAQPage","@id":"https://minigolfcanada.ca/#faq","mainEntity":[{"@type":"Question","name":"How do I find mini golf near me in Canada?","acceptedAnswer":{"@type":"Answer","text":"Search by city, province, course name, mini putt, glow golf, indoor mini golf, outdoor mini golf, or use the location feature to compare nearby courses."}},{"@type":"Question","name":"Does Mini Golf Canada include mini putt near me?","acceptedAnswer":{"@type":"Answer","text":"Yes. Mini Golf Canada uses both mini golf and mini putt because Canadians commonly use both names for miniature putting courses."}},{"@type":"Question","name":"How are course details checked?","acceptedAnswer":{"@type":"Answer","text":"Profiles link to venue, municipal, tourism or structured public business sources and show the source-check date. Same-day details still come from the operator."}}]}]}</script>
 </head>
@@ -90,7 +91,7 @@
       </picture>
       <div class="hero-copy">
         <h1>Mini Golf Near Me in Canada</h1>
-        <p>Find mini golf near me, mini putt near me, indoor glow golf, outdoor courses, source-backed details, birthday party options, and family-friendly course signals across Canada.</p>
+        <p>Choose a course for your next outing. Compare indoor and outdoor play, ticket categories, booking rules and practical access details from dated operator sources.</p>
         <form class="search-panel js-directory-search" role="search">
           <label>
             <span>Search by course, city, province, or feature</span>
@@ -107,7 +108,7 @@
           <fieldset class="filter-panel js-search-filters">
             <legend>Filters</legend>
             <div class="filter-options">
-              <label><input type="checkbox" name="feature" value="indoor"> <span>Indoor</span></label><label><input type="checkbox" name="feature" value="outdoor"> <span>Outdoor</span></label><label><input type="checkbox" name="feature" value="glow"> <span>Glow</span></label><label><input type="checkbox" name="feature" value="birthday"> <span>Birthday parties</span></label><label><input type="checkbox" name="feature" value="arcade"> <span>Arcade</span></label><label><input type="checkbox" name="feature" value="food"> <span>Food &amp; drinks</span></label><label><input type="checkbox" name="feature" value="accessible"> <span>Accessible</span></label><label><input type="checkbox" name="feature" value="price"> <span>Price listed</span></label><label><input type="checkbox" name="feature" value="rating"> <span>Rated 4+</span></label>
+              <label><input type="checkbox" name="feature" value="indoor"> <span>Indoor</span></label><label><input type="checkbox" name="feature" value="outdoor"> <span>Outdoor</span></label><label><input type="checkbox" name="feature" value="glow"> <span>Glow</span></label><label><input type="checkbox" name="feature" value="birthday"> <span>Birthday parties</span></label><label><input type="checkbox" name="feature" value="arcade"> <span>Arcade</span></label><label><input type="checkbox" name="feature" value="food"> <span>Food &amp; drinks</span></label><label><input type="checkbox" name="feature" value="accessible"> <span>Access notes</span></label><label><input type="checkbox" name="feature" value="price"> <span>Price listed</span></label>
             </div>
           </fieldset>
 
@@ -120,10 +121,18 @@
         <span><strong>11</strong> provinces and territories</span>
       </div>
     </section>
+    <section class="section editorial-band" aria-labelledby="start-planning">
+      <div class="section-heading"><h2 id="start-planning">Three decisions before you pick a course</h2><p>Our comparisons explain how ticket rules, course setting and arrival cutoffs change an outing. Start with the decision you need to make.</p></div>
+      <div class="editorial-start">
+        <article><h3>What will your group pay?</h3><p>A family pass is not always cheaper than individual admission. Our worked comparison holds the group at ages 40, 40, 8 and 12, separates tax treatment, and accounts for required equipment.</p><a href="guides/mini-golf-prices-canada/">Compare the 20-venue price sample</a><p>On profiles with a rate table, enter your own ticket quantities to calculate a subtotal.</p></article>
+        <article><h3>Which restrictions matter?</h3><p>A glow course can charge non-playing companions; a resort course can restrict access to guests. Compare the actual visitor rules before treating two nearby pins as interchangeable.</p><a href="tools/course-comparison/">Compare course details and sources</a><p>The comparison includes the dated visit findings behind each profile, rather than ranking venues by a public star rating.</p></article>
+        <article><h3>When should you arrive?</h3><p>A closing time is not necessarily the last start. Centennial stops mini-putt ticket sales an hour before the pro shop closes; WinSport also publishes a last-tee-time cutoff.</p><a href="guides/how-long-does-mini-golf-take/">Plan a realistic arrival window</a><p><a href="courses/centennial-park-golf-centre-etobicoke-on/">Centennial evidence</a> · <a href="courses/winsport-mini-golf-calgary-ab/">WinSport evidence</a></p></article>
+      </div>
+    </section>
     <section id="nearby" class="section search-results-section">
       <div class="section-heading">
         <h2>Find Mini Golf Near Me</h2>
-        <p>Use your location or search manually to find fast options for mini golf near me, mini putt near me, birthday parties, date night, and family activities.</p>
+        <p>Search from your starting point, then open a profile for ticket calculations and the visit conditions that can change your plan.</p>
       </div>
       <div class="js-search-status status-note" role="status" aria-live="polite">Enter a city or use your location to compare nearby courses.</div>
       <div class="results-map-shell"><h3>Map View</h3><div class="results-map js-results-map" aria-label="Map view of current mini golf results"></div></div>
@@ -131,10 +140,11 @@
     <article class="course-card">
 
       <div class="course-body">
-        <div class="course-meta">Public rating snapshot: 4.4/5 · 2,849 ratings · June 16, 2026</div>
+        <div class="course-meta">Course details checked September 6, 2026</div>
         <h3><a href="courses/fleetway-london-on/">Fleetway</a></h3>
         <p class="course-location"><a href="cities/ontario/london/">London, Ontario</a></p>
         <p>an 18-hole indoor glow-golf course</p>
+
         <div class="tag-row"><span class="tag">18 holes</span><span class="tag">Indoor</span><span class="tag">Glow golf</span><span class="tag">Family-friendly</span><span class="tag">Birthday parties</span></div>
         <div class="course-actions">
           <a class="text-link" href="courses/fleetway-london-on/">View course</a>
@@ -146,10 +156,11 @@
     <article class="course-card">
 
       <div class="course-body">
-        <div class="course-meta">Public rating snapshot: 4.6/5 · 1,931 ratings · June 16, 2026</div>
+        <div class="course-meta">Course details checked September 6, 2026</div>
         <h3><a href="courses/chocolaterie-la-cabosse-d-or-otterburn-park-qc/">Chocolaterie la Cabosse d&#x27;Or</a></h3>
         <p class="course-location"><a href="cities/quebec/otterburn-park/">Otterburn Park, Quebec</a></p>
         <p>an 18-hole mini golf layout</p>
+
         <div class="tag-row"><span class="tag">18 holes</span><span class="tag">Accessibility features</span></div>
         <div class="course-actions">
           <a class="text-link" href="courses/chocolaterie-la-cabosse-d-or-otterburn-park-qc/">View course</a>
@@ -161,10 +172,11 @@
     <article class="course-card">
 
       <div class="course-body">
-        <div class="course-meta">Public rating snapshot: 4.5/5 · 1,751 ratings · June 16, 2026</div>
+        <div class="course-meta">Course details checked September 7, 2026</div>
         <h3><a href="courses/glowzone-360-brampton-on/">GlowZone 360</a></h3>
         <p class="course-location"><a href="cities/ontario/brampton/">Brampton, Ontario</a></p>
         <p>an 18-hole indoor glow mini golf layout</p>
+
         <div class="tag-row"><span class="tag">18 holes</span><span class="tag">Indoor</span><span class="tag">Glow golf</span><span class="tag">Family-friendly</span><span class="tag">Birthday parties</span></div>
         <div class="course-actions">
           <a class="text-link" href="courses/glowzone-360-brampton-on/">View course</a>
@@ -176,10 +188,11 @@
     <article class="course-card">
 
       <div class="course-body">
-        <div class="course-meta">Public rating snapshot: 4.2/5 · 1,742 ratings · June 16, 2026</div>
+        <div class="course-meta">Course details checked September 6, 2026</div>
         <h3><a href="courses/splitsville-bowl-calgary-highfield-calgary-ab/">Splitsville Bowl Calgary Highfield</a></h3>
         <p class="course-location"><a href="cities/alberta/calgary/">Calgary, Alberta</a></p>
         <p>a 9-hole indoor glow mini golf layout</p>
+
         <div class="tag-row"><span class="tag">9 holes</span><span class="tag">Indoor</span><span class="tag">Glow golf</span><span class="tag">Family-friendly</span><span class="tag">Birthday parties</span></div>
         <div class="course-actions">
           <a class="text-link" href="courses/splitsville-bowl-calgary-highfield-calgary-ab/">View course</a>
@@ -191,10 +204,11 @@
     <article class="course-card">
 
       <div class="course-body">
-        <div class="course-meta">Public rating snapshot: 4.4/5 · 1,614 ratings · June 16, 2026</div>
+        <div class="course-meta">Course details checked September 6, 2026</div>
         <h3><a href="courses/colasanti-s-tropical-gardens-kingsville-on/">Colasanti&#x27;s Tropical Gardens</a></h3>
         <p class="course-location"><a href="cities/ontario/kingsville/">Kingsville, Ontario</a></p>
         <p>an 18-hole indoor mini golf layout with garden and tropical theming</p>
+
         <div class="tag-row"><span class="tag">18 holes</span><span class="tag">Indoor</span><span class="tag">Family-friendly</span><span class="tag">Group outings</span><span class="tag">Arcade</span></div>
         <div class="course-actions">
           <a class="text-link" href="courses/colasanti-s-tropical-gardens-kingsville-on/">View course</a>
@@ -206,10 +220,11 @@
     <article class="course-card">
 
       <div class="course-body">
-        <div class="course-meta">Public rating snapshot: 4.5/5 · 1,165 ratings · June 16, 2026</div>
+        <div class="course-meta">Course details checked September 7, 2026</div>
         <h3><a href="courses/bar-laitier-mini-golf-fluo-s-amuse-quebec-city-qc/">Bar Laitier Mini Golf Fluo S&#x27;amuse</a></h3>
         <p class="course-location"><a href="cities/quebec/quebec-city/">Québec City, Quebec</a></p>
         <p>an 18-hole indoor glow mini golf layout</p>
+
         <div class="tag-row"><span class="tag">18 holes</span><span class="tag">Indoor</span><span class="tag">Glow golf</span><span class="tag">Family-friendly</span><span class="tag">Group outings</span></div>
         <div class="course-actions">
           <a class="text-link" href="courses/bar-laitier-mini-golf-fluo-s-amuse-quebec-city-qc/">View course</a>
@@ -221,10 +236,11 @@
     <article class="course-card">
 
       <div class="course-body">
-        <div class="course-meta">Public rating snapshot: 4.3/5 · 1,141 ratings · June 16, 2026</div>
+        <div class="course-meta">Course details checked September 6, 2026</div>
         <h3><a href="courses/speeders-calgary-chinook-calgary-ab/">Speeders Calgary Chinook</a></h3>
         <p class="course-location"><a href="cities/alberta/calgary/">Calgary, Alberta</a></p>
         <p>an indoor glow mini golf option</p>
+
         <div class="tag-row"><span class="tag">Indoor</span><span class="tag">Glow golf</span><span class="tag">Family-friendly</span><span class="tag">Birthday parties</span><span class="tag">Group outings</span></div>
         <div class="course-actions">
           <a class="text-link" href="courses/speeders-calgary-chinook-calgary-ab/">View course</a>
@@ -236,10 +252,11 @@
     <article class="course-card">
 
       <div class="course-body">
-        <div class="course-meta">Public rating snapshot: 4.3/5 · 803 ratings · June 16, 2026</div>
+        <div class="course-meta">Course details checked September 7, 2026</div>
         <h3><a href="courses/glow-mini-golf-winnipeg-mb/">Glow Mini Golf</a></h3>
         <p class="course-location"><a href="cities/manitoba/winnipeg/">Winnipeg, Manitoba</a></p>
         <p>an 18-hole indoor glow mini golf layout</p>
+
         <div class="tag-row"><span class="tag">18 holes</span><span class="tag">Indoor</span><span class="tag">Glow golf</span><span class="tag">Family-friendly</span><span class="tag">Birthday parties</span></div>
         <div class="course-actions">
           <a class="text-link" href="courses/glow-mini-golf-winnipeg-mb/">View course</a>
@@ -251,10 +268,11 @@
     <article class="course-card">
 
       <div class="course-body">
-        <div class="course-meta">Public rating snapshot: 4.1/5 · 776 ratings · June 16, 2026</div>
+        <div class="course-meta">Course details checked September 7, 2026</div>
         <h3><a href="courses/earl-haig-family-fun-park-brantford-on/">Earl Haig Family Fun Park</a></h3>
         <p class="course-location"><a href="cities/ontario/brantford/">Brantford, Ontario</a></p>
         <p>an 18-hole mini golf layout</p>
+
         <div class="tag-row"><span class="tag">18 holes</span><span class="tag">Family-friendly</span><span class="tag">Birthday parties</span><span class="tag">Batting cages</span><span class="tag">Food on-site</span></div>
         <div class="course-actions">
           <a class="text-link" href="courses/earl-haig-family-fun-park-brantford-on/">View course</a>
@@ -276,7 +294,7 @@
       <figure class="province-visual">
         <img src="assets/images/mini-golf-canada-map.webp" alt="Illustrated Canada map made of mini golf greens and red course flags" loading="lazy" decoding="async" width="1400" height="768">
       </figure>
-      <div class="province-grid"><a class="province-link" href="provinces/alberta/"><strong>Alberta</strong><span>39 courses</span></a><a class="province-link" href="provinces/british-columbia/"><strong>British Columbia</strong><span>37 courses</span></a><a class="province-link" href="provinces/manitoba/"><strong>Manitoba</strong><span>9 courses</span></a><a class="province-link" href="provinces/new-brunswick/"><strong>New Brunswick</strong><span>7 courses</span></a><a class="province-link" href="provinces/newfoundland-and-labrador/"><strong>Newfoundland and Labrador</strong><span>2 courses</span></a><a class="province-link" href="provinces/nova-scotia/"><strong>Nova Scotia</strong><span>4 courses</span></a><a class="province-link" href="provinces/ontario/"><strong>Ontario</strong><span>106 courses</span></a><a class="province-link" href="provinces/prince-edward-island/"><strong>Prince Edward Island</strong><span>6 courses</span></a><a class="province-link" href="provinces/quebec/"><strong>Quebec</strong><span>63 courses</span></a><a class="province-link" href="provinces/saskatchewan/"><strong>Saskatchewan</strong><span>16 courses</span></a><a class="province-link" href="provinces/yukon/"><strong>Yukon</strong><span>1 course</span></a></div>
+      <div class="province-grid"><a class="province-link" href="provinces/alberta/"><strong>Alberta</strong><span>39 records</span></a><a class="province-link" href="provinces/british-columbia/"><strong>British Columbia</strong><span>37 records</span></a><a class="province-link" href="provinces/manitoba/"><strong>Manitoba</strong><span>9 records</span></a><a class="province-link" href="provinces/new-brunswick/"><strong>New Brunswick</strong><span>7 records</span></a><a class="province-link" href="provinces/newfoundland-and-labrador/"><strong>Newfoundland and Labrador</strong><span>2 records</span></a><a class="province-link" href="provinces/nova-scotia/"><strong>Nova Scotia</strong><span>4 records</span></a><a class="province-link" href="provinces/ontario/"><strong>Ontario</strong><span>106 records</span></a><a class="province-link" href="provinces/prince-edward-island/"><strong>Prince Edward Island</strong><span>6 records</span></a><a class="province-link" href="provinces/quebec/"><strong>Quebec</strong><span>63 records</span></a><a class="province-link" href="provinces/saskatchewan/"><strong>Saskatchewan</strong><span>16 records</span></a><a class="province-link" href="provinces/yukon/"><strong>Yukon</strong><span>1 record</span></a></div>
     </section>
     <section class="section">
       <div class="section-heading">

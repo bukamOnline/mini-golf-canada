@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=directory-decisions-20260930">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=visitor-decisions-20261021">
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,6 +37,7 @@
       ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
+      if (['localhost', '127.0.0.1'].indexOf(window.location.hostname) !== -1) return;
       if (window.mgcAnalyticsLoaded) return;
       window.mgcAnalyticsLoaded = true;
       var script = document.createElement('script');
@@ -50,10 +51,10 @@
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=directory-decisions-20260930"></script>
-  <script defer src="../../assets/js/app.js?v=directory-decisions-20260930"></script>
+  <script defer src="../../assets/js/listings.js?v=visitor-decisions-20261021"></script>
+  <script defer src="../../assets/js/app.js?v=visitor-decisions-20261021"></script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/#business","name":"Eagle Classic Golf Centre and Mini Putt","url":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/#webpage"},"description":"Compare Eagle Classic Golf Centre and Mini Putt in Hamilton, Ontario: an 18-hole mini golf layout, with notes on birthday parties and accessibility...","address":{"@type":"PostalAddress","streetAddress":"618 Garner Rd E","addressLocality":"Hamilton","addressRegion":"ON","postalCode":"L9G 2J7","addressCountry":"CA"},"telephone":"+1 905-648-9880","sameAs":["https://eagleclassicgolfrange.com/"],"geo":{"@type":"GeoCoordinates","latitude":43.2057257,"longitude":-79.9546103}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/#webpage","name":"Eagle Classic Golf Centre and Mini Putt | Mini Golf in Hamilton, Ontario","url":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/","description":"Compare Eagle Classic Golf Centre and Mini Putt in Hamilton, Ontario: an 18-hole mini golf layout, with notes on birthday parties and accessibility...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-09-30","about":{"@id":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Ontario","item":"https://minigolfcanada.ca/provinces/ontario/"},{"@type":"ListItem","position":3,"name":"Hamilton","item":"https://minigolfcanada.ca/cities/ontario/hamilton/"},{"@type":"ListItem","position":4,"name":"Eagle Classic Golf Centre and Mini Putt","item":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["LocalBusiness","SportsActivityLocation"],"@id":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/#business","name":"Eagle Classic Golf Centre and Mini Putt","url":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/#webpage"},"description":"Compare Eagle Classic Golf Centre and Mini Putt in Hamilton, Ontario: an 18-hole mini golf layout, with notes on birthday parties and accessibility...","address":{"@type":"PostalAddress","streetAddress":"618 Garner Rd E","addressLocality":"Hamilton","addressRegion":"ON","postalCode":"L9G 2J7","addressCountry":"CA"},"telephone":"+1 905-648-9880","sameAs":["https://eagleclassicgolfrange.com/"],"geo":{"@type":"GeoCoordinates","latitude":43.2057257,"longitude":-79.9546103}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/#webpage","name":"Eagle Classic Golf Centre and Mini Putt | Mini Golf in Hamilton, Ontario","url":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/","description":"Compare Eagle Classic Golf Centre and Mini Putt in Hamilton, Ontario: an 18-hole mini golf layout, with notes on birthday parties and accessibility...","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-10-21","about":{"@id":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Ontario","item":"https://minigolfcanada.ca/provinces/ontario/"},{"@type":"ListItem","position":3,"name":"Hamilton","item":"https://minigolfcanada.ca/cities/ontario/hamilton/"},{"@type":"ListItem","position":4,"name":"Eagle Classic Golf Centre and Mini Putt","item":"https://minigolfcanada.ca/courses/eagle-classic-golf-centre-and-mini-putt-hamilton-on/"}]}]}</script>
 </head>
 <body class="single-post">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -91,7 +92,8 @@
           <p class="lead">Hamilton, Ontario: an 18-hole mini golf layout.</p>
           <div class="editorial-meta"><span>By <a href="../../research-desk/">Mini Golf Canada Research Desk</a></span><span>Latest course-source review: September 7, 2026</span><span>Source-based guide, not a first-hand review</span></div>
 
-          <div class="course-facts" data-nosnippet><span>4.2/5 public profile snapshot</span><span>373 ratings at source check</span></div>
+
+
           <div class="tag-row"><span class="tag">18 holes</span><span class="tag">Family-friendly</span><span class="tag">Birthday parties</span><span class="tag">Driving range</span><span class="tag">Accessibility features</span></div>
           <div class="button-row"><a class="button secondary" href="https://eagleclassicgolfrange.com/" rel="nofollow noopener" target="_blank">Official website</a><a class="button secondary" href="tel:+19056489880">Call</a><a class="button secondary" href="https://www.google.com/maps/place/Eagle+Classic+Golf+Centre+and+Mini+Putt/@43.205725699999995,-79.9546103,14z/data=!4m8!1m2!2m1!1sEagle+Classic+Golf+Centre+and+Mini+Putt!3m4!1s0x882c85709a8a6a59:0x1d13fb1622d4561a!8m2!3d43.205725699999995!4d-79.9546103" rel="nofollow noopener" target="_blank">Open map</a></div>
         </div>
@@ -119,7 +121,7 @@
           <dt>Location</dt><dd>618 Garner Rd E, Hamilton, ON L9G 2J7</dd>
           <dt>Course format</dt><dd>an 18-hole mini golf layout</dd>
           <dt>Venue type</dt><dd>golf facility that includes mini golf</dd>
-          <dt>Business status</dt><dd>Operational at last profile check</dd>
+          <dt>Business status</dt><dd>Earlier business profile: Operational at last profile check; captured June 16, 2026</dd>
           <dt>Phone</dt><dd>+1 905-648-9880</dd>
           <dt>Admission</dt><dd>Mini-putt and party prices by enquiry</dd>
           <dt>Course-source review</dt><dd>September 7, 2026</dd>

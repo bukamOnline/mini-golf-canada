@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=directory-decisions-20260930">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=visitor-decisions-20261021">
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,6 +37,7 @@
       ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
+      if (['localhost', '127.0.0.1'].indexOf(window.location.hostname) !== -1) return;
       if (window.mgcAnalyticsLoaded) return;
       window.mgcAnalyticsLoaded = true;
       var script = document.createElement('script');
@@ -50,10 +51,10 @@
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=directory-decisions-20260930"></script>
-  <script defer src="../../assets/js/app.js?v=directory-decisions-20260930"></script>
+  <script defer src="../../assets/js/listings.js?v=visitor-decisions-20261021"></script>
+  <script defer src="../../assets/js/app.js?v=visitor-decisions-20261021"></script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/#business","name":"Sergeant Greg inc.","url":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/#webpage"},"description":"Sergeant Greg reports its Whitehorse location closed while planning mobile operations and a new facility. Check relocation information before travelling.","address":{"@type":"PostalAddress","streetAddress":"118 Galena Rd Unit C","addressLocality":"Whitehorse","addressRegion":"YT","postalCode":"Y1A 2Y9","addressCountry":"CA"},"telephone":"+1 867-456-4734","sameAs":["http://www.sergeantgreg.com/"],"geo":{"@type":"GeoCoordinates","latitude":60.742549,"longitude":-135.0736281}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/#webpage","name":"Sergeant Greg inc. | Mini Golf in Whitehorse, Yukon","url":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/","description":"Sergeant Greg reports its Whitehorse location closed while planning mobile operations and a new facility. Check relocation information before travelling.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-09-30","about":{"@id":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Yukon","item":"https://minigolfcanada.ca/provinces/yukon/"},{"@type":"ListItem","position":3,"name":"Whitehorse","item":"https://minigolfcanada.ca/cities/yukon/whitehorse/"},{"@type":"ListItem","position":4,"name":"Sergeant Greg inc.","item":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LocalBusiness","@id":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/#business","name":"Sergeant Greg inc.","url":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/","mainEntityOfPage":{"@id":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/#webpage"},"description":"Sergeant Greg reports its Whitehorse location closed while planning mobile operations and a new facility. Check relocation information before travelling.","address":{"@type":"PostalAddress","streetAddress":"118 Galena Rd Unit C","addressLocality":"Whitehorse","addressRegion":"YT","postalCode":"Y1A 2Y9","addressCountry":"CA"},"telephone":"+1 867-456-4734","sameAs":["http://www.sergeantgreg.com/"],"geo":{"@type":"GeoCoordinates","latitude":60.742549,"longitude":-135.0736281}},{"@type":"WebPage","@id":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/#webpage","name":"Sergeant Greg inc. | Mini Golf in Whitehorse, Yukon","url":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/","description":"Sergeant Greg reports its Whitehorse location closed while planning mobile operations and a new facility. Check relocation information before travelling.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-10-21","about":{"@id":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/#business"},"author":{"@id":"https://minigolfcanada.ca/research-desk/#research-desk"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Yukon","item":"https://minigolfcanada.ca/provinces/yukon/"},{"@type":"ListItem","position":3,"name":"Whitehorse","item":"https://minigolfcanada.ca/cities/yukon/whitehorse/"},{"@type":"ListItem","position":4,"name":"Sergeant Greg inc.","item":"https://minigolfcanada.ca/courses/sergeant-greg-inc-whitehorse-yt/"}]}]}</script>
 </head>
 <body class="single-post">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -84,14 +85,15 @@
   <main id="main">
 
     <section class="course-hero">
-      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../../provinces/yukon/">Yukon</a><span aria-hidden="true">/</span><a href="../../cities/yukon/whitehorse/">Whitehorse</a><span aria-hidden="true">/</span><span>Sergeant Greg inc.</span></nav>
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../../provinces/yukon/">Yukon</a><span aria-hidden="true">/</span><a href="./">Whitehorse</a><span aria-hidden="true">/</span><span>Sergeant Greg inc.</span></nav>
       <div class="course-hero-grid course-hero-text">
         <div>
           <h1>Sergeant Greg inc.</h1>
           <p class="lead">Historical venue record in Whitehorse, Yukon. Current mini-golf operation needs confirmation.</p>
           <div class="editorial-meta"><span>By <a href="../../research-desk/">Mini Golf Canada Research Desk</a></span><span>Course verification attempted: September 6, 2026</span><span>Source-based guide, not a first-hand review</span></div>
           <div class="verification-notice" role="note"><strong>Mini golf not currently verified</strong><p>The operator says its current location is closed while it works on mobile operations and a new facility. Do not travel to the old address expecting walk-in mini golf.</p></div>
-          <div class="course-facts" data-nosnippet><span>4.8/5 public profile snapshot</span><span>40 ratings at source check</span></div>
+          <div class="verification-notice"><strong>Before you travel</strong><p>The operator still posts a relocation notice and says the current location is closed while mobile operations and a new facility are planned. No new walk-in mini-golf opening is confirmed.</p><p class="source-caveat">Status checked 2026-10-21.</p></div>
+
           <div class="tag-row"></div>
           <div class="button-row"><a class="button secondary" href="http://www.sergeantgreg.com/" rel="nofollow noopener" target="_blank">Official website</a><a class="button secondary" href="tel:+18674564734">Call</a><a class="button secondary" href="https://www.google.com/maps/place/Sergeant+Greg+inc./@60.742549,-135.0736281,14z/data=!4m8!1m2!2m1!1sSergeant+Greg+inc.!3m4!1s0x515445b5dae7f1c5:0x28673281b81faebb!8m2!3d60.742549!4d-135.0736281" rel="nofollow noopener" target="_blank">Open map</a></div>
         </div>

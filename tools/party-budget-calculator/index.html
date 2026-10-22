@@ -17,7 +17,7 @@
   <meta name="theme-color" content="#0f7b45">
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../../site.webmanifest">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=directory-decisions-20260930">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=visitor-decisions-20261021">
 
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -37,6 +37,7 @@
       ad_personalization: 'denied'
     });
     window.loadMgcAnalytics = function() {
+      if (['localhost', '127.0.0.1'].indexOf(window.location.hostname) !== -1) return;
       if (window.mgcAnalyticsLoaded) return;
       window.mgcAnalyticsLoaded = true;
       var script = document.createElement('script');
@@ -50,10 +51,10 @@
   </script>
 
   <meta name="google-adsense-account" content="ca-pub-2494233247909241">
-  <script defer src="../../assets/js/listings.js?v=directory-decisions-20260930"></script>
-  <script defer src="../../assets/js/app.js?v=directory-decisions-20260930"></script>
+  <script defer src="../../assets/js/listings.js?v=visitor-decisions-20261021"></script>
+  <script defer src="../../assets/js/app.js?v=visitor-decisions-20261021"></script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://minigolfcanada.ca/tools/party-budget-calculator/#webpage","name":"Mini Golf Party Budget Calculator","url":"https://minigolfcanada.ca/tools/party-budget-calculator/","description":"Estimate a mini golf party total using the venue quote, guest count, food, room fees, tax and contingency.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-09-06"},{"@type":"WebApplication","@id":"https://minigolfcanada.ca/tools/party-budget-calculator/#application","name":"Mini Golf Party Budget Calculator","url":"https://minigolfcanada.ca/tools/party-budget-calculator/","applicationCategory":"LifestyleApplication","operatingSystem":"Any web browser","isAccessibleForFree":true,"publisher":{"@id":"https://minigolfcanada.ca/#organization"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/tools/party-budget-calculator/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://minigolfcanada.ca/tools/"},{"@type":"ListItem","position":3,"name":"Mini Golf Party Budget Calculator","item":"https://minigolfcanada.ca/tools/party-budget-calculator/"}]}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://minigolfcanada.ca/tools/party-budget-calculator/#webpage","name":"Mini Golf Party Budget Calculator","url":"https://minigolfcanada.ca/tools/party-budget-calculator/","description":"Estimate a mini golf party total using the venue quote, guest count, food, room fees, tax and contingency.","isPartOf":{"@id":"https://minigolfcanada.ca/#website"},"dateModified":"2026-10-21"},{"@type":"WebApplication","@id":"https://minigolfcanada.ca/tools/party-budget-calculator/#application","name":"Mini Golf Party Budget Calculator","url":"https://minigolfcanada.ca/tools/party-budget-calculator/","applicationCategory":"LifestyleApplication","operatingSystem":"Any web browser","isAccessibleForFree":true,"publisher":{"@id":"https://minigolfcanada.ca/#organization"}},{"@type":"BreadcrumbList","@id":"https://minigolfcanada.ca/tools/party-budget-calculator/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://minigolfcanada.ca/"},{"@type":"ListItem","position":2,"name":"Tools","item":"https://minigolfcanada.ca/tools/"},{"@type":"ListItem","position":3,"name":"Mini Golf Party Budget Calculator","item":"https://minigolfcanada.ca/tools/party-budget-calculator/"}]}]}</script>
 </head>
 <body class="directory-page">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -87,7 +88,7 @@
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../../">Home</a><span aria-hidden="true">/</span><a href="../">Tools</a><span aria-hidden="true">/</span><span>Mini Golf Party Budget Calculator</span></nav>
       <h1>Mini Golf Party Budget Calculator</h1>
       <p>Estimate a mini golf party total using the venue quote, guest count, food, room fees, tax and contingency.</p>
-      <div class="editorial-meta"><span>Built by <a href="../../research-desk/">Mini Golf Canada Research Desk</a></span><span>Updated September 6, 2026</span></div>
+      <div class="editorial-meta"><span>Built by <a href="../../research-desk/">Mini Golf Canada Research Desk</a></span><span>Updated October 21, 2026</span></div>
     </section>
     <section class="section tool-workspace">
         <form class="tool-panel js-party-budget-tool">
@@ -96,7 +97,7 @@
             <label><span>Playing guests</span><input name="players" type="number" min="1" max="200" value="10"></label>
             <label><span>Mini golf per player (CAD)</span><input name="ticket" type="number" min="0" max="500" step="0.01" value="12"></label>
             <label><span>Food per guest (CAD)</span><input name="food" type="number" min="0" max="500" step="0.01" value="8"></label>
-            <label><span>Room, deposit or fixed fees (CAD)</span><input name="fixed" type="number" min="0" max="10000" step="0.01" value="0"></label>
+            <label><span>Non-refundable room or fixed fees (CAD)</span><input name="fixed" type="number" min="0" max="10000" step="0.01" value="0"></label>
             <label><span>Tax rate (%)</span><input name="tax" type="number" min="0" max="30" step="0.1" value="13"></label>
             <label><span>Contingency (%)</span><input name="buffer" type="number" min="0" max="50" step="1" value="10"></label>
           </div>
@@ -108,7 +109,7 @@
         <p>Enter a current mini-golf-only rate or written party quote. Do not substitute a headline bundle unless every guest will use the included activities. Confirm minimum guest counts, non-player charges, gratuity, booking fees, deposits and cancellation terms.</p>
         <p>The contingency is a planning cushion, not a venue fee. The result is not a checkout price and is not stored. The <a href="/guides/mini-golf-birthday-parties/">party guide</a> lists questions that often change the final total.</p>
         <h2>Build the input from a written quote</h2>
-        <p>Separate per-player amounts from fixed charges before entering them. Mini golf and food normally belong in the per-guest fields; a room rental, host fee or required deposit belongs in fixed fees. Enter the tax rate that actually applies to the quoted items rather than assuming every line receives the same treatment.</p>
+        <p>Separate per-player amounts from fixed charges before entering them. Mini golf and food normally belong in the per-guest fields; a room rental or host fee belongs in fixed fees. A deposit credited toward the final bill is a prepayment, not an additional cost; do not add it again. Ask how refundable security deposits are handled separately. Enter the tax rate that actually applies to the quoted items rather than assuming every line receives the same treatment.</p>
         <p>Run at least two scenarios: the expected attendance and the venue's minimum billable attendance. If non-playing adults, siblings or late additions have different rates, calculate them outside the tool or include a documented average only when that remains clear to the organizer.</p>
         <h2>Read the contingency correctly</h2>
         <p>The contingency helps reserve money for uncertain attendance or an omitted small charge. It is applied after the entered subtotal and tax, so it should not duplicate a gratuity or service fee already in the quote. Once the venue supplies a final total, replace assumptions with those numbers and reduce the cushion only if the cancellation and change terms are understood.</p>
