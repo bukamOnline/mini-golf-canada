@@ -106,10 +106,12 @@ test('no matches clears cards and hides the entire pagination control', () => {
 
 test('all national results can be loaded, with the correct total and final partial page', () => {
   const page=searchPage(); const total=page.run().length;
-  assert.equal(total,259);
+  const expected = page.window.MGC_LISTINGS.length;
+  assert.ok(expected > 48, 'live directory must exercise multiple result pages');
+  assert.equal(total,expected);
   while (!page.more.hidden) page.loadMore();
   assert.equal(page.results.children.length,total); assert.equal(new Set(page.paths()).size,total);
-  assert.match(page.status.textContent,/Showing 259 of 259.*All matches/);
+  assert.match(page.status.textContent,new RegExp('Showing '+expected+' of '+expected+'.*All matches'));
 });
 
 test('location sorting reaches all coordinate-bearing matches and keeps distance order', () => {
