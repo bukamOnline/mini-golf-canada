@@ -43,11 +43,17 @@
     (root || document).querySelectorAll("img[data-image-fallback='true']").forEach(function (img) {
       if (img.dataset.fallbackAttached) return;
       img.dataset.fallbackAttached = "true";
-      img.addEventListener("error", function () {
+      function showFallback() {
         if (img.dataset.fallbackUsed) return;
         img.dataset.fallbackUsed = "true";
+        img.alt = "Directory illustration; original venue image unavailable";
+        var caption = img.closest("figure");
+        caption = caption && caption.querySelector("figcaption");
+        if (caption) caption.textContent = "Original image unavailable. Directory illustration, not a photograph of this venue.";
         img.src = fallbackImageSrc();
-      });
+      }
+      img.addEventListener("error", showFallback);
+      if (img.complete && !img.naturalWidth) showFallback();
     });
   }
 
